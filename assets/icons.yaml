@@ -29,6 +29,7 @@ substitutions:
   printer:        "\U000F042B"
   aircon:         "\U000F0D43"
   ledstrip:       "\U000F1051"
+  led_strip_variant: "\U000F1051"
   package:        "\U000F03D7"
   lights:         "\U000F07D6"
   blinds_closed:  "\U000F00AC"
