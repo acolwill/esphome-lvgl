@@ -1,6 +1,64 @@
+# =============================================================================
+# SENSORS - Home Assistant State Synchronization
+# =============================================================================
+# This file creates sensors that monitor Home Assistant entities and update
+# the touchscreen buttons to reflect the current state of your smart devices.
+#
+# WHY THIS FILE EXISTS:
+# When you press a button on the touchscreen, it sends a command to Home
+# Assistant. But what if someone turns on a light using their phone, or a
+# scene activates automatically? This file ensures the touchscreen display
+# always shows the ACTUAL state of each device, not just what was last pressed.
+#
+# HOW IT WORKS:
+# 1. Each sensor subscribes to a Home Assistant entity (switch, sensor, etc.)
+# 2. When that entity's state changes, the "on_state" or "on_value" trigger fires
+# 3. The trigger updates the corresponding button in lvgl.yaml to show the new state
+#
+# KEY CONCEPTS:
+# - "platform: homeassistant" = reads state directly from Home Assistant
+# - "platform: template" = calculates a value using code (lambda)
+# - "entity_id:" = the Home Assistant device/entity to monitor
+# - "id:" = unique name to reference this sensor elsewhere in ESPHome
+# - "trigger_on_initial_state: true" = update button immediately when device boots
+# - "lvgl.widget.update" = changes how a button looks on screen
+# - "checked: !lambda return x;" = x is the sensor's boolean state (true/false)
+#
+# RELATIONSHIP TO lvgl.yaml:
+# Each sensor here has a matching button in lvgl.yaml:
+#   - This file READS state from Home Assistant → updates button appearance
+#   - lvgl.yaml SENDS commands to Home Assistant → when button is pressed
+# =============================================================================
+
+
+# =============================================================================
+# REGULAR SENSORS (Numeric Values)
+# =============================================================================
+# These sensors read numeric values like temperature and position.
+# They're used to display information or calculate other states.
+# =============================================================================
+
 sensor:
 
-  # Header Outdoor Temperate
+  # ===========================================================================
+  # SENSOR: Office Temperature (Indoor)
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   The temperature inside the office from sensor.office_temperature
+  #   (This could be from a smart thermostat, dedicated sensor, etc.)
+  #
+  # WHAT IT UPDATES:
+  #   The "temperatures" label in the top-left corner of the screen
+  #   Format: "outdoor° / indoor°" (e.g., "15° / 22°")
+  #
+  # HOW IT WORKS:
+  #   When the office temperature changes in Home Assistant, this sensor
+  #   receives the new value and updates the label text. It combines the
+  #   outdoor temperature (from the other sensor below) with this value.
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → temperatures label (id: temperatures)
+  # ===========================================================================
   - platform: homeassistant
     entity_id: sensor.office_temperature
     id: office_temperature
@@ -11,6 +69,28 @@ sensor:
             format: "%d° / %d°"
             args: [ '(int)round(id(outdoor_temperature).state)', '(int)round(x)' ]
 
+  # ===========================================================================
+  # SENSOR: Outdoor Temperature
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   The temperature outside from sensor.outdoor_temperature
+  #   (This could be from a weather service, outdoor sensor, etc.)
+  #
+  # WHAT IT UPDATES:
+  #   The "temperatures" label in the top-left corner of the screen
+  #   Format: "outdoor° / indoor°" (e.g., "15° / 22°")
+  #
+  # HOW IT WORKS:
+  #   When the outdoor temperature changes in Home Assistant, this sensor
+  #   receives the new value and updates the label text. It combines this
+  #   value with the office temperature (from the sensor above).
+  #
+  # NOTE: Both temperature sensors update the same label. Either one changing
+  #       will refresh the display with both current values.
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → temperatures label (id: temperatures)
+  # ===========================================================================
   - platform: homeassistant
     entity_id: sensor.outdoor_temperature
     id: outdoor_temperature
@@ -21,7 +101,28 @@ sensor:
             format: "%d° / %d°"
             args: [ '(int)round(x)', '(int)round(id(office_temperature).state)' ]
 
-  # Office Blind Position
+  # ===========================================================================
+  # SENSOR: Office Blind Position
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   The current position of the office window blind (0-100%)
+  #   Reads the "current_position" attribute from cover.office_blind
+  #
+  # WHAT IT'S USED FOR:
+  #   This sensor doesn't directly update buttons. Instead, it provides
+  #   the position value that the template sensors below use to determine
+  #   which blind button should be highlighted.
+  #
+  # WHY IT'S SEPARATE:
+  #   The blind has 4 preset buttons (0%, 33%, 66%, 100%), but the blind
+  #   could be at ANY position. This sensor stores the actual position,
+  #   and the template sensors below check if it's "close enough" to each
+  #   preset (within 3%) to highlight that button.
+  #
+  # RELATED UI ELEMENTS:
+  #   lvgl.yaml → office_blind_open_button, office_blind_66_button,
+  #               office_blind_33_button, office_blind_close_button
+  # ===========================================================================
   - platform: homeassistant
     entity_id: cover.office_blind
     id: office_blind_position
@@ -29,9 +130,35 @@ sensor:
 
 
 
+# =============================================================================
+# BINARY SENSORS (On/Off States)
+# =============================================================================
+# These sensors track on/off states and update button appearances.
+# When the sensor is ON (true), the button shows as "checked" (highlighted).
+# When the sensor is OFF (false), the button shows as unchecked (dimmed).
+# =============================================================================
+
 binary_sensor:
 
-  # Office Evening Scene
+  # ===========================================================================
+  # SENSOR: Office Evening Scene Active
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   Whether the "Evening" lighting scene is currently active
+  #   Watches: binary_sensor.office_scene_evening in Home Assistant
+  #
+  # WHAT IT UPDATES:
+  #   The "Evening" button's visual state (highlighted when active)
+  #
+  # HOW IT WORKS:
+  #   Home Assistant has a binary sensor that's ON when the evening scene
+  #   is active. When this changes, the button appearance updates to match.
+  #   "trigger_on_initial_state: true" ensures the button shows correctly
+  #   right when the device boots up, not just when state changes later.
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → office_scene_evening_button
+  # ===========================================================================
   - platform: homeassistant
     id: office_scene_evening
     entity_id: binary_sensor.office_scene_evening
@@ -43,7 +170,19 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Office Dimmed Scene
+  # ===========================================================================
+  # SENSOR: Office Dimmed Scene Active
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   Whether the "Dimmed" lighting scene is currently active
+  #   Watches: binary_sensor.office_scene_dimmed in Home Assistant
+  #
+  # WHAT IT UPDATES:
+  #   The "Dimmed" button's visual state (highlighted when active)
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → office_scene_dimmed_button
+  # ===========================================================================
   - platform: homeassistant
     id: office_scene_dimmed
     entity_id: binary_sensor.office_scene_dimmed
@@ -55,7 +194,19 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Office Calls Scene
+  # ===========================================================================
+  # SENSOR: Office Calls Scene Active
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   Whether the "Calls" (video call) lighting scene is currently active
+  #   Watches: binary_sensor.office_scene_desk_call in Home Assistant
+  #
+  # WHAT IT UPDATES:
+  #   The "Calls" button's visual state (highlighted when active)
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → office_scene_calls_button
+  # ===========================================================================
   - platform: homeassistant
     id: office_scene_desk_call
     entity_id: binary_sensor.office_scene_desk_call
@@ -67,7 +218,19 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Office Features Scene
+  # ===========================================================================
+  # SENSOR: Office Features Scene Active
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   Whether the "Features" (LED accent) lighting scene is currently active
+  #   Watches: binary_sensor.office_scene_features in Home Assistant
+  #
+  # WHAT IT UPDATES:
+  #   The "Features" button's visual state (highlighted when active)
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → office_scene_features_button
+  # ===========================================================================
   - platform: homeassistant
     id: office_scene_features
     entity_id: binary_sensor.office_scene_features
@@ -79,7 +242,22 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # 3d Printer
+  # ===========================================================================
+  # SENSOR: 3D Printer Power State
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   Whether the 3D printer's smart plug is turned on or off
+  #   Watches: switch.office_3d_printer_power in Home Assistant
+  #
+  # WHAT IT UPDATES:
+  #   The "Printer" button's visual state (highlighted when powered on)
+  #
+  # NOTE: This monitors a "switch" entity but uses binary_sensor platform.
+  #       ESPHome treats the switch's on/off state as a binary value here.
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → printer_power_button
+  # ===========================================================================
   - platform: homeassistant
     id: office_3d_printer_power
     entity_id: switch.office_3d_printer_power
@@ -91,7 +269,19 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Office Aircon
+  # ===========================================================================
+  # SENSOR: Air Conditioner State
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   Whether the office air conditioner is running
+  #   Watches: switch.office_air_conditioner in Home Assistant
+  #
+  # WHAT IT UPDATES:
+  #   The "Aircon" button's visual state (highlighted when running)
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → office_aircon_button
+  # ===========================================================================
   - platform: homeassistant
     id: office_air_conditioner
     entity_id: switch.office_air_conditioner
@@ -103,7 +293,22 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Battery Charger
+  # ===========================================================================
+  # SENSOR: Battery Charger State
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   Whether the battery charger's smart plug is turned on or off
+  #   Watches: switch.d4c5 in Home Assistant
+  #
+  # WHAT IT UPDATES:
+  #   The "Charger" button's visual state (highlighted when powered on)
+  #
+  # NOTE: "d4c5" is the device's default identifier. Consider renaming this
+  #       in Home Assistant to something clearer like "switch.office_charger"
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → battery_charger_button
+  # ===========================================================================
   - platform: homeassistant
     id: office_battery_charger
     entity_id: switch.d4c5
@@ -115,7 +320,22 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Filament Heater 
+  # ===========================================================================
+  # SENSOR: Filament Dryer State
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   Whether the filament dryer/heater is turned on or off
+  #   Watches: switch.office_filament_heater_893b in Home Assistant
+  #
+  # WHAT IT UPDATES:
+  #   The "Dryer" button's visual state (highlighted when running)
+  #
+  # NOTE: The filament dryer removes moisture from 3D printer filament.
+  #       Dry filament produces better quality prints.
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → filament_heater_button
+  # ===========================================================================
   - platform: homeassistant
     id: office_filament_heater
     entity_id: switch.office_filament_heater_893b
@@ -127,7 +347,29 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Office Blind 100% (Open)
+  # ===========================================================================
+  # TEMPLATE SENSOR: Blind at 100% (Fully Open)
+  # ===========================================================================
+  # WHAT IT DOES:
+  #   Calculates whether the blind is at (or very close to) 100% open
+  #   Returns TRUE if position is within 3% of 100, FALSE otherwise
+  #
+  # WHY USE A TEMPLATE:
+  #   The blind motor may not stop at exactly 100%. It might be 99% or 101%.
+  #   This template uses a 3% tolerance to account for this imprecision.
+  #   If position is between 97-100%, we consider it "fully open".
+  #
+  # HOW THE CODE WORKS:
+  #   1. Check if office_blind_position has received a value yet
+  #   2. Calculate: |current_position - 100| <= 3
+  #   3. Return true if within range, false otherwise
+  #
+  # WHAT IT UPDATES:
+  #   The "Open" button's visual state (highlighted when blind is ~100%)
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → office_blind_open_button
+  # ===========================================================================
   - platform: template
     id: office_blind_100
     lambda: |-
@@ -142,7 +384,22 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Office Blind 66% (Semi Open)
+  # ===========================================================================
+  # TEMPLATE SENSOR: Blind at 66% (Semi Open)
+  # ===========================================================================
+  # WHAT IT DOES:
+  #   Calculates whether the blind is at (or very close to) 66% open
+  #   Returns TRUE if position is within 3% of 66, FALSE otherwise
+  #
+  # HOW THE CODE WORKS:
+  #   Same logic as above, but checks for 66% (range: 63-69%)
+  #
+  # WHAT IT UPDATES:
+  #   The "Semi Open" button's visual state (highlighted when blind is ~66%)
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → office_blind_66_button
+  # ===========================================================================
   - platform: template
     id: office_blind_66
     lambda: |-
@@ -157,7 +414,22 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Office Blind 33% (Semi Closed)
+  # ===========================================================================
+  # TEMPLATE SENSOR: Blind at 33% (Semi Closed)
+  # ===========================================================================
+  # WHAT IT DOES:
+  #   Calculates whether the blind is at (or very close to) 33% open
+  #   Returns TRUE if position is within 3% of 33, FALSE otherwise
+  #
+  # HOW THE CODE WORKS:
+  #   Same logic as above, but checks for 33% (range: 30-36%)
+  #
+  # WHAT IT UPDATES:
+  #   The "Semi Closed" button's visual state (highlighted when blind is ~33%)
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → office_blind_33_button
+  # ===========================================================================
   - platform: template
     id: office_blind_33
     lambda: |-
@@ -172,7 +444,22 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Office Blind 0% (Close)
+  # ===========================================================================
+  # TEMPLATE SENSOR: Blind at 0% (Fully Closed)
+  # ===========================================================================
+  # WHAT IT DOES:
+  #   Calculates whether the blind is at (or very close to) 0% (closed)
+  #   Returns TRUE if position is within 3% of 0, FALSE otherwise
+  #
+  # HOW THE CODE WORKS:
+  #   Same logic as above, but checks for 0% (range: 0-3%)
+  #
+  # WHAT IT UPDATES:
+  #   The "Close" button's visual state (highlighted when blind is ~0%)
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → office_blind_close_button
+  # ===========================================================================
   - platform: template
     id: office_blind_0
     lambda: |-
@@ -187,7 +474,23 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Office Storage Lights
+  # ===========================================================================
+  # SENSOR: Office Storage Lights State
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   Whether the office storage area lights are on or off
+  #   Watches: light.office_storage in Home Assistant
+  #
+  # WHAT IT UPDATES:
+  #   The "Storage Lights" button's visual state (highlighted when on)
+  #
+  # NOTE: This sensor references a button (storage_lights_button) that
+  #       should be defined in lvgl.yaml. If the button doesn't exist,
+  #       add it there or remove this sensor.
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → storage_lights_button
+  # ===========================================================================
   - platform: homeassistant
     id: office_storage_lights
     entity_id: light.office_storage
@@ -199,7 +502,23 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-  # Network Rack
+  # ===========================================================================
+  # SENSOR: Network Rack Lights State
+  # ===========================================================================
+  # WHAT IT MONITORS:
+  #   Whether the network rack lights are on or off
+  #   Watches: light.office_network_rack in Home Assistant
+  #
+  # WHAT IT UPDATES:
+  #   The "Network Rack" button's visual state (highlighted when on)
+  #
+  # NOTE: This sensor references a button (network_rack_button) that
+  #       should be defined in lvgl.yaml. If the button doesn't exist,
+  #       add it there or remove this sensor.
+  #
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → network_rack_button
+  # ===========================================================================
   - platform: homeassistant
     id: network_rack
     entity_id: light.office_network_rack
