@@ -67,6 +67,42 @@ lvgl:
           text_color: 0xFFFFFF
           
   pages:
+    - id: experiment_page
+      layout: 
+        type: flex
+        flex_flow: column_wrap
+      scrollbar_mode: "off"
+      scroll_dir: "hor"
+      width: 100%
+      bg_color: Black
+      bg_opa: cover
+      pad_top: 34
+      pad_bottom: 5
+      pad_left: 5
+      pad_right: 5
+
+      widgets:
+
+        # =========================================================================
+        # BUTTON: Home (Go to Main Page)
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: experiment_back_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $chevron_left
+              - label:
+                  align: bottom_left
+                  text: "Home"
+            on_click:
+              - lvgl.page.show: main_page
+
     - id: main_page
       layout: 
         type: flex
@@ -735,42 +771,6 @@ lvgl:
                   data:
                     entity_id: cover.office_blind
                     position: "0"
-
-    - id: experiment_page
-      layout: 
-        type: flex
-        flex_flow: column_wrap
-      scrollbar_mode: "off"
-      scroll_dir: "hor"
-      width: 100%
-      bg_color: Black
-      bg_opa: cover
-      pad_top: 34
-      pad_bottom: 5
-      pad_left: 5
-      pad_right: 5
-
-      widgets:
-
-        # =========================================================================
-        # BUTTON: Back (Return to Main Page)
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: experiment_back_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $chevron_left
-              - label:
-                  align: bottom_left
-                  text: "Back"
-            on_click:
-              - lvgl.page.show: main_page
 
     - id: aircon_page
       layout: 
