@@ -28,8 +28,8 @@ font:
       type: gfonts
       family: Roboto
       weight: 100
-    id: roboto120_thin_font
-    size: 120
+    id: roboto140_thin_font
+    size: 140
     bpp: 4
 
   - file: "gfonts://Roboto"
