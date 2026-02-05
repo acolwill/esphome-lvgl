@@ -106,7 +106,7 @@ sensor:
   # ===========================================================================
   # WHAT IT MONITORS:
   #   The current position of the office window blind (0-100%)
-  #   Reads the "current_position" attribute from cover.office_blind
+  #   Reads the "current_position" attribute from cover.curtain_robot_front_door
   #
   # WHAT IT'S USED FOR:
   #   This sensor doesn't directly update buttons. Instead, it provides
@@ -120,8 +120,8 @@ sensor:
   #   preset (within 3%) to highlight that button.
   #
   # RELATED UI ELEMENTS:
-  #   lvgl.yaml → office_blind_open_button, office_blind_66_button,
-  #               office_blind_33_button, office_blind_close_button
+  #   lvgl.yaml → curtain_robot_front_door_open_button, curtain_robot_front_door_66_button,
+  #               curtain_robot_front_door_33_button, curtain_robot_front_door_close_button
   # ===========================================================================
   - platform: homeassistant
     entity_id: cover.curtain_robot_front_door
@@ -494,7 +494,7 @@ binary_sensor:
   #   If position is between 97-100%, we consider it "fully open".
   #
   # HOW THE CODE WORKS:
-  #   1. Check if office_blind_position has received a value yet
+  #   1. Check if curtain_robot_front_door_position has received a value yet
   #   2. Calculate: |current_position - 100| <= 3
   #   3. Return true if within range, false otherwise
   #
@@ -502,19 +502,19 @@ binary_sensor:
   #   The "Open" button's visual state (highlighted when blind is ~100%)
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → office_blind_open_button
+  #   lvgl.yaml → curtain_robot_front_door_open_button
   # ===========================================================================
   - platform: template
-    id: office_blind_100
+    id: curtain_robot_front_door_100
     lambda: |-
-      if (id(office_blind_position).has_state()) {
-        return abs(id(office_blind_position).state - 100) <= 3;
+      if (id(curtain_robot_front_door_position).has_state()) {
+        return abs(id(curtain_robot_front_door_position).state - 100) <= 3;
       }
       return false;
     on_state:
       then:
         lvgl.widget.update:
-          id: office_blind_open_button
+          id: curtain_robot_front_door_open_button
           state:
             checked: !lambda return x;
 
@@ -532,19 +532,19 @@ binary_sensor:
   #   The "Semi Open" button's visual state (highlighted when blind is ~66%)
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → office_blind_66_button
+  #   lvgl.yaml → curtain_robot_front_door_66_button
   # ===========================================================================
   - platform: template
-    id: office_blind_66
+    id: curtain_robot_front_door_66
     lambda: |-
-      if (id(office_blind_position).has_state()) {
-        return abs(id(office_blind_position).state - 66) <= 3;
+      if (id(curtain_robot_front_door_position).has_state()) {
+        return abs(id(curtain_robot_front_door_position).state - 66) <= 3;
       }
       return false;
     on_state:
       then:
         lvgl.widget.update:
-          id: office_blind_66_button
+          id: curtain_robot_front_door_66_button
           state:
             checked: !lambda return x;
 
@@ -562,19 +562,19 @@ binary_sensor:
   #   The "Semi Closed" button's visual state (highlighted when blind is ~33%)
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → office_blind_33_button
+  #   lvgl.yaml → curtain_robot_front_door_33_button
   # ===========================================================================
   - platform: template
-    id: office_blind_33
+    id: curtain_robot_front_door_33
     lambda: |-
-      if (id(office_blind_position).has_state()) {
-        return abs(id(office_blind_position).state - 33) <= 3;
+      if (id(curtain_robot_front_door_position).has_state()) {
+        return abs(id(curtain_robot_front_door_position).state - 33) <= 3;
       }
       return false;
     on_state:
       then:
         lvgl.widget.update:
-          id: office_blind_33_button
+          id: curtain_robot_front_door_33_button
           state:
             checked: !lambda return x;
 
@@ -592,19 +592,19 @@ binary_sensor:
   #   The "Close" button's visual state (highlighted when blind is ~0%)
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → office_blind_close_button
+  #   lvgl.yaml → curtain_robot_front_door_close_button
   # ===========================================================================
   - platform: template
-    id: office_blind_0
+    id: curtain_robot_front_door_0
     lambda: |-
-      if (id(office_blind_position).has_state()) {
-        return abs(id(office_blind_position).state - 0) <= 3;
+      if (id(curtain_robot_front_door_position).has_state()) {
+        return abs(id(curtain_robot_front_door_position).state - 0) <= 3;
       }
       return false;
     on_state:
       then:
         lvgl.widget.update:
-          id: office_blind_close_button
+          id: curtain_robot_front_door_close_button
           state:
             checked: !lambda return x;
 
