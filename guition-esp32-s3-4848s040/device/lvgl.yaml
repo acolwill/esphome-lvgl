@@ -582,7 +582,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: true
-            id: office_blind_open_button
+            id: curtain_robot_front_door_open_button
             styles: control
             widgets:
               - label:
@@ -596,8 +596,8 @@ lvgl:
               - homeassistant.service:
                   service: cover.set_cover_position
                   data:
-                    entity_id: cover.office_blind
-                    position: "100"
+                    entity_id: cover.curtain_robot_front_door
+                    position: "0"
 
         # =========================================================================
         # BUTTON: Blind Semi Open (66%)
@@ -620,7 +620,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: true
-            id: office_blind_66_button
+            id: curtain_robot_front_door_66_button
             styles: control
             widgets:
               - label:
@@ -634,7 +634,7 @@ lvgl:
               - homeassistant.service:
                   service: cover.set_cover_position
                   data:
-                    entity_id: cover.office_blind
+                    entity_id: cover.curtain_robot_front_door
                     position: "66"
 
         # =========================================================================
@@ -658,7 +658,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: true
-            id: office_blind_33_button
+            id: curtain_robot_front_door_33_button
             styles: control
             widgets:
               - label:
@@ -672,7 +672,7 @@ lvgl:
               - homeassistant.service:
                   service: cover.set_cover_position
                   data:
-                    entity_id: cover.office_blind
+                    entity_id: cover.curtain_robot_front_door
                     position: "33"
 
         # =========================================================================
@@ -696,7 +696,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: true
-            id: office_blind_close_button
+            id: curtain_robot_front_door_close_button
             styles: control
             widgets:
               - label:
@@ -710,8 +710,8 @@ lvgl:
               - homeassistant.service:
                   service: cover.set_cover_position
                   data:
-                    entity_id: cover.office_blind
-                    position: "0"
+                    entity_id: cover.curtain_robot_front_door
+                    position: "100"
 
     - id: aircon_page
       layout: 
