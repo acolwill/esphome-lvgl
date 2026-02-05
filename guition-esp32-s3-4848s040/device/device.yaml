@@ -58,7 +58,8 @@ ota:
 # The encryption key is typically set in your secrets.yaml file.
 # -----------------------------------------------------------------------------
 api:
-
+  encryption:
+    key: !secret api_key
 
 # -----------------------------------------------------------------------------
 # LOGGING
@@ -201,6 +202,7 @@ display:
     dimensions:
       width: 480
       height: 480
+      rotation: 270
     spi_mode: MODE3
     data_rate: 2MHz
     color_order: RGB
