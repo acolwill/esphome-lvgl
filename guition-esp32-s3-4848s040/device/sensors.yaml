@@ -61,13 +61,13 @@ sensor:
   # ===========================================================================
   - platform: homeassistant
     entity_id: sensor.air_quality_monitor_temperature
-    id: lounge_temperature
+    id: openweathermap_temperature
     on_value:
       - lvgl.label.update:
           id: temperatures
           text:
-            format: "%d° C/ %d° C"
-            args: [ '(int)round(id(outdoor_temperature).state)', '(int)round(x)' ]
+            format: "%d° / %d°"
+            args: [ '(int)round(id(openweathermap_temperature).state)', '(int)round(x)' ]
 
   # ===========================================================================
   # SENSOR: Outdoor Temperature
@@ -93,13 +93,13 @@ sensor:
   # ===========================================================================
   - platform: homeassistant
     entity_id: sensor.openweathermap_temperature
-    id: outdoor_temperature
+    id: openweathermap_temperature
     on_value:
       - lvgl.label.update:
           id: temperatures
           text:
-            format: "%d° C/ %d° C"
-            args: [ '(int)round(x)', '(int)round(id(lounge_temperature).state)' ]
+            format: "%d° / %d°"
+            args: [ '(int)round(x)', '(int)round(id(openweathermap_temperature).state)' ]
 
   # ===========================================================================
   # SENSOR: Office Blind Position
@@ -124,8 +124,8 @@ sensor:
   #               office_blind_33_button, office_blind_close_button
   # ===========================================================================
   - platform: homeassistant
-    entity_id: cover.office_blind
-    id: office_blind_position
+    entity_id: cover.curtain_robot_front_door
+    id: curtain_robot_front_door_position
     attribute: current_position
 
   # ===========================================================================
