@@ -67,7 +67,7 @@ sensor:
           id: temperatures
           text:
             format: "%d° / %d°"
-            args: [ '(int)round(id(lounge_temperature).state)', '(int)round(x)' ]
+            args: [ '(int)round(id(openweathermap_temperature).state)', '(int)round(x)' ]
 
   # ===========================================================================
   # SENSOR: Outdoor Temperature
@@ -99,7 +99,7 @@ sensor:
           id: temperatures
           text:
             format: "%d° / %d°"
-            args: [ '(int)round(x)', '(int)round(id(openweathermap_temperature).state)' ]
+            args: [ '(int)round(x)', '(int)round(id(lounge_temperature).state)' ]
 
   # ===========================================================================
   # SENSOR: Office Blind Position
