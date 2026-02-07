@@ -609,16 +609,16 @@ binary_sensor:
             checked: !lambda return x;
 
   # ===========================================================================
-  # SENSOR: Office Storage Lights State
+  # SENSOR: Desk Lights State
   # ===========================================================================
   # WHAT IT MONITORS:
   #   Whether the office storage area lights are on or off
   #   Watches: light.office_storage in Home Assistant
   #
   # WHAT IT UPDATES:
-  #   The "Storage Lights" button's visual state (highlighted when on)
+  #   The "Desk Lights" button's visual state (highlighted when on)
   #
-  # NOTE: This sensor references a button (storage_lights_button) that
+  # NOTE: This sensor references a button (desk_lights_button) that
   #       should be defined in lvgl.yaml. If the button doesn't exist,
   #       add it there or remove this sensor.
   #
@@ -626,18 +626,18 @@ binary_sensor:
   #   lvgl.yaml → storage_lights_button
   # ===========================================================================
   - platform: homeassistant
-    id: office_storage_lights
-    entity_id: light.office_storage
+    id: desk_lights
+    entity_id: light.desk_lights
     trigger_on_initial_state: true
     on_state:
       then:
         lvgl.widget.update:
-          id: storage_lights_button
+          id: desk_lights_button
           state:
             checked: !lambda return x;
 
   # ===========================================================================
-  # SENSOR: Network Rack Lights State
+  # SENSOR: Lounge Lights State
   # ===========================================================================
   # WHAT IT MONITORS:
   #   Whether the network rack lights are on or off
@@ -655,7 +655,7 @@ binary_sensor:
   # ===========================================================================
   - platform: homeassistant
     id: lounge_lights
-    entity_id: light.office_lounge_lights
+    entity_id: light.lounge_lights
     trigger_on_initial_state: true
     on_state:
       then:
