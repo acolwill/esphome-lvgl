@@ -358,35 +358,34 @@ lvgl:
                   service: script.lounge_light_toggle
 
         # =========================================================================
-        # BUTTON: Air Conditioner
+        # BUTTON: Ceiling Fan
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Opens the air conditioner control page.
+        #   Opens the Ceiling Fan control page.
         #
         # WHEN PRESSED:
-        #   Navigates to the aircon controls page.
+        #   Navigates to the fan controls page.
         #
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: switch.office_air_conditioner
-        #   When the AC is running, this button appears "checked" (highlighted)
-        #   When the AC is off, this button appears unchecked (dimmed)
+        #   It doesn't.
+        #   Because this triggers a HA script there's no way to track device status
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
             checkable: true
-            id: office_aircon_button
+            id: lounge_fan_button
             styles: control
             widgets:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $aircon
+                  text: $fan
               - label:
                   align: bottom_left
-                  text: "Aircon"
+                  text: "Fan"
             on_click:
-              - lvgl.page.show: aircon_page
+              - lvgl.page.show: fan_page
 
         # =========================================================================
         # BUTTON: Battery Charger
@@ -780,7 +779,7 @@ lvgl:
         # BUTTON: Aircon Power
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Turns the air conditioner on/off.
+        #   Turns the Ceiling Fan on/off.
         #
         # WHEN PRESSED:
         #   Calls Home Assistant service: switch.toggle
