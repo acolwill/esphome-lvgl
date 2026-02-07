@@ -1,4 +1,4 @@
-# ESPHome LVGL Configuration Repository
+# ESPHome LVGL Configuration Repository - Forked from @
 
 Welcome to my ESPHome LVGL configuration repository! This project provides a modular setup for ESP32-S3 touch LCD devices using the LVGL graphics library, designed specifically for home automation and sensor monitoring.
 
