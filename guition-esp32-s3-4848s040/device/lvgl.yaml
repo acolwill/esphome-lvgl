@@ -242,7 +242,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: blinds_nav_button
+            id: curtain_nav_button
             styles: control
             widgets:
               - label:
@@ -253,7 +253,7 @@ lvgl:
                   align: bottom_left
                   text: "Blinds"
             on_click:
-              - lvgl.page.show: blinds_page
+              - lvgl.page.show: curtain_page
 
 
         # =========================================================================
