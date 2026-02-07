@@ -6,7 +6,7 @@ substitutions:
   button_control_color: "0x313131"
   button_webhook_color: "0x212121"
   button_height_single: 131px
-  button_width: 100px
+  button_width: 105px
   padding: 10px
   radius: 8px
   slider_background_color: "0x505050"
