@@ -7,8 +7,7 @@ light:
     restore_mode: ALWAYS_ON
     default_transition_length: 0s
     internal: true
-    on_boot_trigger:
-      - level: 0.50
+    brightness: 50%
 
 # Screensaver Presence Trigger
 binary_sensor:
