@@ -385,7 +385,7 @@ lvgl:
                   align: bottom_left
                   text: "Fan"
             on_click:
-              - lvgl.page.show: fan_page
+              - lvgl.page.show: lounge_fan_page
 
         # =========================================================================
         # BUTTON: Battery Charger
@@ -690,7 +690,7 @@ lvgl:
                     entity_id: cover.curtain_robot_front_door
                     position: "0"
 
-    - id: fan_page
+    - id: lounge_fan_page
       layout: 
         type: flex
         flex_flow: column_wrap
@@ -792,7 +792,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: lounge_fan_power_button
+            id: lounge_fan_power1_button
             styles: control
             widgets:
               - label:
@@ -823,7 +823,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: lounge_fan_power_button
+            id: lounge_fan_power2_button
             styles: control
             widgets:
               - label:
@@ -854,7 +854,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: lounge_fan_power_button
+            id: lounge_fan_power3_button
             styles: control
             widgets:
               - label:
@@ -885,7 +885,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: lounge_fan_power_button
+            id: lounge_fan_power4_button
             styles: control
             widgets:
               - label:
@@ -916,7 +916,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: lounge_fan_power_button
+            id: lounge_fan_power5_button
             styles: control
             widgets:
               - label:
@@ -947,7 +947,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: lounge_fan_power_button
+            id: lounge_fan_power6_button
             styles: control
             widgets:
               - label:
@@ -978,7 +978,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: lounge_fan_power_button
+            id: lounge_fan_poweroff_button
             styles: control
             widgets:
               - label:
