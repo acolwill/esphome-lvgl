@@ -641,25 +641,25 @@ binary_sensor:
   # ===========================================================================
   # WHAT IT MONITORS:
   #   Whether the network rack lights are on or off
-  #   Watches: light.office_network_rack in Home Assistant
+  #   Watches: light.office_lounge_lights in Home Assistant
   #
   # WHAT IT UPDATES:
   #   The "Network Rack" button's visual state (highlighted when on)
   #
-  # NOTE: This sensor references a button (network_rack_button) that
+  # NOTE: This sensor references a button (lounge_lights_button) that
   #       should be defined in lvgl.yaml. If the button doesn't exist,
   #       add it there or remove this sensor.
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → network_rack_button
+  #   lvgl.yaml → lounge_lights_button
   # ===========================================================================
   - platform: homeassistant
-    id: network_rack
-    entity_id: light.office_network_rack
+    id: lounge_lights
+    entity_id: light.office_lounge_lights
     trigger_on_initial_state: true
     on_state:
       then:
         lvgl.widget.update:
-          id: network_rack_button
+          id: lounge_lights_button
           state:
             checked: !lambda return x;
