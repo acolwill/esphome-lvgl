@@ -499,16 +499,16 @@ lvgl:
         #
         # WHEN PRESSED:
         #   Calls Home Assistant service: light.toggle
-        #   Target: light.office_network_rack
+        #   Target: light.office_lounge_lights
         #
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: light.office_network_rack
+        #   sensors.yaml monitors: light.office_lounge_lights
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
             checkable: true
-            id: network_rack_button
+            id: lounge_lights_button
             styles: control
             widgets:
               - label:
@@ -522,7 +522,7 @@ lvgl:
               - homeassistant.service:
                   service: light.toggle
                   data:
-                    entity_id: light.office_network_rack
+                    entity_id: light.office_lounge_lights
 
     - id: blinds_page
       layout: 
