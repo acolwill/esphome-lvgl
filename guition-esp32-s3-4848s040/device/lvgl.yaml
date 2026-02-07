@@ -322,20 +322,17 @@ lvgl:
                     entity_id: switch.office_3d_printer_power
 
         # =========================================================================
-        # BUTTON: Filament Dryer
+        # BUTTON: Lounge Fan Light
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Turns the filament dryer/heater on or off.
-        #   This device removes moisture from 3D printer filament to improve
-        #   print quality (wet filament causes bubbles and weak prints).
+        #   Turns the Overhead fan light on or off.
         #
         # WHEN PRESSED:
         #   Calls Home Assistant service: switch.toggle
-        #   Target: switch.office_filament_heater_893b
-        #   (The "893b" is a device identifier from the smart plug)
+        #   Target: script.lounge_light_toggle
         #
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: switch.office_filament_heater_893b
+        #   sensors.yaml monitors: script.lounge_light_toggle
         #   When the switch is ON, this button appears "checked" (highlighted)
         #   When the switch is OFF, this button appears unchecked (dimmed)
         # =========================================================================
@@ -343,49 +340,24 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: true
-            id: filament_heater_button
+            id: lounge_light_button
             styles: control
             widgets:
               # Icon (shown when OFF)
               - label:
                   text_font: $icon_font
                   align: top_left
-                  id: filament_heater_icon
-                  text: $filament
-              # Humidity (shown when ON)
-              - obj:
-                  align: top_left
-                  id: dryer_humidity_container
-                  height: SIZE_CONTENT
-                  width: SIZE_CONTENT
-                  clickable: false
-                  layout:
-                    type: flex
-                    flex_flow: row
-                    flex_align_cross: end
-                  bg_opa: TRANSP
-                  border_width: 0
-                  pad_all: 0
-                  hidden: true
-                  widgets:
-                    - label:
-                        text_font: roboto44_font
-                        text_color: 0xFFFFFF
-                        id: dryer_humidity_label
-                        text: "--"
-                    - label:
-                        text_font: roboto17_font
-                        text_color: 0xFFFFFF
-                        text: "%"
+                  id: lounge_light_icon
+                  text: $lightbulb
               - label:
                   align: bottom_left
-                  id: filament_heater_label
-                  text: "Dryer"
+                  id: lounge_light_label
+                  text: "Ceiling"
             on_click:
               - homeassistant.service:
                   service: switch.toggle
                   data:
-                    entity_id: switch.office_filament_heater_893b
+                    entity_id: script.lounge_light_toggle
 
         # =========================================================================
         # BUTTON: Air Conditioner
