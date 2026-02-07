@@ -4,11 +4,11 @@ light:
     name: Backlight
     id: backlight
     output: backlight_output
-    restore_mode: ALWAYS_ON
+    restore_mode: RESTORE_DEFAULT_ON
     default_transition_length: 0s
     internal: true
-    brightness: 50%
-
+    on_boot_trigger:
+      - level: 0.50
 # Screensaver Presence Trigger
 binary_sensor:
   - platform: homeassistant
