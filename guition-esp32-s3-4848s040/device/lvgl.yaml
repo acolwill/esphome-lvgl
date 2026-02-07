@@ -431,19 +431,19 @@ lvgl:
         # BUTTON: Desk Lights
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Toggles the storage area lights on/off.
+        #   Toggles the desk area lights on/off.
         #
         # WHEN PRESSED:
         #   Calls Home Assistant service: light.toggle
-        #   Target: light.office_storage
+        #   Target: light.lounge_desk_lights & others
         #
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: light.office_storage
+        #   sensors.yaml monitors: light.lounge_desk_lights // Disabled.
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
-            checkable: true
+            checkable: false
             id: desk_lights_button
             styles: control
             widgets:
@@ -501,10 +501,10 @@ lvgl:
                   data:
                     entity_id: light.lounge_lights
 
-    - id: blinds_page
+    - id: curtain_page
       layout: 
         type: flex
-        flex_flow: column_wrap
+        flex_flow: row
       scrollbar_mode: "off"
       scroll_dir: "hor"
       width: 100%
@@ -541,12 +541,12 @@ lvgl:
         # BUTTON: Blind Open (100%)
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Opens the office window blind completely (100% open position).
+        #   Opens the front door curtain completely (100% open position).
         #   Maximum natural light enters the room.
         #
         # WHEN PRESSED:
         #   Calls Home Assistant service: cover.set_cover_position
-        #   Target: cover.office_blind
+        #   Target: cover.curtain_robot_front_door
         #   Position: 100 (fully open)
         #
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
@@ -580,12 +580,12 @@ lvgl:
         # BUTTON: Blind Semi Open (66%)
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Sets the office window blind to 66% open position.
+        #   Sets the front door curtain to 66% open position.
         #   Allows good natural light while providing some shade.
         #
         # WHEN PRESSED:
         #   Calls Home Assistant service: cover.set_cover_position
-        #   Target: cover.office_blind
+        #   Target: cover.curtain_robot_front_door
         #   Position: 66 (two-thirds open)
         #
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
@@ -593,37 +593,37 @@ lvgl:
         #   A template sensor (office_blind_66) checks if position is within
         #   3% of 66%. If true, this button appears "checked" (highlighted).
         # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: true
-            id: curtain_robot_front_door_66_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $blinds_open
-              - label:
-                  align: bottom_left
-                  text: "Semi Open"
-            on_click:
-              - homeassistant.service:
-                  service: cover.set_cover_position
-                  data:
-                    entity_id: cover.curtain_robot_front_door
-                    position: "33"
+        #- button: 
+        #    height: $button_height_single
+        #    width: $button_width
+        #    checkable: true
+        #    id: curtain_robot_front_door_66_button
+        #    styles: control
+        #    widgets:
+        #      - label:
+        #          text_font: $icon_font
+        #          align: top_left
+        #          text: $blinds_open
+        #      - label:
+        #          align: bottom_left
+        #          text: "Semi Open"
+        #    on_click:
+        #      - homeassistant.service:
+        #          service: cover.set_cover_position
+        #          data:
+        #            entity_id: cover.curtain_robot_front_door
+        #            position: "33"
 
         # =========================================================================
         # BUTTON: Blind Semi Closed (33%)
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Sets the office window blind to 33% open position.
+        #   Sets the front door curtain to 33% open position.
         #   Mostly closed but allows some light through.
         #
         # WHEN PRESSED:
         #   Calls Home Assistant service: cover.set_cover_position
-        #   Target: cover.office_blind
+        #   Target: cover.curtain_robot_front_door
         #   Position: 33 (one-third open)
         #
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
@@ -631,42 +631,42 @@ lvgl:
         #   A template sensor (office_blind_33) checks if position is within
         #   3% of 33%. If true, this button appears "checked" (highlighted).
         # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: true
-            id: curtain_robot_front_door_33_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $blinds_open
-              - label:
-                  align: bottom_left
-                  text: "Semi Closed"
-            on_click:
-              - homeassistant.service:
-                  service: cover.set_cover_position
-                  data:
-                    entity_id: cover.curtain_robot_front_door
-                    position: "66"
+        #- button: 
+        #    height: $button_height_single
+        #    width: $button_width
+        #    checkable: true
+        #    id: curtain_robot_front_door_33_button
+        #    styles: control
+        #    widgets:
+        #      - label:
+        #          text_font: $icon_font
+        #          align: top_left
+        #          text: $blinds_open
+        #      - label:
+        #          align: bottom_left
+        #          text: "Semi Closed"
+        #    on_click:
+        #      - homeassistant.service:
+        #          service: cover.set_cover_position
+        #          data:
+        #            entity_id: cover.curtain_robot_front_door
+        #            position: "66"
 
         # =========================================================================
         # BUTTON: Blind Close (0%)
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Closes the office window blind completely (0% open position).
+        #   Closes the front door curtain completely (0% open position).
         #   Blocks all natural light and provides privacy.
         #
         # WHEN PRESSED:
         #   Calls Home Assistant service: cover.set_cover_position
-        #   Target: cover.office_blind
+        #   Target: cover.curtain_robot_front_door
         #   Position: 0 (fully closed)
         #
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml reads the blind's current position from Home Assistant.
-        #   A template sensor (office_blind_0) checks if position is within
+        #   sensors.yaml reads the curtain robot's current position from Home Assistant.
+        #   A template sensor (curtain_robot_front_door_0) checks if position is within
         #   3% of 0%. If true, this button appears "checked" (highlighted).
         # =========================================================================
         - button: 
@@ -690,7 +690,7 @@ lvgl:
                     entity_id: cover.curtain_robot_front_door
                     position: "0"
 
-    - id: aircon_page
+    - id: fan_page
       layout: 
         type: flex
         flex_flow: column_wrap
@@ -713,7 +713,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: aircon_back_button
+            id: fan_back_button
             styles: control
             widgets:
               - label:
@@ -727,72 +727,72 @@ lvgl:
               - lvgl.page.show: main_page
 
         # =========================================================================
-        # BUTTON: Aircon Lab (Experimental Layout)
+        # BUTTON: Lounge Fan (Experimental Layout)
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: aircon_lab_nav_button
+            id: lounge_fan_nav_button
             styles: control
             widgets:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $aircon
+                  text: $fan
               - label:
                   align: bottom_left
                   text: "Lab"
             on_click:
-              - lvgl.page.show: aircon_lab_page
+              - lvgl.page.show: lounge_fan_page
 
         # =========================================================================
-        # BUTTON: Aircon Temperature
+        # BUTTON: Lounge Temperature
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Displays the current aircon temperature reading.
+        #   Displays the current lounge temperature reading.
         #
         # DATA SOURCE:
-        #   climate.office_air_conditioner (attribute: current_temperature)
+        #   sensor.air_quality_monitor_temperature (attribute: current_temperature)
         #
         # RELATED UI ELEMENT:
-        #   sensors.yaml → aircon_temp_label
+        #   sensors.yaml → lounge_temperature
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: aircon_temp_button
+            id: lounge_temp_button
             styles: control
             widgets:
               - label:
                   text_font: roboto44_font
                   align: top_left
-                  id: aircon_temp_label
+                  id: lounge_temp_label
                   text: "--"
                   text_color: 0xFFFFFF
               - label:
                   align: bottom_left
-                  text: "Current"
+                  text: "Temp"
 
         # =========================================================================
-        # BUTTON: Aircon Power
+        # BUTTON: Fan On Speed 1 Power
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Turns the Ceiling Fan on/off.
+        #   Turns the Ceiling Fan on at speed 1
         #
         # WHEN PRESSED:
         #   Calls Home Assistant service: switch.toggle
-        #   Target: switch.office_air_conditioner
+        #   Target: script.lounge_fan_speed_1
         #
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: switch.office_air_conditioner
+        #   It can't monitor scripts.
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
-            checkable: true
-            id: aircon_power_button
+            checkable: false
+            id: lounge_fan_power_button
             styles: control
             widgets:
               - label:
@@ -801,284 +801,193 @@ lvgl:
                   text: $aircon
               - label:
                   align: bottom_left
-                  text: "Power"
+                  text: "On 1"
             on_click:
               - homeassistant.service:
-                  service: switch.toggle
-                  data:
-                    entity_id: switch.office_air_conditioner
+                  service: script.lounge_fan_speed_1
 
         # =========================================================================
-        # BUTTON: Aircon Temp Up
+        # BUTTON: Fan On Speed 2 Power
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Increases the target temperature by 1°C.
-        #   Only shown when aircon power is ON.
+        #   Turns the Ceiling Fan on at speed 2
         #
-        # DATA SOURCE:
-        #   climate.office_air_conditioner (attribute: temperature)
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: switch.toggle
+        #   Target: script.lounge_fan_speed_2
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   It can't monitor scripts.
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: aircon_temp_up_button
+            id: lounge_fan_power_button
             styles: control
-            hidden: true
             widgets:
               - label:
-                  text_font: roboto44_font
+                  text_font: $icon_font
                   align: top_left
-                  text: "+1°"
+                  text: $aircon
               - label:
                   align: bottom_left
-                  text: "Up"
+                  text: "On 2"
             on_click:
               - homeassistant.service:
-                  service: climate.set_temperature
-                  data:
-                    entity_id: climate.office_air_conditioner
-                    temperature: !lambda |-
-                      if (id(aircon_target_temperature).has_state()) {
-                        return id(aircon_target_temperature).state + 1.0f;
-                      }
-                      return 0.0f;
+                  service: script.lounge_fan_speed_2
 
         # =========================================================================
-        # BUTTON: Aircon Set Temperature
+        # BUTTON: Fan On Speed 3 Power
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Displays the current target/set temperature.
-        #   Only shown when aircon power is ON.
+        #   Turns the Ceiling Fan on at speed 3
         #
-        # DATA SOURCE:
-        #   climate.office_air_conditioner (attribute: temperature)
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: switch.toggle
+        #   Target: script.lounge_fan_speed_3
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   It can't monitor scripts.
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: aircon_set_temp_button
+            id: lounge_fan_power_button
             styles: control
-            hidden: true
             widgets:
               - label:
-                  text_font: roboto44_font
+                  text_font: $icon_font
                   align: top_left
-                  id: aircon_set_temp_label
-                  text: "--"
-                  text_color: 0xFFFFFF
+                  text: $aircon
               - label:
                   align: bottom_left
-                  text: "Target"
+                  text: "On 3"
+            on_click:
+              - homeassistant.service:
+                  service: script.lounge_fan_speed_3
 
         # =========================================================================
-        # BUTTON: Aircon Temp Down
+        # BUTTON: Fan On Speed 4 Power
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Decreases the target temperature by 1°C.
-        #   Only shown when aircon power is ON.
+        #   Turns the Ceiling Fan on at speed 4
         #
-        # DATA SOURCE:
-        #   climate.office_air_conditioner (attribute: temperature)
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: switch.toggle
+        #   Target: script.lounge_fan_speed_4
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   It can't monitor scripts.
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: aircon_temp_down_button
+            id: lounge_fan_power_button
             styles: control
-            hidden: true
             widgets:
               - label:
-                  text_font: roboto44_font
+                  text_font: $icon_font
                   align: top_left
-                  text: "-1°"
+                  text: $aircon
               - label:
                   align: bottom_left
-                  text: "Down"
+                  text: "On 4"
             on_click:
               - homeassistant.service:
-                  service: climate.set_temperature
-                  data:
-                    entity_id: climate.office_air_conditioner
-                    temperature: !lambda |-
-                      if (id(aircon_target_temperature).has_state()) {
-                        return id(aircon_target_temperature).state - 1.0f;
-                      }
-                      return 0.0f;
+                  service: script.lounge_fan_speed_4
 
-    - id: aircon_lab_page
-      layout:
-        type: flex
-        flex_flow: column
-      scrollbar_mode: "off"
-      width: 100%
-      height: 100%
-      bg_color: Black
-      bg_opa: cover
-
-      widgets:
-        - obj:
-            id: aircon_lab_root
-            width: 100%
-            height: 100%
-            bg_opa: TRANSP
-            border_width: 0
-            pad_all: 0
+        # =========================================================================
+        # BUTTON: Fan On Speed 5 Power
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Turns the Ceiling Fan on at speed 5
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: switch.toggle
+        #   Target: script.lounge_fan_speed_5
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   It can't monitor scripts.
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: lounge_fan_power_button
+            styles: control
             widgets:
-              # Back button
-              - button:
-                  id: aircon_lab_back_button
-                  width: 60px
-                  height: 60px
-                  x: 5
-                  y: 34
-                  styles: control
-                  widgets:
-                    - label:
-                        text_font: $icon_font
-                        align: center
-                        text: $chevron_left
-                  on_click:
-                    - lvgl.page.show: aircon_page
-
-              # Power button
-              - button:
-                  id: aircon_lab_power_button
-                  width: 60px
-                  height: 60px
-                  x: 415
-                  y: 34
-                  styles: control
-                  checkable: true
-                  widgets:
-                    - label:
-                        text_font: $icon_font
-                        align: center
-                        text: $power
-                  on_click:
-                    - homeassistant.service:
-                        service: switch.toggle
-                        data:
-                          entity_id: switch.office_air_conditioner
-
-              # Arc control for target temperature
-              - arc:
-                  id: aircon_target_arc
-                  x: 60
-                  y: 80
-                  width: 360
-                  height: 360
-                  min_value: 8
-                  max_value: 25
-                  start_angle: 135
-                  end_angle: 45
-                  rotation: 0
-                  value: 22
-                  arc_width: 18
-                  arc_color: 0x2A2A2A
-                  clickable: true
-                  adjustable: true
-                  indicator:
-                    arc_color: 0xFF8C00
-                    arc_width: 18
-                  knob:
-                    bg_color: 0xFFFFFF
-                  on_value:
-                    - homeassistant.service:
-                        service: climate.set_temperature
-                        data:
-                          entity_id: climate.office_air_conditioner
-                          temperature: !lambda return x;
-
-              # Arc indicator for current temperature (read-only)
-              - arc:
-                  id: aircon_current_arc
-                  x: 60
-                  y: 80
-                  width: 360
-                  height: 360
-                  min_value: 8
-                  max_value: 25
-                  start_angle: 135
-                  end_angle: 45
-                  rotation: 0
-                  value: 22
-                  arc_width: 0
-                  arc_color: 0x000000
-                  indicator:
-                    arc_color: 0x7A7A7A
-                    arc_width: 0
-                  knob:
-                    bg_color: 0x7A7A7A
-                  clickable: false
-
-              # Target temperature label (below)
               - label:
-                  id: aircon_lab_target_label
-                  text: "--°"
-                  text_font: roboto36_font
-                  text_color: 0xFFFFFF
-                  align: center
-                  y: 60
+                  text_font: $icon_font
+                  align: top_left
+                  text: $aircon
+              - label:
+                  align: bottom_left
+                  text: "On 5"
+            on_click:
+              - homeassistant.service:
+                  service: script.lounge_fan_speed_5
 
-              # Down button
-              - button:
-                  id: aircon_lab_down_button
-                  width: 70px
-                  height: 70px
-                  x: 160
-                  y: 360
-                  styles: control
-                  radius: 35px
-                  bg_opa: TRANSP
-                  border_width: 2
-                  border_color: 0x7A7A7A
-                  border_opa: COVER
-                  widgets:
-                    - label:
-                        text: "-"
-                        text_font: roboto44_font
-                        text_color: 0x7A7A7A
-                        align: center
-                  on_click:
-                    - homeassistant.service:
-                        service: climate.set_temperature
-                        data:
-                          entity_id: climate.office_air_conditioner
-                          temperature: !lambda |-
-                            if (id(aircon_target_temperature).has_state()) {
-                              return id(aircon_target_temperature).state - 1.0f;
-                            }
-                            return 0.0f;
+        # =========================================================================
+        # BUTTON: Fan On Speed 6 Power
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Turns the Ceiling Fan on at speed 6
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: switch.toggle
+        #   Target: script.lounge_fan_speed_6
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   It can't monitor scripts.
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: lounge_fan_power_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $aircon
+              - label:
+                  align: bottom_left
+                  text: "On 6"
+            on_click:
+              - homeassistant.service:
+                  service: script.lounge_fan_speed_6
 
-              # Up button
-              - button:
-                  id: aircon_lab_up_button
-                  width: 70px
-                  height: 70px
-                  x: 260
-                  y: 360
-                  styles: control
-                  radius: 35px
-                  bg_opa: TRANSP
-                  border_width: 2
-                  border_color: 0x7A7A7A
-                  border_opa: COVER
-                  widgets:
-                    - label:
-                        text: "+"
-                        text_font: roboto44_font
-                        text_color: 0x7A7A7A
-                        align: center
-                  on_click:
-                    - homeassistant.service:
-                        service: climate.set_temperature
-                        data:
-                          entity_id: climate.office_air_conditioner
-                          temperature: !lambda |-
-                            if (id(aircon_target_temperature).has_state()) {
-                              return id(aircon_target_temperature).state + 1.0f;
-                            }
-                            return 0.0f;
+        # =========================================================================
+        # BUTTON: Fan Off
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Turns the Ceiling Fan off
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: switch.toggle
+        #   Target: script.lounge_fan_off
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   It can't monitor scripts.
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: lounge_fan_power_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $aircon
+              - label:
+                  align: bottom_left
+                  text: "Off"
+            on_click:
+              - homeassistant.service:
+                  service: script.lounge_fan_off
