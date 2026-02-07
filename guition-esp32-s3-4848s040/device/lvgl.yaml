@@ -459,7 +459,7 @@ lvgl:
                     entity_id: switch.d4c5
 
         # =========================================================================
-        # BUTTON: Storage Lights
+        # BUTTON: Desk Lights
         # =========================================================================
         # WHAT THIS BUTTON DOES:
         #   Toggles the storage area lights on/off.
@@ -475,21 +475,29 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: true
-            id: storage_lights_button
+            id: desk_lights_button
             styles: control
             widgets:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $lights
+                  text: $lightbulb
               - label:
                   align: bottom_left
-                  text: "Storage"
+                  text: "Desk"
             on_click:
               - homeassistant.service:
                   service: light.toggle
                   data:
-                    entity_id: light.office_storage
+                    entity_id: light.lounge_desk_lights
+              - homeassistant.service:
+                  action: switch.toggle
+                  data:
+                    entity_id: switch.plugmulti_lounge_switch_2
+              - homeassistant.service:
+                  action: switch.toggle
+                  data:
+                    entity_id: switch.plugmulti_lounge_switch_3            
 
         # =========================================================================
         # BUTTON: Lounge Lights
