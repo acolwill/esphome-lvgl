@@ -597,7 +597,7 @@ lvgl:
                   service: cover.set_cover_position
                   data:
                     entity_id: cover.curtain_robot_front_door
-                    position: "0"
+                    position: "100"
 
         # =========================================================================
         # BUTTON: Blind Semi Open (66%)
@@ -635,7 +635,7 @@ lvgl:
                   service: cover.set_cover_position
                   data:
                     entity_id: cover.curtain_robot_front_door
-                    position: "66"
+                    position: "33"
 
         # =========================================================================
         # BUTTON: Blind Semi Closed (33%)
@@ -673,7 +673,7 @@ lvgl:
                   service: cover.set_cover_position
                   data:
                     entity_id: cover.curtain_robot_front_door
-                    position: "33"
+                    position: "66"
 
         # =========================================================================
         # BUTTON: Blind Close (0%)
@@ -711,7 +711,7 @@ lvgl:
                   service: cover.set_cover_position
                   data:
                     entity_id: cover.curtain_robot_front_door
-                    position: "100"
+                    position: "0"
 
     - id: aircon_page
       layout: 
