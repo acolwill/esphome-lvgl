@@ -449,37 +449,31 @@ binary_sensor:
             checked: !lambda return x;
 
   # ===========================================================================
-  # SENSOR: Filament Dryer State
+  # SENSOR: Lounge Ceiling Light State
   # ===========================================================================
   # WHAT IT MONITORS:
-  #   Whether the filament dryer/heater is turned on or off
-  #   Watches: switch.office_filament_heater_893b in Home Assistant
+  #   Whether the Lounge Ceiling Light is turned on or off
+  #   Watches: script.lounge_light_toggle in Home Assistant
   #
   # WHAT IT UPDATES:
-  #   The "Dryer" button's visual state (highlighted when running)
-  #
-  # NOTE: The filament dryer removes moisture from 3D printer filament.
-  #       Dry filament produces better quality prints.
+  #   The "Ceiling" button's visual state (highlighted when running)
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → filament_heater_button
+  #   lvgl.yaml → lounge_light_button
   # ===========================================================================
   - platform: homeassistant
-    id: office_filament_heater
-    entity_id: switch.office_filament_heater_893b
+    id: lounge_light_toggle
+    entity_id: script.lounge_light_toggle
     trigger_on_initial_state: true
     on_state:
       then:
         - lvgl.widget.update:
-            id: filament_heater_button
+            id: lounge_light_button
             state:
               checked: !lambda return x;
         - lvgl.widget.update:
-            id: filament_heater_icon
+            id: lounge_light_icon
             hidden: !lambda return x;
-        - lvgl.widget.update:
-            id: dryer_humidity_container
-            hidden: !lambda return !x;
 
   # ===========================================================================
   # TEMPLATE SENSOR: Blind at 100% (Fully Open)
