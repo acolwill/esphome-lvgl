@@ -118,7 +118,6 @@ light:
     output: backlight_output
     restore_mode: ALWAYS_ON
     default_transition_length: 1s
-    on_boot_trigger:
       - level: 0.50
 
 # -----------------------------------------------------------------------------
