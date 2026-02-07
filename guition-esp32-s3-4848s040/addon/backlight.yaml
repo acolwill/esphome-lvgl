@@ -7,8 +7,7 @@ light:
     restore_mode: RESTORE_DEFAULT_ON
     default_transition_length: 0s
     internal: true
-    on_boot_trigger:
-      - level: 0.50
+
 # Screensaver Presence Trigger
 binary_sensor:
   - platform: homeassistant
