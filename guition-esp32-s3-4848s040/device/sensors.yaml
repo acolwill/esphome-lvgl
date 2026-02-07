@@ -223,15 +223,15 @@ sensor:
   # RELATED UI ELEMENT:
   #   lvgl.yaml → dryer_humidity_label
   # ===========================================================================
-  - platform: homeassistant
-    entity_id: sensor.office_filament_heater_sensor_humidity
-    id: filament_heater_humidity
-    on_value:
-      - lvgl.label.update:
-          id: dryer_humidity_label
-          text:
-            format: "%.0f"
-            args: [ 'x' ]
+  #- platform: homeassistant
+  #  entity_id: sensor.office_filament_heater_sensor_humidity
+  #  id: filament_heater_humidity
+  #  on_value:
+  #    - lvgl.label.update:
+  #        id: dryer_humidity_label
+  #        text:
+  #          format: "%.0f"
+  #          args: [ 'x' ]
 
 
 
