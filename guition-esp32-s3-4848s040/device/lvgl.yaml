@@ -355,9 +355,7 @@ lvgl:
                   text: "Ceiling"
             on_click:
               - homeassistant.service:
-                  service: switch.toggle
-                  data:
-                    entity_id: script.lounge_light_toggle
+                  service: script.lounge_light_toggle
 
         # =========================================================================
         # BUTTON: Air Conditioner
