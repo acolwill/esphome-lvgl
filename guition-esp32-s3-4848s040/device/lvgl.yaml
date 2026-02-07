@@ -517,12 +517,12 @@ lvgl:
                   text: $network
               - label:
                   align: bottom_left
-                  text: "Rack"
+                  text: "Lounge"
             on_click:
               - homeassistant.service:
                   service: light.toggle
                   data:
-                    entity_id: light.office_lounge_lights
+                    entity_id: light.lounge_lights
 
     - id: blinds_page
       layout: 
