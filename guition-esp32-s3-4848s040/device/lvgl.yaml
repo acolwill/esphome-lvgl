@@ -492,10 +492,10 @@ lvgl:
                     entity_id: light.office_storage
 
         # =========================================================================
-        # BUTTON: Network Rack Lights
+        # BUTTON: Lounge Lights
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Toggles the network rack lights on/off.
+        #   Toggles the Lounge lights on/off.
         #
         # WHEN PRESSED:
         #   Calls Home Assistant service: light.toggle
