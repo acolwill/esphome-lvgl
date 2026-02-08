@@ -301,53 +301,53 @@ lvgl:
         #   When the switch is ON, this button appears "checked" (highlighted)
         #   When the switch is OFF, this button appears unchecked (dimmed)
         # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: true
-            id: printer_power_button
-            styles: control
-            widgets:
-              # Icon (shown when OFF)
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  id: printer_power_icon
-                  text: $printer
-              # Progress (shown when ON)
-              - obj:
-                  align: top_left
-                  id: print_progress_container
-                  height: SIZE_CONTENT
-                  width: SIZE_CONTENT
-                  clickable: false
-                  layout:
-                    type: flex
-                    flex_flow: row
-                    flex_align_cross: end
-                  bg_opa: TRANSP
-                  border_width: 0
-                  pad_all: 0
-                  hidden: true
-                  widgets:
-                    - label:
-                        text_font: roboto44_font
-                        text_color: 0xFFFFFF
-                        id: print_progress_label
-                        text: "--"
-                    - label:
-                        text_font: roboto17_font
-                        text_color: 0xFFFFFF
-                        text: "%"
-              - label:
-                  align: bottom_left
-                  id: printer_power_label
-                  text: "Printer"
-            on_click:
-              - homeassistant.service:
-                  service: switch.toggle
-                  data:
-                    entity_id: switch.office_3d_printer_power
+        #- button: 
+        #    height: $button_height_single
+        #    width: $button_width
+        #    checkable: true
+        #    id: printer_power_button
+        #    styles: control
+        #    widgets:
+        #      # Icon (shown when OFF)
+        #      - label:
+        #          text_font: $icon_font
+        #          align: top_left
+        #          id: printer_power_icon
+        #          text: $printer
+        #      # Progress (shown when ON)
+        #      - obj:
+        #          align: top_left
+        #          id: print_progress_container
+        #          height: SIZE_CONTENT
+        #          width: SIZE_CONTENT
+        #          clickable: false
+        #          layout:
+        #            type: flex
+        #            flex_flow: row
+        #            flex_align_cross: end
+        #          bg_opa: TRANSP
+        #          border_width: 0
+        #          pad_all: 0
+        #          hidden: true
+        #          widgets:
+        #            - label:
+        #                text_font: roboto44_font
+        #                text_color: 0xFFFFFF
+        #                id: print_progress_label
+        #                text: "--"
+        #            - label:
+        #                text_font: roboto17_font
+        #                text_color: 0xFFFFFF
+        #                text: "%"
+        #      - label:
+        #          align: bottom_left
+        #          id: printer_power_label
+        #          text: "Printer"
+        #    on_click:
+        #      - homeassistant.service:
+        #          service: switch.toggle
+        #          data:
+        #            entity_id: switch.office_3d_printer_power
         
         # =========================================================================
         # BUTTON: Battery Charger
@@ -367,27 +367,27 @@ lvgl:
         #   When the switch is ON, this button appears "checked" (highlighted)
         #   When the switch is OFF, this button appears unchecked (dimmed)
         # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: true
-            id: battery_charger_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  id: battery_charger_icon
-                  text: $battery
-              - label:
-                  align: bottom_left
-                  id: battery_charger_label
-                  text: "Charger"
-            on_click:
-              - homeassistant.service:
-                  service: switch.toggle
-                  data:
-                    entity_id: switch.d4c5
+        #- button: 
+        #    height: $button_height_single
+        #    width: $button_width
+        #    checkable: true
+        #    id: battery_charger_button
+        #    styles: control
+        #    widgets:
+        #      - label:
+        #          text_font: $icon_font
+        #          align: top_left
+        #          id: battery_charger_icon
+        #          text: $battery
+        #      - label:
+        #          align: bottom_left
+        #          id: battery_charger_label
+        #          text: "Charger"
+        #    on_click:
+        #      - homeassistant.service:
+        #          service: switch.toggle
+        #          data:
+        #            entity_id: switch.d4c5
 
         # =========================================================================
         # BUTTON: Calls Scene
@@ -404,27 +404,27 @@ lvgl:
         #   sensors.yaml monitors: binary_sensor.office_scene_desk_call
         #   When that sensor is ON, this button appears "checked" (highlighted)
         # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: office_scene_calls_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  id: office_scene_calls_icon                
-                  text: $videocall
-              - label:
-                  align: bottom_left
-                  id: office_scene_calls_label
-                  text: "Calls"
-            on_press:
-              - homeassistant.service:
-                  service: scene.turn_on
-                  data:
-                    entity_id: scene.office_desk_call
+        #- button: 
+        #    height: $button_height_single
+        #    width: $button_width
+        #    checkable: false
+        #    id: office_scene_calls_button
+        #    styles: control
+        #    widgets:
+        #      - label:
+        #          text_font: $icon_font
+        #          align: top_left
+        #          id: office_scene_calls_icon                
+        #          text: $videocall
+        #      - label:
+        #          align: bottom_left
+        #          id: office_scene_calls_label
+        #          text: "Calls"
+        #    on_press:
+        #      - homeassistant.service:
+        #          service: scene.turn_on
+        #          data:
+        #            entity_id: scene.office_desk_call
 
         # =========================================================================
         # BUTTON: Evening Scene
@@ -441,27 +441,27 @@ lvgl:
         #   sensors.yaml monitors: binary_sensor.office_scene_evening
         #   When that sensor is ON, this button appears "checked" (highlighted)
         # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: office_scene_evening_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  id: office_scene_evening_icon                
-                  text: $nightlight
-              - label:
-                  align: bottom_left
-                  id: office_scene_evening_label
-                  text: "Evening"
-            on_press:
-              - homeassistant.service:
-                  service: scene.turn_on
-                  data:
-                    entity_id: scene.office_evening
+        #- button: 
+        #    height: $button_height_single
+        #    width: $button_width
+        #    checkable: false
+        #    id: office_scene_evening_button
+        #    styles: control
+        #    widgets:
+        #      - label:
+        #          text_font: $icon_font
+        #          align: top_left
+        #          id: office_scene_evening_icon                
+        #          text: $nightlight
+        #      - label:
+        #          align: bottom_left
+        #          id: office_scene_evening_label
+        #          text: "Evening"
+        #    on_press:
+        #      - homeassistant.service:
+        #          service: scene.turn_on
+        #          data:
+        #            entity_id: scene.office_evening
 
         # =========================================================================
         # BUTTON: Dimmed Scene
