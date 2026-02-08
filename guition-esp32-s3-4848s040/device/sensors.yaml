@@ -156,38 +156,6 @@ sensor:
       #    value: !lambda return (int)x;
 
   # ===========================================================================
-  # SENSOR: Aircon Target Temperature
-  # ===========================================================================
-  # WHAT IT MONITORS:
-  #   Target/set temperature reported by the air conditioner
-  #   Watches: climate.office_air_conditioner (temperature)
-  #
-  # WHAT IT UPDATES:
-  #   The set temperature label inside the Aircon Set Temp button
-  #
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → aircon_set_temp_label
-  # ===========================================================================
-  - platform: homeassistant
-    entity_id: sensor.air_quality_monitor_temperature
-    id: lounge_temperature
-    attribute: temperature
-    on_value:
-      - lvgl.label.update:
-          id: lounge_temp_label
-          text:
-            format: "%.0f°"
-            args: [ 'x' ]
-      #- lvgl.label.update:
-      #    id: aircon_lab_target_label
-      #    text:
-      #      format: "%.0f°"
-      #      args: [ 'x' ]
-      #- lvgl.arc.update:
-      #    id: aircon_target_arc
-      #    value: !lambda return (int)x;
-
-  # ===========================================================================
   # SENSOR: Centauri Carbon Print Progress
   # ===========================================================================
   # WHAT IT MONITORS:
