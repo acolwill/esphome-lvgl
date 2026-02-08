@@ -279,7 +279,7 @@ binary_sensor:
   # ===========================================================================
   - platform: homeassistant
     id: automation_led_s_desk
-    entity_id: binary_sensor.office_scene_features
+    entity_id: binary_sensor.led_s_desk_features
     trigger_on_initial_state: true
     on_state:
       then:
