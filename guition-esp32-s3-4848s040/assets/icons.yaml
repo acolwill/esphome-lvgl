@@ -26,6 +26,7 @@ font:
       "\U000F07DE",  # mdi-filament
       "\U000F0317",  # mdi-lan
       "\U000F0425",  # mdi-power
+      "\U000F1798",  # mdi-fan-light
       ]
 
 # Map icons to names
@@ -50,3 +51,4 @@ substitutions:
   filament:       "\U000F07DE"
   lan:            "\U000F0317"
   power:          "\U000F0425"
+  fan-light:      "\U000F1798"
