@@ -142,18 +142,18 @@ sensor:
   #   lvgl.yaml → aircon_temp_label
   # ===========================================================================
   - platform: homeassistant
-    entity_id: climate.office_air_conditioner
-    id: aircon_current_temperature
+    entity_id: sensor.air_quality_monitor_temperature
+    id: lounge_current_temperature
     attribute: current_temperature
     on_value:
       - lvgl.label.update:
-          id: aircon_temp_label
+          id: lounge_temp_label
           text:
             format: "%.0f°"
             args: [ 'x' ]
-      - lvgl.arc.update:
-          id: aircon_current_arc
-          value: !lambda return (int)x;
+      #- lvgl.arc.update:
+      #    id: aircon_current_arc
+      #    value: !lambda return (int)x;
 
   # ===========================================================================
   # SENSOR: Aircon Target Temperature
@@ -394,9 +394,9 @@ binary_sensor:
   #   lvgl.yaml → office_aircon_button
   # ===========================================================================
   - platform: homeassistant
-    id: office_air_conditioner
+    id: lounge_light_fan
     entity_id: switch.office_air_conditioner
-    trigger_on_initial_state: true
+    trigger_on_initial_state: false
     on_state:
       then:
         - lvgl.widget.update:
@@ -528,19 +528,19 @@ binary_sensor:
   # RELATED UI ELEMENT:
   #   lvgl.yaml → curtain_robot_front_door_66_button
   # ===========================================================================
-  - platform: template
-    id: curtain_robot_front_door_66
-    lambda: |-
-      if (id(curtain_robot_front_door_position).has_state()) {
-        return abs(id(curtain_robot_front_door_position).state - 66) <= 3;
-      }
-      return false;
-    on_state:
-      then:
-        lvgl.widget.update:
-          id: curtain_robot_front_door_66_button
-          state:
-            checked: !lambda return x;
+  #- platform: template
+  #  id: curtain_robot_front_door_66
+  #  lambda: |-
+  #    if (id(curtain_robot_front_door_position).has_state()) {
+  #      return abs(id(curtain_robot_front_door_position).state - 66) <= 3;
+  #    }
+  #    return false;
+  #  on_state:
+  #    then:
+  #      lvgl.widget.update:
+  #        id: curtain_robot_front_door_66_button
+  #        state:
+  #          checked: !lambda return x;
 
   # ===========================================================================
   # TEMPLATE SENSOR: Blind at 33% (Semi Closed)
@@ -558,19 +558,19 @@ binary_sensor:
   # RELATED UI ELEMENT:
   #   lvgl.yaml → curtain_robot_front_door_33_button
   # ===========================================================================
-  - platform: template
-    id: curtain_robot_front_door_33
-    lambda: |-
-      if (id(curtain_robot_front_door_position).has_state()) {
-        return abs(id(curtain_robot_front_door_position).state - 33) <= 3;
-      }
-      return false;
-    on_state:
-      then:
-        lvgl.widget.update:
-          id: curtain_robot_front_door_33_button
-          state:
-            checked: !lambda return x;
+  #- platform: template
+  #  id: curtain_robot_front_door_33
+  #  lambda: |-
+  #    if (id(curtain_robot_front_door_position).has_state()) {
+  #      return abs(id(curtain_robot_front_door_position).state - 33) <= 3;
+  #    }
+  #    return false;
+  #  on_state:
+  #    then:
+  #      lvgl.widget.update:
+  #        id: curtain_robot_front_door_33_button
+  #        state:
+  #          checked: !lambda return x;
 
   # ===========================================================================
   # TEMPLATE SENSOR: Blind at 0% (Fully Closed)
