@@ -184,7 +184,7 @@ lvgl:
                   text_font: $icon_font
                   align: top_left
                   id: lounge_light_icon
-                  text: $ceiling_light
+                  text: $fan_light
               - label:
                   align: bottom_left
                   id: lounge_light_label
