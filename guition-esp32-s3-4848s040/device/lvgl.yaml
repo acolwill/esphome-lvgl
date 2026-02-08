@@ -961,7 +961,7 @@ lvgl:
                   text: "Reverse"
             on_click:
               - homeassistant.service:
-                  service: script.lounge_reverse
+                  service: script.lounge_fan_reverse
 
         # =========================================================================
         # BUTTON: Fan Off
