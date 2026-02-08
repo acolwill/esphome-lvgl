@@ -233,10 +233,10 @@ lvgl:
                     entity_id: scene.office_dimmed
 
         # =========================================================================
-        # BUTTON: Blinds (Open Blind Controls Page)
+        # BUTTON: Curtain (Open Curtain Controls Page)
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Navigates to the dedicated blinds control page.
+        #   Navigates to the dedicated curtain control page.
         # =========================================================================
         - button: 
             height: $button_height_single
@@ -248,10 +248,10 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $blinds_closed
+                  text: $curtain_closed
               - label:
                   align: bottom_left
-                  text: "Blinds"
+                  text: "Curtain"
             on_click:
               - lvgl.page.show: curtain_page
 
@@ -380,7 +380,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $fan-light
+                  text: $fan_light
               - label:
                   align: bottom_left
                   text: "Fan"
@@ -739,7 +739,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $fan
+                  text: $fan_light
               - label:
                   align: bottom_left
                   text: "Lab"
@@ -762,7 +762,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: lounge_temp_button
+            id: lounge_temp
             styles: control
             widgets:
               - label:
