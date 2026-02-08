@@ -363,31 +363,31 @@ binary_sensor:
   # ===========================================================================
   - platform: homeassistant
     id: lounge_light_fan
-    entity_id: switch.office_air_conditioner
+    entity_id: script.lounge_light_fan
     trigger_on_initial_state: false
     on_state:
       then:
         - lvgl.widget.update:
-            id: office_aircon_button
+            id: lounge_light_fan_button
             state:
               checked: !lambda return x;
         - lvgl.widget.update:
-            id: aircon_power_button
+            id: lounge_light_fan_power_button
             state:
               checked: !lambda return x;
-        - lvgl.widget.update:
-            id: aircon_lab_power_button
-            state:
-              checked: !lambda return x;
-        - lvgl.widget.update:
-            id: aircon_temp_up_button
-            hidden: !lambda return !x;
-        - lvgl.widget.update:
-            id: aircon_temp_down_button
-            hidden: !lambda return !x;
-        - lvgl.widget.update:
-            id: aircon_set_temp_button
-            hidden: !lambda return !x;
+        #- lvgl.widget.update:
+        #    id: aircon_lab_power_button
+        #    state:
+        #      checked: !lambda return x;
+        #- lvgl.widget.update:
+        #    id: aircon_temp_up_button
+        #    hidden: !lambda return !x;
+        #- lvgl.widget.update:
+        #    id: aircon_temp_down_button
+        #    hidden: !lambda return !x;
+        #- lvgl.widget.update:
+        #    id: aircon_set_temp_button
+        #    hidden: !lambda return !x;
 
   # ===========================================================================
   # SENSOR: Battery Charger State
