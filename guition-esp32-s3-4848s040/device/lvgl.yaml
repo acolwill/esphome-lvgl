@@ -330,16 +330,11 @@ lvgl:
         # WHEN PRESSED:
         #   Calls Home Assistant service: switch.toggle
         #   Target: script.lounge_light_toggle
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: script.lounge_light_toggle
-        #   When the switch is ON, this button appears "checked" (highlighted)
-        #   When the switch is OFF, this button appears unchecked (dimmed)
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
-            checkable: true
+            checkable: false
             id: lounge_light_button
             styles: control
             widgets:
@@ -373,7 +368,7 @@ lvgl:
         - button: 
             height: $button_height_single
             width: $button_width
-            checkable: true
+            checkable: false
             id: lounge_fan_button
             styles: control
             widgets:
