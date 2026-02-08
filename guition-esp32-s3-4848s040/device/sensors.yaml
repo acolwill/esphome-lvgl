@@ -141,15 +141,15 @@ sensor:
   # RELATED UI ELEMENT:
   #   lvgl.yaml → print_progress_label
   # ===========================================================================
-  - platform: homeassistant
-    entity_id: sensor.centauri_carbon_percent_complete_helper
-    id: centauri_carbon_percent
-    on_value:
-      - lvgl.label.update:
-          id: print_progress_label
-          text:
-            format: "%.0f"
-            args: [ 'x' ]
+  #- platform: homeassistant
+  #  entity_id: sensor.centauri_carbon_percent_complete_helper
+  #  id: centauri_carbon_percent
+  #  on_value:
+  #    - lvgl.label.update:
+  #        id: print_progress_label
+  #        text:
+  #          format: "%.0f"
+  #          args: [ 'x' ]
 
   # ===========================================================================
   # SENSOR: Filament Heater Humidity
