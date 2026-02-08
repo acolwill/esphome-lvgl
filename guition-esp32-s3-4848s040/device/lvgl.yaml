@@ -122,117 +122,6 @@ lvgl:
                     entity_id: automation.led_s_desk
 
         # =========================================================================
-        # BUTTON: Calls Scene
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Activates the "Calls" lighting scene - optimized lighting for
-        #   video calls (good front lighting, reduced background glare).
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: scene.turn_on
-        #   Target: scene.office_desk_call
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: binary_sensor.office_scene_desk_call
-        #   When that sensor is ON, this button appears "checked" (highlighted)
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: office_scene_calls_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  id: office_scene_calls_icon                
-                  text: $videocall
-              - label:
-                  align: bottom_left
-                  id: office_scene_calls_label
-                  text: "Calls"
-            on_press:
-              - homeassistant.service:
-                  service: scene.turn_on
-                  data:
-                    entity_id: scene.office_desk_call
-
-        # =========================================================================
-        # BUTTON: Evening Scene
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Activates the "Evening" lighting scene - warm, ambient lighting
-        #   for relaxed evening use (lower brightness, warmer colors).
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: scene.turn_on
-        #   Target: scene.office_evening
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: binary_sensor.office_scene_evening
-        #   When that sensor is ON, this button appears "checked" (highlighted)
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: office_scene_evening_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  id: office_scene_evening_icon                
-                  text: $nightlight
-              - label:
-                  align: bottom_left
-                  id: office_scene_evening_label
-                  text: "Evening"
-            on_press:
-              - homeassistant.service:
-                  service: scene.turn_on
-                  data:
-                    entity_id: scene.office_evening
-
-        # =========================================================================
-        # BUTTON: Dimmed Scene
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Activates the "Dimmed" lighting scene - very low light levels,
-        #   useful for watching movies or reducing eye strain at night.
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: scene.turn_on
-        #   Target: scene.office_dimmed
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: binary_sensor.office_scene_dimmed
-        #   When that sensor is ON, this button appears "checked" (highlighted)
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: office_scene_dimmed_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  id: office_scene_dimmed_icon                
-                  text: $nightlight
-              - label:
-                  align: bottom_left
-                  id: office_scene_dimmed_label
-                  text: "Dimmed"
-            on_press:
-              - homeassistant.service:
-                  service: scene.turn_on
-                  data:
-                    entity_id: scene.office_dimmed
-
-        # =========================================================================
         # BUTTON: Curtain (Open Curtain Controls Page)
         # =========================================================================
         # WHAT THIS BUTTON DOES:
@@ -383,46 +272,6 @@ lvgl:
               - lvgl.page.show: lounge_fan_page
 
         # =========================================================================
-        # BUTTON: Battery Charger
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Turns a battery charger power outlet on or off.
-        #   This controls a smart plug that supplies power to a charging station.
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: switch.toggle
-        #   Target: switch.d4c5
-        #   (The "d4c5" is a device identifier - consider renaming in Home
-        #   Assistant for clarity, e.g., "switch.office_battery_charger")
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: switch.d4c5
-        #   When the switch is ON, this button appears "checked" (highlighted)
-        #   When the switch is OFF, this button appears unchecked (dimmed)
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: true
-            id: battery_charger_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  id: battery_charger_icon
-                  text: $battery
-              - label:
-                  align: bottom_left
-                  id: battery_charger_label
-                  text: "Charger"
-            on_click:
-              - homeassistant.service:
-                  service: switch.toggle
-                  data:
-                    entity_id: switch.d4c5
-
-        # =========================================================================
         # BUTTON: Desk Lights
         # =========================================================================
         # WHAT THIS BUTTON DOES:
@@ -495,6 +344,159 @@ lvgl:
                   service: light.toggle
                   data:
                     entity_id: light.lounge_lights
+
+        # =========================================================================
+        # BUTTON: Battery Charger
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Turns a battery charger power outlet on or off.
+        #   This controls a smart plug that supplies power to a charging station.
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: switch.toggle
+        #   Target: switch.d4c5
+        #   (The "d4c5" is a device identifier - consider renaming in Home
+        #   Assistant for clarity, e.g., "switch.office_battery_charger")
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   sensors.yaml monitors: switch.d4c5
+        #   When the switch is ON, this button appears "checked" (highlighted)
+        #   When the switch is OFF, this button appears unchecked (dimmed)
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: true
+            id: battery_charger_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  id: battery_charger_icon
+                  text: $battery
+              - label:
+                  align: bottom_left
+                  id: battery_charger_label
+                  text: "Charger"
+            on_click:
+              - homeassistant.service:
+                  service: switch.toggle
+                  data:
+                    entity_id: switch.d4c5
+
+        # =========================================================================
+        # BUTTON: Calls Scene
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Activates the "Calls" lighting scene - optimized lighting for
+        #   video calls (good front lighting, reduced background glare).
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: scene.turn_on
+        #   Target: scene.office_desk_call
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   sensors.yaml monitors: binary_sensor.office_scene_desk_call
+        #   When that sensor is ON, this button appears "checked" (highlighted)
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: office_scene_calls_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  id: office_scene_calls_icon                
+                  text: $videocall
+              - label:
+                  align: bottom_left
+                  id: office_scene_calls_label
+                  text: "Calls"
+            on_press:
+              - homeassistant.service:
+                  service: scene.turn_on
+                  data:
+                    entity_id: scene.office_desk_call
+
+        # =========================================================================
+        # BUTTON: Evening Scene
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Activates the "Evening" lighting scene - warm, ambient lighting
+        #   for relaxed evening use (lower brightness, warmer colors).
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: scene.turn_on
+        #   Target: scene.office_evening
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   sensors.yaml monitors: binary_sensor.office_scene_evening
+        #   When that sensor is ON, this button appears "checked" (highlighted)
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: office_scene_evening_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  id: office_scene_evening_icon                
+                  text: $nightlight
+              - label:
+                  align: bottom_left
+                  id: office_scene_evening_label
+                  text: "Evening"
+            on_press:
+              - homeassistant.service:
+                  service: scene.turn_on
+                  data:
+                    entity_id: scene.office_evening
+
+        # =========================================================================
+        # BUTTON: Dimmed Scene
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Activates the "Dimmed" lighting scene - very low light levels,
+        #   useful for watching movies or reducing eye strain at night.
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: scene.turn_on
+        #   Target: scene.office_dimmed
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   sensors.yaml monitors: binary_sensor.office_scene_dimmed
+        #   When that sensor is ON, this button appears "checked" (highlighted)
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: office_scene_dimmed_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  id: office_scene_dimmed_icon                
+                  text: $nightlight
+              - label:
+                  align: bottom_left
+                  id: office_scene_dimmed_label
+                  text: "Dimmed"
+            on_press:
+              - homeassistant.service:
+                  service: scene.turn_on
+                  data:
+                    entity_id: scene.office_dimmed
+
+#---------------------------------------------------------------------------------
 
     - id: curtain_page
       layout: 
@@ -988,3 +990,4 @@ lvgl:
             on_click:
               - homeassistant.service:
                   service: script.lounge_fan_off
+
