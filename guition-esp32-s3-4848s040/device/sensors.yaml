@@ -415,6 +415,7 @@ binary_sensor:
         - lvgl.widget.update:
             id: lounge_light_icon
             hidden: !lambda return x;
+            
 
   # ===========================================================================
   # TEMPLATE SENSOR: Blind at 100% (Fully Open)
