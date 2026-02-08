@@ -769,7 +769,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $fan-speed-1
+                  text: $fan_speed_1
               - label:
                   align: bottom_left
                   text: "On 1"
@@ -800,7 +800,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $fan-speed-2
+                  text: $fan_speed_2
               - label:
                   align: bottom_left
                   text: "On 2"
@@ -831,7 +831,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $fan-speed-3
+                  text: $fan_speed_3
               - label:
                   align: bottom_left
                   text: "On 3"
@@ -958,7 +958,7 @@ lvgl:
                   text: $fan
               - label:
                   align: bottom_left
-                  text: "Off"
+                  text: "Reverse"
             on_click:
               - homeassistant.service:
                   service: script.lounge_reverse
