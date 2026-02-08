@@ -29,6 +29,13 @@ font:
       "\U000F1798",  # mdi-fan-light
       "\U000F1846",  # mdi-curtains-open
       "\U000F1847",  # mdi-curtains-closed
+      "\U000F0210",  # mdi-fan
+      "\U000F081D",  # mdi-fan-off
+      "\U000F1472",  # mdi-fan-speed-1
+      "\U000F1473",  # mdi-fan-speed-2
+      "\U000F1474",  # mdi-fan-speed-3
+      "\U000F146E",  # mdi-fan-chevron-up
+      "\U000F146F",  # mdi-fan-plus
       ]
 
 # Map icons to names
@@ -56,3 +63,10 @@ substitutions:
   fan_light:      "\U000F1798"
   curtain_closed: "\U000F1847"
   curtain_open:   "\U000F1846"
+  fan:            "\U000F0210"
+  fan_off:        "\U000F081D"
+  fan_speed_1:    "\U000F1472"
+  fan_speed_2:    "\U000F1473"
+  fan_speed_3:    "\U000F1474"
+  fan_chevron_up: "\U000F146E"
+  fan_plus:       "\U000F146F"
