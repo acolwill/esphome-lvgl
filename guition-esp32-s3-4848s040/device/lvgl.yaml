@@ -565,7 +565,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $blinds_open
+                  text: $curtain_open
               - label:
                   align: bottom_left
                   text: "Open"
@@ -679,7 +679,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $blinds_closed
+                  text: $curtain_closed
               - label:
                   align: bottom_left
                   text: "Close"
@@ -693,7 +693,7 @@ lvgl:
     - id: lounge_fan_page
       layout: 
         type: flex
-        flex_flow: column_wrap
+        flex_flow: row_wrap
       scrollbar_mode: "off"
       scroll_dir: "hor"
       width: 100%
@@ -729,51 +729,22 @@ lvgl:
         # =========================================================================
         # BUTTON: Lounge Fan (Experimental Layout)
         # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: lounge_fan_nav_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $fan_light
-              - label:
-                  align: bottom_left
-                  text: "Lab"
-            on_click:
-              - lvgl.page.show: lounge_fan_page
-
-        # =========================================================================
-        # BUTTON: Lounge Temperature
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Displays the current lounge temperature reading.
-        #
-        # DATA SOURCE:
-        #   sensor.air_quality_monitor_temperature (attribute: current_temperature)
-        #
-        # RELATED UI ELEMENT:
-        #   sensors.yaml → lounge_temperature
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: lounge_temp
-            styles: control
-            widgets:
-              - label:
-                  text_font: roboto44_font
-                  align: top_left
-                  id: lounge_temp_label
-                  text: "--"
-                  text_color: 0xFFFFFF
-              - label:
-                  align: bottom_left
-                  text: "Temp"
+        #- button: 
+        #    height: $button_height_single
+        #    width: $button_width
+        #    checkable: false
+        #    id: lounge_fan_nav_button
+        #    styles: control
+        #    widgets:
+        #      - label:
+        #          text_font: $icon_font
+        #          align: top_left
+        #          text: $fan_light
+        #      - label:
+        #          align: bottom_left
+        #          text: "Lab"
+        #    on_click:
+        #      - lvgl.page.show: lounge_fan_page
 
         # =========================================================================
         # BUTTON: Fan On Speed 1 Power
