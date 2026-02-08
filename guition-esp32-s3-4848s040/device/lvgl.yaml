@@ -117,9 +117,9 @@ lvgl:
                   text: "Desk LED's"
             on_press:
               - homeassistant.service:
-                  service: automation.led_s_desk
-                  #data:
-                  #  entity_id: scene.office_features
+                  service: automation.trigger
+                  data:
+                    entity_id: automation.led_s_desk
 
         # =========================================================================
         # BUTTON: Calls Scene
