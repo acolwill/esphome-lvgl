@@ -933,6 +933,37 @@ lvgl:
                   service: script.lounge_fan_speed_6
 
         # =========================================================================
+        # BUTTON: Fan Reverse
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Reverses the Ceiling Fan
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: switch.toggle
+        #   Target: script.lounge_reverse
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   It can't monitor scripts.
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: lounge_fan_powerreverse_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $aircon
+              - label:
+                  align: bottom_left
+                  text: "Off"
+            on_click:
+              - homeassistant.service:
+                  service: script.lounge_reverse
+
+        # =========================================================================
         # BUTTON: Fan Off
         # =========================================================================
         # WHAT THIS BUTTON DOES:
