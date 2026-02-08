@@ -368,13 +368,13 @@ binary_sensor:
     on_state:
       then:
         - lvgl.widget.update:
-            id: lounge_light_fan_button
+            id: lounge_fan_button
             state:
               checked: !lambda return x;
-        - lvgl.widget.update:
-            id: lounge_light_fan_power_button
-            state:
-              checked: !lambda return x;
+        #- lvgl.widget.update:
+        #    id: lounge_light_fan_power_button
+        #    state:
+        #      checked: !lambda return x;
         #- lvgl.widget.update:
         #    id: aircon_lab_power_button
         #    state:
