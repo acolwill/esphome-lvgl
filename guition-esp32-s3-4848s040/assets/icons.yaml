@@ -27,6 +27,8 @@ font:
       "\U000F0317",  # mdi-lan
       "\U000F0425",  # mdi-power
       "\U000F1798",  # mdi-fan-light
+      "\U000F1846",  # mdi-curtains-open
+      "\U000F1847",  # mdi-curtains-closed
       ]
 
 # Map icons to names
@@ -52,3 +54,5 @@ substitutions:
   lan:            "\U000F0317"
   power:          "\U000F0425"
   fan_light:      "\U000F1798"
+  curtain_closed: "\U000F1847"
+  curtain_open:   "\U000F1846"
