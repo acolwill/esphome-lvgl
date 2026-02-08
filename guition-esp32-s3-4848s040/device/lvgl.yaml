@@ -277,7 +277,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $fan_light
+                  text: $ceiling_fan
               - label:
                   align: bottom_left
                   text: "Fan"
