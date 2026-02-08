@@ -769,7 +769,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $aircon
+                  text: $fan-speed-1
               - label:
                   align: bottom_left
                   text: "On 1"
@@ -800,7 +800,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $aircon
+                  text: $fan-speed-2
               - label:
                   align: bottom_left
                   text: "On 2"
@@ -831,7 +831,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $aircon
+                  text: $fan-speed-3
               - label:
                   align: bottom_left
                   text: "On 3"
@@ -862,7 +862,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $aircon
+                  text: $fan_chevron_up
               - label:
                   align: bottom_left
                   text: "On 4"
@@ -893,7 +893,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $aircon
+                  text: $fan_plus
               - label:
                   align: bottom_left
                   text: "On 5"
@@ -924,7 +924,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $aircon
+                  text: $fan_plus
               - label:
                   align: bottom_left
                   text: "On 6"
@@ -955,7 +955,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $aircon
+                  text: $fan
               - label:
                   align: bottom_left
                   text: "Off"
@@ -986,7 +986,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $aircon
+                  text: $fan_off
               - label:
                   align: bottom_left
                   text: "Off"
