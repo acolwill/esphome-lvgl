@@ -51,4 +51,4 @@ substitutions:
   filament:       "\U000F07DE"
   lan:            "\U000F0317"
   power:          "\U000F0425"
-  fan-light:      "\U000F1798"
+  fan_light:      "\U000F1798"
