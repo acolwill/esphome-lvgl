@@ -82,7 +82,117 @@ lvgl:
       pad_right: 5
       
       widgets:
-      
+
+        # =========================================================================
+        # BUTTON: Desk Lights
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Toggles the desk area lights on/off.
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: light.toggle
+        #   Target: light.lounge_desk_lights & others
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   sensors.yaml monitors: light.lounge_desk_lights // Disabled.
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: true
+            id: desk_lights_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $lightbulb
+              - label:
+                  align: bottom_left
+                  text: "Desk"
+            on_press:
+              - homeassistant.service:
+                  service: automation.trigger
+                  data:
+                    entity_id: automation.desk_lights
+            #on_click:
+            #  - homeassistant.service:
+            #      service: light.toggle
+            #      data:
+            #        entity_id: light.lounge_desk_lights
+            #  - homeassistant.service:
+            #      action: switch.toggle
+            #      data:
+            #        entity_id: switch.plugmulti_lounge_switch_2
+            #  - homeassistant.service:
+            #      action: switch.toggle
+            #      data:
+            #        entity_id: switch.plugmulti_lounge_switch_3            
+
+        # =========================================================================
+        # BUTTON: Lounge Lights
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Toggles the Lounge lights on/off.
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: light.toggle
+        #   Target: light.lounge_lights
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   sensors.yaml monitors: light.lounge_lights
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: true
+            id: lounge_lights_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $lightbulb
+              - label:
+                  align: bottom_left
+                  text: "Lounge"
+            on_click:
+              - homeassistant.service:
+                  service: light.toggle
+                  data:
+                    entity_id: light.lounge_lights
+
+        # =========================================================================
+        # BUTTON: Lounge Fan Light
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Turns the Overhead fan light on or off.
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: switch.toggle
+        #   Target: script.lounge_light_toggle
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: lounge_light_button
+            styles: control
+            widgets:
+              # Icon (shown when OFF)
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  id: lounge_light_icon
+                  text: $ceiling_light
+              - label:
+                  align: bottom_left
+                  id: lounge_light_label
+                  text: "Ceiling"
+            on_click:
+              - homeassistant.service:
+                  service: script.lounge_light_toggle
+
         # =========================================================================
         # BUTTON: Under Desk LED's
         # =========================================================================
@@ -145,37 +255,6 @@ lvgl:
               - lvgl.page.show: curtain_page
 
         # =========================================================================
-        # BUTTON: Lounge Fan Light
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Turns the Overhead fan light on or off.
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: switch.toggle
-        #   Target: script.lounge_light_toggle
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: lounge_light_button
-            styles: control
-            widgets:
-              # Icon (shown when OFF)
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  id: lounge_light_icon
-                  text: $lightbulb
-              - label:
-                  align: bottom_left
-                  id: lounge_light_label
-                  text: "Ceiling"
-            on_click:
-              - homeassistant.service:
-                  service: script.lounge_light_toggle
-
-        # =========================================================================
         # BUTTON: Ceiling Fan
         # =========================================================================
         # WHAT THIS BUTTON DOES:
@@ -204,80 +283,6 @@ lvgl:
                   text: "Fan"
             on_click:
               - lvgl.page.show: lounge_fan_page
-
-        # =========================================================================
-        # BUTTON: Desk Lights
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Toggles the desk area lights on/off.
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: light.toggle
-        #   Target: light.lounge_desk_lights & others
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: light.lounge_desk_lights // Disabled.
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: desk_lights_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $lightbulb
-              - label:
-                  align: bottom_left
-                  text: "Desk"
-            on_click:
-              - homeassistant.service:
-                  service: light.toggle
-                  data:
-                    entity_id: light.lounge_desk_lights
-              - homeassistant.service:
-                  action: switch.toggle
-                  data:
-                    entity_id: switch.plugmulti_lounge_switch_2
-              - homeassistant.service:
-                  action: switch.toggle
-                  data:
-                    entity_id: switch.plugmulti_lounge_switch_3            
-
-        # =========================================================================
-        # BUTTON: Lounge Lights
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Toggles the Lounge lights on/off.
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: light.toggle
-        #   Target: light.office_lounge_lights
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: light.office_lounge_lights
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: true
-            id: lounge_lights_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $lightbulb
-              - label:
-                  align: bottom_left
-                  text: "Lounge"
-            on_click:
-              - homeassistant.service:
-                  service: light.toggle
-                  data:
-                    entity_id: light.lounge_lights
 
         # =========================================================================
         # BUTTON: 3D Printer Power
