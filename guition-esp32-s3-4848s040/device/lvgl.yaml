@@ -72,7 +72,7 @@ lvgl:
         type: flex
         flex_flow: column_wrap
       scrollbar_mode: "off"
-      scroll_dir: "hor"
+      scroll_dir: "ver"
       width: 100%
       bg_color: Black
       bg_opa: cover
@@ -114,7 +114,7 @@ lvgl:
               - label:
                   align: bottom_left
                   id: scene_features_label
-                  text: "Features"
+                  text: "Desk LED's"
             on_press:
               - homeassistant.service:
                   service: automation.led_s_desk
