@@ -37,6 +37,7 @@ font:
       "\U000F146E",  # mdi-fan-chevron-up
       "\U000F146F",  # mdi-fan-plus
       "\U000F1797",  # mdi-ceiling-fan
+      "\U000F0792",  # arrow-collapse-down
       ]
 
 # Map icons to names
@@ -72,3 +73,4 @@ substitutions:
   fan_chevron_up: "\U000F146E"
   fan_plus:       "\U000F146F"
   ceiling_fan:    "\U000F1797"
+  arrow_collapse_down: "\U000F0792"
