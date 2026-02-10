@@ -611,11 +611,11 @@ binary_sensor:
   # ===========================================================================
   - platform: homeassistant
     id: fingerbot_lounge_toggle
-    entity_id: automation.fingerbot_lounge_toggle
+    entity_id: binary_sensor.fingerbot_lounge_toggle
     trigger_on_initial_state: false
     on_state:
       then:
         lvgl.widget.update:
-          id: fingerbot_lounge_toggle
+          id: fingerbot_lounge_toggle_button
           state:
             checked: !lambda return x;
