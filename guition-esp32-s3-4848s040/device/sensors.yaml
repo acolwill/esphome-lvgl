@@ -616,6 +616,6 @@ binary_sensor:
     on_state:
       then:
         lvgl.widget.update:
-          id: automation_fingerbot_lounge_toggle
+          id: fingerbot_lounge_toggle
           state:
             checked: !lambda return x;
