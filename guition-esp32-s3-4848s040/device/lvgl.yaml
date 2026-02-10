@@ -232,6 +232,40 @@ lvgl:
                     entity_id: automation.led_s_desk
 
         # =========================================================================
+        # BUTTON: Fingerbot
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Activates the Fingerbot to turn on the amp
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: automation.trigger
+        #   Target: automation.fingerbot_lounge_toggle
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   sensors.yaml monitors: binary_sensor.fingerbot_lounge_toggle
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: true
+            id: automation_fingerbot_lounge_toggle_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $arrow_collapse_down
+              - label:
+                  align: bottom_left
+                  text: "Fingerbot"
+            on_press:
+              - homeassistant.service:
+                  service: automation.trigger
+                  data:
+                    entity_id: automation.fingerbot_lounge_toggle
+
+
+        # =========================================================================
         # BUTTON: Curtain (Open Curtain Controls Page)
         # =========================================================================
         # WHAT THIS BUTTON DOES:
