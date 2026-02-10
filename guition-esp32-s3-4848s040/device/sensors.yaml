@@ -265,17 +265,17 @@ binary_sensor:
   #          checked: !lambda return x;
 
   # ===========================================================================
-  # SENSOR: Office Features Scene Active
+  # Automation: Desk LED's
   # ===========================================================================
   # WHAT IT MONITORS:
   #   Whether the "Features" (LED accent) lighting scene is currently active
-  #   Watches: binary_sensor.office_scene_features in Home Assistant
+  #   Watches: automation.office_scene_features in Home Assistant
   #
   # WHAT IT UPDATES:
   #   The "Features" button's visual state (highlighted when active)
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → office_scene_features_button
+  #   lvgl.yaml → automation_led_s_desk_button
   # ===========================================================================
   - platform: homeassistant
     id: automation_led_s_desk
@@ -583,7 +583,7 @@ binary_sensor:
   #   Watches: light.office_lounge_lights in Home Assistant
   #
   # WHAT IT UPDATES:
-  #   The "Network Rack" button's visual state (highlighted when on)
+  #   The "Lounge Light" button's visual state (highlighted when on)
   #
   # NOTE: This sensor references a button (lounge_lights_button) that
   #       should be defined in lvgl.yaml. If the button doesn't exist,
@@ -600,5 +600,22 @@ binary_sensor:
       then:
         lvgl.widget.update:
           id: lounge_lights_button
+          state:
+            checked: !lambda return x;
+
+  # ===========================================================================
+  # Automation: Fingerbot
+  # ===========================================================================
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → automation_fingerbot_lounge_toggle
+  # ===========================================================================
+  - platform: homeassistant
+    id: fingerbot_lounge_toggle
+    entity_id: binary_sensor.fingerbot_lounge_toggle
+    trigger_on_initial_state: false
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: automation_fingerbot_lounge_toggle
           state:
             checked: !lambda return x;
