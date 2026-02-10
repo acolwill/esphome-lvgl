@@ -247,7 +247,7 @@ lvgl:
         - button: 
             height: $button_height_single
             width: $button_width
-            checkable: true
+            checkable: false
             id: fingerbot_lounge_toggle_button
             styles: control
             widgets:
