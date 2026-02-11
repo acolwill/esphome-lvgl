@@ -461,10 +461,10 @@ binary_sensor:
 
   # Sensor for Curtain robot - Kitchen
   - platform: template
-    id: curtain_robot_kitchen_100
+    id: curtain_robot_kitchen_0
     lambda: |-
       if (id(curtain_robot_kitchen_position).has_state()) {
-        return abs(id(curtain_robot_kitchen_position).state - 100) <= 3;
+        return abs(id(curtain_robot_kitchen_position).state - 0) <= 3;
       }
       return false;
     on_state:
@@ -568,10 +568,10 @@ binary_sensor:
   
   # Curtain Robot - Kitchen
   - platform: template
-    id: curtain_robot_kitchen_0
+    id: curtain_robot_kitchen_100
     lambda: |-
       if (id(curtain_robot_kitchen_position).has_state()) {
-        return abs(id(curtain_robot_kitchen_position).state - 0) <= 3;
+        return abs(id(curtain_robot_kitchen_position).state - 100) <= 3;
       }
       return false;
     on_state:
