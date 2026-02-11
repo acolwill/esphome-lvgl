@@ -286,7 +286,7 @@ lvgl:
                   align: bottom_left
                   text: "Curtain"
             on_click:
-              - lvgl.page.show: curtain_page
+              - lvgl.page.show: curtain_robot_front_door_page
 
         # =========================================================================
         # BUTTON: Ceiling Fan
@@ -560,7 +560,7 @@ lvgl:
 
 #---------------------------------------------------------------------------------
 
-    - id: curtain_page
+    - id: curtain_robot_front_door_page
       layout: 
         type: flex
         flex_flow: row
@@ -583,7 +583,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: blinds_back_button
+            id: curtain_robot_front_door_back_button
             styles: control
             widgets:
               - label:
@@ -772,7 +772,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: fan_back_button
+            id: lounge_fan_back_button
             styles: control
             widgets:
               - label:
@@ -1076,7 +1076,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: blinds_back_button
+            id: curtain_robot_kitchen_back_button
             styles: control
             widgets:
               - label:
