@@ -464,7 +464,7 @@ binary_sensor:
     id: curtain_robot_kitchen_100
     lambda: |-
       if (id(curtain_robot_kitchen_position).has_state()) {
-        return abs(id(curtain_robot_fkitchen_position).state - 100) <= 3;
+        return abs(id(curtain_robot_kitchen_position).state - 100) <= 3;
       }
       return false;
     on_state:
