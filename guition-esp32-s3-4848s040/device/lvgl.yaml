@@ -99,7 +99,7 @@ lvgl:
         - button: 
             height: $button_height_single
             width: $button_width
-            checkable: true
+            checkable: false
             id: desk_lights_button
             styles: control
             widgets:
@@ -145,7 +145,7 @@ lvgl:
         - button: 
             height: $button_height_single
             width: $button_width
-            checkable: true
+            checkable: false
             id: lounge_lights_button
             styles: control
             widgets:
@@ -158,9 +158,9 @@ lvgl:
                   text: "Lounge"
             on_click:
               - homeassistant.service:
-                  service: light.toggle
+                  service: automation.trigger
                   data:
-                    entity_id: light.lounge_lights
+                    entity_id: automation.lamp_lounge
 
         # =========================================================================
         # BUTTON: Lounge Fan Light
