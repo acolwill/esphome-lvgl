@@ -319,6 +319,30 @@ lvgl:
               - lvgl.page.show: lounge_fan_page
 
         # =========================================================================
+        # BUTTON: Curtain - Kitchen (Open Curtain Controls Page)
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Navigates to the dedicated curtain control page.
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: curtain_nav_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $curtain_closed
+              - label:
+                  align: bottom_left
+                  text: "Kitchen"
+            on_click:
+              - lvgl.page.show: curtain_kitchen_page
+
+
+        # =========================================================================
         # BUTTON: 3D Printer Power
         # =========================================================================
         # WHAT THIS BUTTON DOES:
@@ -1029,3 +1053,115 @@ lvgl:
               - homeassistant.service:
                   service: script.lounge_fan_off
 
+    - id: curtain_page
+      layout: 
+        type: flex
+        flex_flow: row
+      scrollbar_mode: "off"
+      scroll_dir: "hor"
+      width: 100%
+      bg_color: Black
+      bg_opa: cover
+      pad_top: 34
+      pad_bottom: 5
+      pad_left: 5
+      pad_right: 5
+
+      widgets:
+
+        # =========================================================================
+        # BUTTON: Back (Return to Main Page)
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: blinds_back_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $chevron_left
+              - label:
+                  align: bottom_left
+                  text: "Back"
+            on_click:
+              - lvgl.page.show: main_page
+
+        # =========================================================================
+        # BUTTON: Curtain Open (100%)
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Opens the kitchen curtain completely (100% open position).
+        #   Maximum natural light enters the room.
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: cover.set_cover_position
+        #   Target: cover.curtain_robot_kitchen
+        #   Position: 100 (fully open)
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   sensors.yaml reads the blind's current position from Home Assistant.
+        #   A template sensor (curtain_robot_kitchen_100) checks if position is within
+        #   3% of 100%. If true, this button appears "checked" (highlighted).
+        #   The 3% tolerance accounts for minor motor positioning differences.
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: true
+            id: curtain_robot_kitchen_open_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $curtain_open
+              - label:
+                  align: bottom_left
+                  text: "Open"
+            on_click:
+              - homeassistant.service:
+                  service: cover.set_cover_position
+                  data:
+                    entity_id: cover.curtain_robot_kitchen
+                    position: "100"
+
+        # =========================================================================
+        # BUTTON: Curtain Close (0%)
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Closes the front door curtain completely (0% open position).
+        #   Blocks all natural light and provides privacy.
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: cover.set_cover_position
+        #   Target: cover.curtain_robot_kitchen
+        #   Position: 0 (fully closed)
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   sensors.yaml reads the curtain robot's current position from Home Assistant.
+        #   A template sensor (curtain_robot_kitchen_0) checks if position is within
+        #   3% of 0%. If true, this button appears "checked" (highlighted).
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: true
+            id: curtain_robot_kitchen_close_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $curtain_closed
+              - label:
+                  align: bottom_left
+                  text: "Close"
+            on_click:
+              - homeassistant.service:
+                  service: cover.set_cover_position
+                  data:
+                    entity_id: cover.curtain_robot_kitchen
+                    position: "0"
