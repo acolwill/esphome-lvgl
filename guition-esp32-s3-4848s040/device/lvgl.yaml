@@ -284,7 +284,7 @@ lvgl:
                   text: $curtain_closed
               - label:
                   align: bottom_left
-                  text: "Curtain"
+                  text: "Front Door"
             on_click:
               - lvgl.page.show: curtain_robot_front_door_page
 
@@ -1126,7 +1126,7 @@ lvgl:
                   service: cover.set_cover_position
                   data:
                     entity_id: cover.curtain_robot_kitchen
-                    position: "100"
+                    position: "0"
 
         # =========================================================================
         # BUTTON: Curtain Close (0%)
@@ -1164,4 +1164,4 @@ lvgl:
                   service: cover.set_cover_position
                   data:
                     entity_id: cover.curtain_robot_kitchen
-                    position: "0"
+                    position: "100"
