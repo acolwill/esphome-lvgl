@@ -1053,7 +1053,7 @@ lvgl:
               - homeassistant.service:
                   service: script.lounge_fan_off
 
-    - id: curtain_page
+    - id: curtain_kitchen_page
       layout: 
         type: flex
         flex_flow: row
