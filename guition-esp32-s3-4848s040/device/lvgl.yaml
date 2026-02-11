@@ -275,7 +275,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: curtain_nav_button
+            id: curtain_robot_front_door_nav_button
             styles: control
             widgets:
               - label:
