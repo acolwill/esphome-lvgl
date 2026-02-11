@@ -470,7 +470,7 @@ binary_sensor:
     on_state:
       then:
         lvgl.widget.update:
-          id: curtain_robot_front_kitchen_open_button
+          id: curtain_robot_kitchen_open_button
           state:
             checked: !lambda return x;
 
@@ -577,7 +577,7 @@ binary_sensor:
     on_state:
       then:
         lvgl.widget.update:
-          id: curtain_robot_front_kitchen_close_button
+          id: curtain_robot_kitchen_close_button
           state:
             checked: !lambda return x;
 
