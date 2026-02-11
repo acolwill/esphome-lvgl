@@ -418,14 +418,14 @@ binary_sensor:
             
 
   # ===========================================================================
-  # TEMPLATE SENSOR: Blind at 100% (Fully Open)
+  # TEMPLATE SENSOR: Curtain at 100% (Fully Open)
   # ===========================================================================
   # WHAT IT DOES:
   #   Calculates whether the blind is at (or very close to) 100% open
   #   Returns TRUE if position is within 3% of 100, FALSE otherwise
   #
   # WHY USE A TEMPLATE:
-  #   The blind motor may not stop at exactly 100%. It might be 99% or 101%.
+  #   The curtain motor may not stop at exactly 100%. It might be 99% or 101%.
   #   This template uses a 3% tolerance to account for this imprecision.
   #   If position is between 97-100%, we consider it "fully open".
   #
@@ -453,6 +453,23 @@ binary_sensor:
           id: curtain_robot_front_door_open_button
           state:
             checked: !lambda return x;
+
+  # Sensor for Curtain robot - Kitchen
+  - platform: template
+    id: curtain_robot_kitchen_100
+    lambda: |-
+      if (id(curtain_robot_kitchen_position).has_state()) {
+        return abs(id(curtain_robot_fkitchen_position).state - 100) <= 3;
+      }
+      return false;
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: curtain_robot_front_kitchen_button
+          state:
+            checked: !lambda return x;
+
+
 
   # ===========================================================================
   # TEMPLATE SENSOR: Blind at 66% (Semi Open)
@@ -541,6 +558,21 @@ binary_sensor:
       then:
         lvgl.widget.update:
           id: curtain_robot_front_door_close_button
+          state:
+            checked: !lambda return x;
+  
+  # Curtain Robot - Kitchen
+  - platform: template
+    id: curtain_robot_kitchen_0
+    lambda: |-
+      if (id(curtain_robot_kitchen_position).has_state()) {
+        return abs(id(curtain_robot_fkitchen_position).state - 0) <= 3;
+      }
+      return false;
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: curtain_robot_front_kitchen_button
           state:
             checked: !lambda return x;
 
