@@ -368,31 +368,28 @@ binary_sensor:
         #    hidden: !lambda return !x;
 
   # ===========================================================================
-  # SENSOR: Battery Charger State
+  # SENSOR: Air Fryer State
   # ===========================================================================
   # WHAT IT MONITORS:
-  #   Whether the battery charger's smart plug is turned on or off
-  #   Watches: switch.d4c5 in Home Assistant
+  #   Whether the Air Fryer's smart plug is turned on or off
+  #   Watches: switch.plug_kitchen_boiler in Home Assistant
   #
   # WHAT IT UPDATES:
-  #   The "Charger" button's visual state (highlighted when powered on)
-  #
-  # NOTE: "d4c5" is the device's default identifier. Consider renaming this
-  #       in Home Assistant to something clearer like "switch.office_charger"
+  #   The "Air Fryer" button's visual state (highlighted when powered on)
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → battery_charger_button
+  #   lvgl.yaml → air_fryer_button
   # ===========================================================================
-  #- platform: homeassistant
-  #  id: office_battery_charger
-  #  entity_id: switch.d4c5
-  #  trigger_on_initial_state: true
-  #  on_state:
-  #    then:
-  #      lvgl.widget.update:
-  #        id: battery_charger_button
-  #        state:
-  #          checked: !lambda return x;
+  - platform: homeassistant
+    id: kitchen_air_fryer
+    entity_id: switch.plug_kitchen_boiler
+    trigger_on_initial_state: true
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: air_fryer_button
+          state:
+            checked: !lambda return x;
 
   # ===========================================================================
   # SENSOR: Lounge Ceiling Light State
