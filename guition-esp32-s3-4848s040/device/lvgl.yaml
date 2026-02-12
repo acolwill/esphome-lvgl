@@ -379,27 +379,27 @@ lvgl:
         #   When the switch is ON, this button appears "checked" (highlighted)
         #   When the switch is OFF, this button appears unchecked (dimmed)
         # =========================================================================
-        #- button: 
-        #    height: $button_height_single
-        #    width: $button_width
-        #    checkable: true
-        #    id: air_fryer_button
-        #    styles: control
-        #    widgets:
-        #      - label:
-        #          text_font: $icon_font
-        #          align: top_left
-        #          id: air_fryer_icon
-        #          text: $stove
-        #      - label:
-        #          align: bottom_left
-        #          id: air_fryer_label
-        #          text: "Air Fryer"
-        #    on_click:
-        #      - homeassistant.service:
-        #          service: switch.toggle
-        #          data:
-        #            entity_id: switch.plug_kitchen_boiler
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: true
+            id: air_fryer_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  id: air_fryer_icon
+                  text: $stove
+              - label:
+                  align: bottom_left
+                  id: air_fryer_label
+                  text: "Air Fryer"
+            on_click:
+              - homeassistant.service:
+                  service: switch.toggle
+                  data:
+                    entity_id: switch.plug_kitchen_boiler
 
         # =========================================================================
         # BUTTON: Dimmed Scene
