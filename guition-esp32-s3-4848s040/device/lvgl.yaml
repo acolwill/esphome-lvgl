@@ -1178,6 +1178,7 @@ lvgl:
         #
         # =========================================================================
 
+    top_layer:
       widgets:
         - button: 
             height: $button_height_single
