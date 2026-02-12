@@ -39,6 +39,7 @@ font:
       "\U000F1797",  # mdi-ceiling-fan
       "\U000F0792",  # arrow-collapse-down
       "\U000F0522",  # toggle-switch-off
+      "\U000F04DE",  # stove
       ]
 
 # Map icons to names
@@ -76,3 +77,4 @@ substitutions:
   ceiling_fan:    "\U000F1797"
   arrow_collapse_down: "\U000F0792"
   toggle_switch_off: "\U000F0522"
+  stove:          "\U000F04DE"
