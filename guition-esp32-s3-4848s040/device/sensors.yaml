@@ -128,6 +128,11 @@ sensor:
     id: curtain_robot_front_door_position
     attribute: current_position
 
+  - platform: homeassistant
+    entity_id: cover.curtain_robot_kitchen
+    id: curtain_robot_kitchen_position
+    attribute: current_position
+
   # ===========================================================================
   # SENSOR: Centauri Carbon Print Progress
   # ===========================================================================
@@ -265,17 +270,17 @@ binary_sensor:
   #          checked: !lambda return x;
 
   # ===========================================================================
-  # SENSOR: Office Features Scene Active
+  # Automation: Desk LED's
   # ===========================================================================
   # WHAT IT MONITORS:
   #   Whether the "Features" (LED accent) lighting scene is currently active
-  #   Watches: binary_sensor.office_scene_features in Home Assistant
+  #   Watches: automation.office_scene_features in Home Assistant
   #
   # WHAT IT UPDATES:
   #   The "Features" button's visual state (highlighted when active)
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → office_scene_features_button
+  #   lvgl.yaml → automation_led_s_desk_button
   # ===========================================================================
   - platform: homeassistant
     id: automation_led_s_desk
@@ -418,14 +423,14 @@ binary_sensor:
             
 
   # ===========================================================================
-  # TEMPLATE SENSOR: Blind at 100% (Fully Open)
+  # TEMPLATE SENSOR: Curtain at 100% (Fully Open)
   # ===========================================================================
   # WHAT IT DOES:
   #   Calculates whether the blind is at (or very close to) 100% open
   #   Returns TRUE if position is within 3% of 100, FALSE otherwise
   #
   # WHY USE A TEMPLATE:
-  #   The blind motor may not stop at exactly 100%. It might be 99% or 101%.
+  #   The curtain motor may not stop at exactly 100%. It might be 99% or 101%.
   #   This template uses a 3% tolerance to account for this imprecision.
   #   If position is between 97-100%, we consider it "fully open".
   #
@@ -453,6 +458,23 @@ binary_sensor:
           id: curtain_robot_front_door_open_button
           state:
             checked: !lambda return x;
+
+  # Sensor for Curtain robot - Kitchen
+  - platform: template
+    id: curtain_robot_kitchen_0
+    lambda: |-
+      if (id(curtain_robot_kitchen_position).has_state()) {
+        return abs(id(curtain_robot_kitchen_position).state - 0) <= 3;
+      }
+      return false;
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: curtain_robot_kitchen_open_button
+          state:
+            checked: !lambda return x;
+
+
 
   # ===========================================================================
   # TEMPLATE SENSOR: Blind at 66% (Semi Open)
@@ -543,6 +565,21 @@ binary_sensor:
           id: curtain_robot_front_door_close_button
           state:
             checked: !lambda return x;
+  
+  # Curtain Robot - Kitchen
+  - platform: template
+    id: curtain_robot_kitchen_100
+    lambda: |-
+      if (id(curtain_robot_kitchen_position).has_state()) {
+        return abs(id(curtain_robot_kitchen_position).state - 100) <= 3;
+      }
+      return false;
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: curtain_robot_kitchen_close_button
+          state:
+            checked: !lambda return x;
 
   # ===========================================================================
   # SENSOR: Desk Lights State
@@ -583,7 +620,7 @@ binary_sensor:
   #   Watches: light.office_lounge_lights in Home Assistant
   #
   # WHAT IT UPDATES:
-  #   The "Network Rack" button's visual state (highlighted when on)
+  #   The "Lounge Light" button's visual state (highlighted when on)
   #
   # NOTE: This sensor references a button (lounge_lights_button) that
   #       should be defined in lvgl.yaml. If the button doesn't exist,
@@ -600,5 +637,22 @@ binary_sensor:
       then:
         lvgl.widget.update:
           id: lounge_lights_button
+          state:
+            checked: !lambda return x;
+
+  # ===========================================================================
+  # Automation: Fingerbot
+  # ===========================================================================
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → automation_fingerbot_lounge_toggle
+  # ===========================================================================
+  - platform: homeassistant
+    id: fingerbot_lounge_toggle
+    entity_id: binary_sensor.fingerbot_lounge_toggle
+    trigger_on_initial_state: false
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: fingerbot_lounge_toggle_button
           state:
             checked: !lambda return x;

@@ -103,7 +103,7 @@ output:
     pin: GPIO38
     frequency: 150Hz
     min_power: 1%
-    max_power: 50%
+    max_power: 25%
     zero_means_zero: true
 
 #------------------------------------------------------------------------------
