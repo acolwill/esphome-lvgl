@@ -341,37 +341,6 @@ lvgl:
             on_click:
               - lvgl.page.show: curtain_kitchen_page
 
-        # =========================================================================
-        # BUTTON: ALL OFF
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Turns all off in the Lounge
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant automation: lounge_all_off
-        #   Target: automation.lounge_all_off
-        #
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: lounge_all_off_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $toggle_switch_off
-              - label:
-                  align: bottom_left
-                  text: "All Off"
-            on_press:
-              - homeassistant.service:
-                  service: automation.trigger
-                  data:
-                    entity_id: automation.lounge_all_off
-
 
         # =========================================================================
         # BUTTON: 3D Printer Power
@@ -1196,3 +1165,36 @@ lvgl:
                   data:
                     entity_id: cover.curtain_robot_kitchen
                     position: "100"
+
+        # =========================================================================
+        # BUTTON: ALL OFF
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Turns all off in the Lounge
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant automation: lounge_all_off
+        #   Target: automation.lounge_all_off
+        #
+        # =========================================================================
+
+      widgets:
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: lounge_all_off_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $toggle_switch_off
+              - label:
+                  align: bottom_left
+                  text: "All Off"
+            on_press:
+              - homeassistant.service:
+                  service: automation.trigger
+                  data:
+                    entity_id: automation.lounge_all_off
