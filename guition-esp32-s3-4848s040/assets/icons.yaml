@@ -38,6 +38,7 @@ font:
       "\U000F146F",  # mdi-fan-plus
       "\U000F1797",  # mdi-ceiling-fan
       "\U000F0792",  # arrow-collapse-down
+      "\U000F0522",  # toggle-switch-off
       ]
 
 # Map icons to names
@@ -74,3 +75,4 @@ substitutions:
   fan_plus:       "\U000F146F"
   ceiling_fan:    "\U000F1797"
   arrow_collapse_down: "\U000F0792"
+  toggle_switch_off: "\U000F0522"
