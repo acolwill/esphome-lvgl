@@ -1177,6 +1177,8 @@ lvgl:
         #   Target: automation.lounge_all_off
         #
         # =========================================================================
+
+      widgets:
         - button: 
             height: $button_height_single
             width: $button_width
