@@ -364,20 +364,18 @@ lvgl:
                     entity_id: automation.lounge_all_off
 
         # =========================================================================
-        # BUTTON: Battery Charger
+        # BUTTON: Air Fryer
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Turns a battery charger power outlet on or off.
-        #   This controls a smart plug that supplies power to a charging station.
+        #   Turns a power outlet on or off.
+        #   This controls a smart plug that supplies power to the Air Fryer.
         #
         # WHEN PRESSED:
         #   Calls Home Assistant service: switch.toggle
-        #   Target: switch.d4c5
-        #   (The "d4c5" is a device identifier - consider renaming in Home
-        #   Assistant for clarity, e.g., "switch.office_battery_charger")
+        #   Target: switch.plug_kitchen_boiler
         #
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: switch.d4c5
+        #   sensors.yaml monitors: switch.plug_kitchen_boiler
         #   When the switch is ON, this button appears "checked" (highlighted)
         #   When the switch is OFF, this button appears unchecked (dimmed)
         # =========================================================================
@@ -385,23 +383,23 @@ lvgl:
         #    height: $button_height_single
         #    width: $button_width
         #    checkable: true
-        #    id: battery_charger_button
+        #    id: air_fryer_button
         #    styles: control
         #    widgets:
         #      - label:
         #          text_font: $icon_font
         #          align: top_left
-        #          id: battery_charger_icon
-        #          text: $battery
+        #          id: air_fryer_icon
+        #          text: $stove
         #      - label:
         #          align: bottom_left
-        #          id: battery_charger_label
-        #          text: "Charger"
+        #          id: air_fryer_label
+        #          text: "Air Fryer"
         #    on_click:
         #      - homeassistant.service:
         #          service: switch.toggle
         #          data:
-        #            entity_id: switch.d4c5
+        #            entity_id: switch.plug_kitchen_boiler
 
         # =========================================================================
         # BUTTON: Dimmed Scene
