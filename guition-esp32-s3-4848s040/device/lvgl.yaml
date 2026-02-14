@@ -90,8 +90,8 @@ lvgl:
         #   Toggles the desk area lights on/off.
         #
         # WHEN PRESSED:
-        #   Calls Home Assistant service: light.toggle
-        #   Target: light.lounge_desk_lights & others
+        #   Calls Home Assistant service: automation.toggle
+        #   Target: automation.desk_lights
         #
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
         #   sensors.yaml monitors: light.lounge_desk_lights // Disabled.
@@ -491,7 +491,7 @@ lvgl:
                   text: $lightbulb
               - label:
                   align: bottom_left
-                  text: "Lounge"
+                  text: "Bulbs"
             on_click:
               - homeassistant.service:
                   service: automation.trigger
