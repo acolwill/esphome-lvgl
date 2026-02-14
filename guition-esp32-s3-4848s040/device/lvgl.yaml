@@ -516,7 +516,7 @@ lvgl:
                   text: "Radiator"
             on_click:
               - homeassistant.service:
-                  service: light.trigger
+                  service: light.toggle
                   data:
                     entity_id: light.led_dimmer_lounge_radiator
 
