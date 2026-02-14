@@ -130,23 +130,13 @@ lvgl:
             #        entity_id: switch.plugmulti_lounge_switch_3            
 
         # =========================================================================
-        # BUTTON: Lounge Lights
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Toggles the Lounge lights on/off.
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: light.toggle
-        #   Target: light.lounge_lights
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: light.lounge_lights
+        # BUTTON: Lounge Lights (Open Lounge Lights Controls Page)
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: lounge_lights_button
+            id: lounge_lights_nav_button
             styles: control
             widgets:
               - label:
@@ -157,11 +147,8 @@ lvgl:
                   align: bottom_left
                   text: "Lounge"
             on_click:
-              - homeassistant.service:
-                  service: automation.trigger
-                  data:
-                    entity_id: automation.lamp_lounge
-
+              - lvgl.page.show: lounge_lights_page
+        
         # =========================================================================
         # BUTTON: Lounge Fan Light
         # =========================================================================
@@ -439,6 +426,104 @@ lvgl:
         #            entity_id: scene.office_dimmed
         # =========================================================================
 
+        # =========================================================================
+        # Lounge Lights page
+        # =========================================================================
+    - id: lounge_lights_page
+      layout: 
+        type: flex
+        flex_flow: row
+      scrollbar_mode: "off"
+      scroll_dir: "hor"
+      width: 100%
+      bg_color: Black
+      bg_opa: cover
+      pad_top: 34
+      pad_bottom: 5
+      pad_left: 5
+      pad_right: 5
+
+      widgets:
+
+        # =========================================================================
+        # BUTTON: Back (Return to Main Page)
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: curtain_robot_front_door_back_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $chevron_left
+              - label:
+                  align: bottom_left
+                  text: "Back"
+            on_click:
+              - lvgl.page.show: main_page
+
+        # =========================================================================
+        # BUTTON: Lounge Lights
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Toggles the Lounge lights on/off.
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: light.toggle
+        #   Target: light.lounge_lights
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   sensors.yaml monitors: light.lounge_lights
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: true
+            id: lounge_lights_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $lightbulb
+              - label:
+                  align: bottom_left
+                  text: "Lounge"
+            on_click:
+              - homeassistant.service:
+                  service: automation.trigger
+                  data:
+                    entity_id: automation.lamp_lounge
+        # =========================================================================
+        # BUTTON: Radiator LED Strip
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: true
+            id: lounge_lights_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $ledstrip
+              - label:
+                  align: bottom_left
+                  text: "Radiator"
+            on_click:
+              - homeassistant.service:
+                  service: light.trigger
+                  data:
+                    entity_id: light.led_dimmer_lounge_radiator
+
+        # =========================================================================
+        # Curtain Robot - Front Door page.
+        # =========================================================================
+
     - id: curtain_robot_front_door_page
       layout: 
         type: flex
@@ -551,6 +636,10 @@ lvgl:
                   data:
                     entity_id: cover.curtain_robot_front_door
                     position: "0"
+
+        # =========================================================================
+        # Lounge Fan Page.
+        # =========================================================================
 
     - id: lounge_fan_page
       layout: 
@@ -855,6 +944,10 @@ lvgl:
             on_click:
               - homeassistant.service:
                   service: script.lounge_fan_off
+
+        # =========================================================================
+        # Curtain Robot - Kitchen page.
+        # =========================================================================
 
     - id: curtain_kitchen_page
       layout: 
