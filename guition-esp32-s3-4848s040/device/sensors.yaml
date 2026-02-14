@@ -192,60 +192,6 @@ sensor:
 binary_sensor:
 
   # ===========================================================================
-  # SENSOR: Office Evening Scene Active
-  # ===========================================================================
-  # WHAT IT MONITORS:
-  #   Whether the "Evening" lighting scene is currently active
-  #   Watches: binary_sensor.office_scene_evening in Home Assistant
-  #
-  # WHAT IT UPDATES:
-  #   The "Evening" button's visual state (highlighted when active)
-  #
-  # HOW IT WORKS:
-  #   Home Assistant has a binary sensor that's ON when the evening scene
-  #   is active. When this changes, the button appearance updates to match.
-  #   "trigger_on_initial_state: true" ensures the button shows correctly
-  #   right when the device boots up, not just when state changes later.
-  #
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → office_scene_evening_button
-  # ===========================================================================
-  #- platform: homeassistant
-  #  id: office_scene_evening
-  #  entity_id: binary_sensor.office_scene_evening
-  #  trigger_on_initial_state: true
-  #  on_state:
-  #    then:
-  #      lvgl.widget.update:
-  #        id: office_scene_evening_button
-  #        state:
-  #          checked: !lambda return x;
-
-  # ===========================================================================
-  # SENSOR: Office Dimmed Scene Active
-  # ===========================================================================
-  # WHAT IT MONITORS:
-  #   Whether the "Dimmed" lighting scene is currently active
-  #   Watches: binary_sensor.office_scene_dimmed in Home Assistant
-  #
-  # WHAT IT UPDATES:
-  #   The "Dimmed" button's visual state (highlighted when active)
-  #
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → office_scene_dimmed_button
-  # ===========================================================================
-  #- platform: homeassistant
-  #  id: office_scene_dimmed
-  #  entity_id: binary_sensor.office_scene_dimmed
-  #  trigger_on_initial_state: true
-  #  on_state:
-  #    then:
-  #      lvgl.widget.update:
-  #        id: office_scene_dimmed_button
-  #        state:
-  #          checked: !lambda return x;
-
-  # ===========================================================================
   # Automation: Desk LED's
   # ===========================================================================
   # WHAT IT MONITORS:
@@ -339,17 +285,17 @@ binary_sensor:
   #   lvgl.yaml → lounge_light_button
   # ===========================================================================
   - platform: homeassistant
-    id: lounge_light_toggle
+    id: lounge_fan_light_toggle
     entity_id: script.lounge_light_toggle
     trigger_on_initial_state: true
     on_state:
       then:
         - lvgl.widget.update:
-            id: lounge_light_button
+            id: lounge_fan_light_button
             state:
               checked: !lambda return x;
         - lvgl.widget.update:
-            id: lounge_light_icon
+            id: lounge_fan_light_icon
             hidden: !lambda return x;
             
 
