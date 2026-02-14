@@ -452,7 +452,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: curtain_robot_front_door_back_button
+            id: lounge_lights_back_button
             styles: control
             widgets:
               - label:
@@ -504,7 +504,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: true
-            id: lounge_lights_button
+            id: led_dimmer_lounge_radiator_button
             styles: control
             widgets:
               - label:
