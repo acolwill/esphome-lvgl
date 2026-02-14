@@ -499,17 +499,6 @@ binary_sensor:
   #   lvgl.yaml → lounge_lights_button & led_dimmer_lounge_radiator_button
   # ===========================================================================
   - platform: homeassistant
-    id: lounge_lights
-    entity_id: light.lounge_lights
-    trigger_on_initial_state: true
-    on_state:
-      then:
-        lvgl.widget.update:
-          id: lounge_lights_button
-          state:
-            checked: !lambda return x;
-
-  - platform: homeassistant
     id: led_dimmer_lounge_radiator_lights
     entity_id: light.led_dimmer_lounge_radiator
     trigger_on_initial_state: true
@@ -517,6 +506,17 @@ binary_sensor:
       then:
         lvgl.widget.update:
           id: led_dimmer_lounge_radiator_lights_button
+          state:
+            checked: !lambda return x;
+
+  - platform: homeassistant
+    id: lounge_lights
+    entity_id: light.lounge_lights
+    trigger_on_initial_state: true
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: lounge_lights_button
           state:
             checked: !lambda return x;
 
