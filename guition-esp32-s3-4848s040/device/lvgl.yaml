@@ -504,7 +504,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: true
-            id: led_dimmer_lounge_radiator_button
+            id: led_dimmer_lounge_radiator_lights_button
             styles: control
             widgets:
               - label:
