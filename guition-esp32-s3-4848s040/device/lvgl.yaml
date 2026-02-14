@@ -163,18 +163,18 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: lounge_light_button
+            id: lounge_fan_light_button
             styles: control
             widgets:
               # Icon (shown when OFF)
               - label:
                   text_font: $icon_font
                   align: top_left
-                  id: lounge_light_icon
+                  id: lounge_fan_light_icon
                   text: $fan_light
               - label:
                   align: bottom_left
-                  id: lounge_light_label
+                  id: lounge_fan_light_label
                   text: "Ceiling"
             on_click:
               - homeassistant.service:
