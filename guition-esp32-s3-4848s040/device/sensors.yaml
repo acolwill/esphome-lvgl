@@ -458,70 +458,8 @@ binary_sensor:
           state:
             checked: !lambda return x;
 
-
-
   # ===========================================================================
-  # TEMPLATE SENSOR: Blind at 66% (Semi Open)
-  # ===========================================================================
-  # WHAT IT DOES:
-  #   Calculates whether the blind is at (or very close to) 66% open
-  #   Returns TRUE if position is within 3% of 66, FALSE otherwise
-  #
-  # HOW THE CODE WORKS:
-  #   Same logic as above, but checks for 66% (range: 63-69%)
-  #
-  # WHAT IT UPDATES:
-  #   The "Semi Open" button's visual state (highlighted when blind is ~66%)
-  #
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → curtain_robot_front_door_66_button
-  # ===========================================================================
-  #- platform: template
-  #  id: curtain_robot_front_door_66
-  #  lambda: |-
-  #    if (id(curtain_robot_front_door_position).has_state()) {
-  #      return abs(id(curtain_robot_front_door_position).state - 66) <= 3;
-  #    }
-  #    return false;
-  #  on_state:
-  #    then:
-  #      lvgl.widget.update:
-  #        id: curtain_robot_front_door_66_button
-  #        state:
-  #          checked: !lambda return x;
-
-  # ===========================================================================
-  # TEMPLATE SENSOR: Blind at 33% (Semi Closed)
-  # ===========================================================================
-  # WHAT IT DOES:
-  #   Calculates whether the blind is at (or very close to) 33% open
-  #   Returns TRUE if position is within 3% of 33, FALSE otherwise
-  #
-  # HOW THE CODE WORKS:
-  #   Same logic as above, but checks for 33% (range: 30-36%)
-  #
-  # WHAT IT UPDATES:
-  #   The "Semi Closed" button's visual state (highlighted when blind is ~33%)
-  #
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → curtain_robot_front_door_33_button
-  # ===========================================================================
-  #- platform: template
-  #  id: curtain_robot_front_door_33
-  #  lambda: |-
-  #    if (id(curtain_robot_front_door_position).has_state()) {
-  #      return abs(id(curtain_robot_front_door_position).state - 33) <= 3;
-  #    }
-  #    return false;
-  #  on_state:
-  #    then:
-  #      lvgl.widget.update:
-  #        id: curtain_robot_front_door_33_button
-  #        state:
-  #          checked: !lambda return x;
-
-  # ===========================================================================
-  # TEMPLATE SENSOR: Blind at 0% (Fully Closed)
+  # TEMPLATE SENSOR: Curtain at 0% (Fully Closed)
   # ===========================================================================
   # WHAT IT DOES:
   #   Calculates whether the blind is at (or very close to) 0% (closed)
@@ -601,7 +539,7 @@ binary_sensor:
   # ===========================================================================
   # WHAT IT MONITORS:
   #   Whether the network rack lights are on or off
-  #   Watches: light.office_lounge_lights in Home Assistant
+  #   Watches: light.lounge_lights and light.led_dimmer_lounge_radiator in Home Assistant
   #
   # WHAT IT UPDATES:
   #   The "Lounge Light" button's visual state (highlighted when on)
@@ -611,7 +549,7 @@ binary_sensor:
   #       add it there or remove this sensor.
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → lounge_lights_button
+  #   lvgl.yaml → lounge_lights_button & led_dimmer_lounge_radiator_button
   # ===========================================================================
   - platform: homeassistant
     id: lounge_lights
@@ -621,6 +559,17 @@ binary_sensor:
       then:
         lvgl.widget.update:
           id: lounge_lights_button
+          state:
+            checked: !lambda return x;
+
+  - platform: homeassistant
+    id: led_dimmer_lounge_radiator_lights
+    entity_id: light.led_dimmer_lounge_radiator
+    trigger_on_initial_state: true
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: led_dimmer_lounge_radiator_lights_button
           state:
             checked: !lambda return x;
 
