@@ -326,19 +326,6 @@ binary_sensor:
   #          id: print_progress_container
   #          hidden: !lambda return !x;
 
-  # ===========================================================================
-  # SENSOR: Air Conditioner State
-  # ===========================================================================
-  # WHAT IT MONITORS:
-  #   Whether the office air conditioner is running
-  #   Watches: switch.office_air_conditioner in Home Assistant
-  #
-  # WHAT IT UPDATES:
-  #   The "Aircon" button's visual state (highlighted when running)
-  #
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → office_aircon_button
-  # ===========================================================================
   - platform: homeassistant
     id: lounge_light_fan
     entity_id: script.lounge_light_fan
