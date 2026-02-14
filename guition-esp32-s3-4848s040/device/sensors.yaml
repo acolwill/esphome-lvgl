@@ -246,30 +246,6 @@ binary_sensor:
   #          checked: !lambda return x;
 
   # ===========================================================================
-  # SENSOR: Office Calls Scene Active
-  # ===========================================================================
-  # WHAT IT MONITORS:
-  #   Whether the "Calls" (video call) lighting scene is currently active
-  #   Watches: binary_sensor.office_scene_desk_call in Home Assistant
-  #
-  # WHAT IT UPDATES:
-  #   The "Calls" button's visual state (highlighted when active)
-  #
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → office_scene_calls_button
-  # ===========================================================================
-  #- platform: homeassistant
-  #  id: office_scene_desk_call
-  #  entity_id: binary_sensor.office_scene_desk_call
-  #  trigger_on_initial_state: true
-  #  on_state:
-  #    then:
-  #      lvgl.widget.update:
-  #        id: office_scene_calls_button
-  #        state:
-  #          checked: !lambda return x;
-
-  # ===========================================================================
   # Automation: Desk LED's
   # ===========================================================================
   # WHAT IT MONITORS:
@@ -294,37 +270,8 @@ binary_sensor:
             checked: !lambda return x;
 
   # ===========================================================================
-  # SENSOR: 3D Printer Power State
+  # Script: Light Fan
   # ===========================================================================
-  # WHAT IT MONITORS:
-  #   Whether the 3D printer's smart plug is turned on or off
-  #   Watches: switch.office_3d_printer_power in Home Assistant
-  #
-  # WHAT IT UPDATES:
-  #   The "Printer" button's visual state (highlighted when powered on)
-  #
-  # NOTE: This monitors a "switch" entity but uses binary_sensor platform.
-  #       ESPHome treats the switch's on/off state as a binary value here.
-  #
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → printer_power_button
-  # ===========================================================================
-  #- platform: homeassistant
-  #  id: office_3d_printer_power
-  #  entity_id: switch.office_3d_printer_power
-  #  trigger_on_initial_state: true
-  #  on_state:
-  #    then:
-  #      - lvgl.widget.update:
-  #          id: printer_power_button
-  #          state:
-  #            checked: !lambda return x;
-  #      - lvgl.widget.update:
-  #          id: printer_power_icon
-  #          hidden: !lambda return x;
-  #      - lvgl.widget.update:
-  #          id: print_progress_container
-  #          hidden: !lambda return !x;
 
   - platform: homeassistant
     id: lounge_light_fan
