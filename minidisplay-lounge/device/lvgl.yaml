@@ -1145,3 +1145,108 @@ lvgl:
             on_click:
               - homeassistant.service:
                   service: script.lounge_amp_power_on
+
+        # =========================================================================
+        # BUTTON: Source TV
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: rm4_mini_lounge_source_tv_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $tv
+              - label:
+                  align: bottom_left
+                  text: "TV"
+            on_click:
+              - homeassistant.service:
+                  service: script.lounge_amp_source_tv
+
+        # =========================================================================
+        # BUTTON: Source Satellite
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: rm4_mini_lounge_source_satellite_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $satellite
+              - label:
+                  align: bottom_left
+                  text: "SAT/CATV"
+            on_click:
+              - homeassistant.service:
+                  service: script.lounge_amp_source_satellite
+
+        # =========================================================================
+        # BUTTON: Volume Up
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: rm4_mini_lounge_vol_up_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $vol_up
+              - label:
+                  align: bottom_left
+                  text: "Vol+"
+            on_click:
+              - homeassistant.service:
+                  service: script.lounge_amp_vol_up
+
+        # =========================================================================
+        # BUTTON: Volume Down
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: rm4_mini_lounge_vol_down_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $vol_down
+              - label:
+                  align: bottom_left
+                  text: "Vol-"
+            on_click:
+              - homeassistant.service:
+                  service: script.lounge_amp_vol_down
+
+        # =========================================================================
+        # BUTTON: Volume Mute
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: rm4_mini_lounge_vol_mute_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $vol_up
+              - label:
+                  align: bottom_left
+                  text: "Mute"
+            on_click:
+              - homeassistant.service:
+                  service: script.lounge_amp_vol_mute
