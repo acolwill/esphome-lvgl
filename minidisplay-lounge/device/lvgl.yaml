@@ -1092,7 +1092,7 @@ lvgl:
     - id: rm4_mini_lounge_page
       layout: 
         type: flex
-        flex_flow: row
+        flex_flow: row_wrap
       scrollbar_mode: "off"
       scroll_dir: "hor"
       width: 100%
