@@ -1138,11 +1138,10 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $fan_off
+                  text: $power_toggle
               - label:
                   align: bottom_left
                   text: "Power"
             on_click:
-              - lvgl.page.show: main_page
               - homeassistant.service:
                   service: script.lounge_amp_power_on
