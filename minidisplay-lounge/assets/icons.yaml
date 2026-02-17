@@ -40,6 +40,7 @@ font:
       "\U000F0792",  # arrow-collapse-down
       "\U000F0522",  # toggle-switch-off
       "\U000F04DE",  # stove
+      "\U000F0454",  # remote
       ]
 
 # Map icons to names
@@ -78,3 +79,4 @@ substitutions:
   arrow_collapse_down: "\U000F0792"
   toggle_switch_off: "\U000F0522"
   stove:          "\U000F04DE"
+  remote:         "\U000F0454"
