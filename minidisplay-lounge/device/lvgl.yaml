@@ -1144,10 +1144,5 @@ lvgl:
                   text: "Power"
             on_click:
               - lvgl.page.show: main_page
-              #- homeassistant.service:
-              #    service: remote.send_command
-              #    target:
-              #      entity_id: remote.rm4_mini_lounge
-              #    data:
-              #      device: sony_amp
-              #      command: turn_on
+              - homeassistant.service:
+                  service: script.lounge_amp_power_on
