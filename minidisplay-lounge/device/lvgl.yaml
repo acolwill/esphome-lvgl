@@ -389,6 +389,29 @@ lvgl:
                     entity_id: switch.plug_kitchen_boiler
 
         # =========================================================================
+        # BUTTON: RM4 Mini
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Opens the RM4 Mini IR control page.
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: rm4_mini_lounge_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $remote
+              - label:
+                  align: bottom_left
+                  text: "Sony IR"
+            on_click:
+              - lvgl.page.show: rm4_mini_lounge_page
+
+        # =========================================================================
         # BUTTON: Dimmed Scene
         # =========================================================================
         # WHAT THIS BUTTON DOES:
@@ -1061,3 +1084,68 @@ lvgl:
                   data:
                     entity_id: cover.curtain_robot_kitchen
                     position: "100"
+
+        # =========================================================================
+        # RM4 Mini - Lounge page.
+        # =========================================================================
+
+    - id: rm4_mini_lounge_page
+      layout: 
+        type: flex
+        flex_flow: row
+      scrollbar_mode: "off"
+      scroll_dir: "hor"
+      width: 100%
+      bg_color: Black
+      bg_opa: cover
+      pad_top: 34
+      pad_bottom: 5
+      pad_left: 5
+      pad_right: 5
+
+      widgets:
+
+        # =========================================================================
+        # BUTTON: Back (Return to Main Page)
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: rm4_mini_lounge_back_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $chevron_left
+              - label:
+                  align: bottom_left
+                  text: "Back"
+            on_click:
+              - lvgl.page.show: main_page
+
+        # =========================================================================
+        # BUTTON: Power Toggle
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: rm4_mini_lounge_power_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $fan_off
+              - label:
+                  align: bottom_left
+                  text: "Power"
+            on_click:
+              - remote.send_command:
+                  target:
+                    entity_id: remote.rm4_mini_lounge
+                  data:
+                    device: sony_amp
+                    command: turn_on
