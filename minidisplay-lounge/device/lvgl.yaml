@@ -1144,8 +1144,7 @@ lvgl:
                   text: "Power"
             on_click:
               - homeassistant.service:
-                  service:
-                    remote.send_command:
+                  service: remote.send_command
                   target:
                     entity_id: remote.rm4_mini_lounge
                   data:
