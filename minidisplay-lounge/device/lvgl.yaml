@@ -1201,7 +1201,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $vol_up
+                  text: $volume_up
               - label:
                   align: bottom_left
                   text: "Vol+"
@@ -1222,7 +1222,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $vol_down
+                  text: $volume_down
               - label:
                   align: bottom_left
                   text: "Vol-"
@@ -1243,7 +1243,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $vol_up
+                  text: $volume_up
               - label:
                   align: bottom_left
                   text: "Mute"
