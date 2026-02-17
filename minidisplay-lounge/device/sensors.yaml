@@ -482,3 +482,20 @@ binary_sensor:
           id: fingerbot_lounge_toggle_button
           state:
             checked: !lambda return x;
+
+  # ===========================================================================
+  # Automation: RM4 Mini Lounge IR
+  # ===========================================================================
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → RM4 Mini
+  # ===========================================================================
+  - platform: homeassistant
+    id: rm4_mini_lounge_sensor
+    entity_id: binary_sensor.rm4_mini_lounge_toggle
+    trigger_on_initial_state: false
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: rm4_mini_lounge_button
+          state:
+            checked: !lambda return x;
