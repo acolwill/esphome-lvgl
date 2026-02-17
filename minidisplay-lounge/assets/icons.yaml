@@ -44,6 +44,7 @@ font:
       "\U000F0901",  # power-cycle
       "\U000F075D",  # volume-up
       "\U000F075E",  # volume-down
+      "\U000F075F",  # volume-mute
       "\U000F0502",  # tv
       "\U000F0470",  # satellite
       ]
@@ -88,5 +89,6 @@ substitutions:
   power_toggle:   "\U000F0901"
   volume_up:      "\U000F075D"
   volume_down:    "\U000F075E"
+  volume_mute:    "\U000F075F"
   tv:             "\U000F0502"
   satellite:      "\U000F0470"
