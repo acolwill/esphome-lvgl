@@ -1,8 +1,8 @@
-# minidisplay-lounge
+# minidisplay-bedroom
 substitutions:
-  name: "minidisplay-lounge"
-  friendly_name: "Lounge"
-  room: "Lounge"
+  name: "minidisplay-bedroom"
+  friendly_name: "Bedroom"
+  room: "Bedroom"
 
 logger:
 
@@ -32,13 +32,13 @@ web_server:
 packages:
   setup:
     url: https://github.com/acolwill/esphome-lvgl/
-    files: [minidisplay-lounge/device/device.yaml,
-            minidisplay-lounge/device/sensors.yaml,
-            minidisplay-lounge/device/lvgl.yaml,
-            minidisplay-lounge/addon/backlight.yaml,
-            minidisplay-lounge/addon/time.yaml,
-            minidisplay-lounge/addon/network.yaml,
-            minidisplay-lounge/assets/fonts.yaml,
-            minidisplay-lounge/assets/icons.yaml,
-            minidisplay-lounge/theme/button.yaml]
+    files: [minidisplay-bedroom/device/device.yaml,
+            minidisplay-bedroom/device/sensors.yaml,
+            minidisplay-bedroom/device/lvgl.yaml,
+            minidisplay-bedroom/addon/backlight.yaml,
+            minidisplay-bedroom/addon/time.yaml,
+            minidisplay-bedroom/addon/network.yaml,
+            minidisplay-bedroom/assets/fonts.yaml,
+            minidisplay-bedroom/assets/icons.yaml,
+            minidisplay-bedroom/theme/button.yaml]
     refresh: 1sec
