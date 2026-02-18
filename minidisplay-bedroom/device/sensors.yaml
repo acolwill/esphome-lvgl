@@ -102,11 +102,11 @@ sensor:
             args: [ '(int)round(x)', '(int)round(id(lounge_temperature).state)' ]
 
   # ===========================================================================
-  # SENSOR: Office Blind Position
+  # SENSOR: Curtain Robot - Bedroom
   # ===========================================================================
   # WHAT IT MONITORS:
-  #   The current position of the office window blind (0-100%)
-  #   Reads the "current_position" attribute from cover.curtain_robot_front_door
+  #   The current position of the bedroom curtain robot (0-100%)
+  #   Reads the "current_position" attribute from cover.curtain_robot_bedroom
   #
   # WHAT IT'S USED FOR:
   #   This sensor doesn't directly update buttons. Instead, it provides
@@ -120,19 +120,12 @@ sensor:
   #   preset (within 3%) to highlight that button.
   #
   # RELATED UI ELEMENTS:
-  #   lvgl.yaml → curtain_robot_front_door_open_button, curtain_robot_front_door_66_button,
-  #               curtain_robot_front_door_33_button, curtain_robot_front_door_close_button
+  #   lvgl.yaml → curtain_robot_bedroom_open_button, curtain_robot_bedroom_close_button
   # ===========================================================================
   - platform: homeassistant
-    entity_id: cover.curtain_robot_front_door
-    id: curtain_robot_front_door_position
+    entity_id: cover.curtain_bedroom_door
+    id: curtain_robot_bedroom_position
     attribute: current_position
-
-  - platform: homeassistant
-    entity_id: cover.curtain_robot_kitchen
-    id: curtain_robot_kitchen_position
-    attribute: current_position
-
 
 # =============================================================================
 # BINARY SENSORS (On/Off States)
@@ -171,41 +164,16 @@ binary_sensor:
   # ===========================================================================
   # Script: Light Fan
   # ===========================================================================
-
   - platform: homeassistant
-    id: lounge_light_fan
-    entity_id: script.lounge_light_fan
+    id: bedroom_light_fan
+    entity_id: script.bedroom_light_fan
     trigger_on_initial_state: false
     on_state:
       then:
         - lvgl.widget.update:
-            id: lounge_fan_button
+            id: bedroom_fan_button
             state:
               checked: !lambda return x;
-
-  # ===========================================================================
-  # SENSOR: Air Fryer State
-  # ===========================================================================
-  # WHAT IT MONITORS:
-  #   Whether the Air Fryer's smart plug is turned on or off
-  #   Watches: switch.plug_kitchen_boiler in Home Assistant
-  #
-  # WHAT IT UPDATES:
-  #   The "Air Fryer" button's visual state (highlighted when powered on)
-  #
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → air_fryer_button
-  # ===========================================================================
-  - platform: homeassistant
-    id: kitchen_air_fryer
-    entity_id: switch.plug_kitchen_boiler
-    trigger_on_initial_state: true
-    on_state:
-      then:
-        lvgl.widget.update:
-          id: air_fryer_button
-          state:
-            checked: !lambda return x;
 
   # ===========================================================================
   # SENSOR: Lounge Ceiling Light State
@@ -221,20 +189,19 @@ binary_sensor:
   #   lvgl.yaml → lounge_light_button
   # ===========================================================================
   - platform: homeassistant
-    id: lounge_fan_light_toggle
-    entity_id: script.lounge_light_toggle
+    id: bedroom_fan_light_toggle
+    entity_id: script.bedroom_light_toggle
     trigger_on_initial_state: true
     on_state:
       then:
         - lvgl.widget.update:
-            id: lounge_fan_light_button
+            id: bedroom_fan_light_button
             state:
               checked: !lambda return x;
         - lvgl.widget.update:
-            id: lounge_fan_light_icon
+            id: bedroom_fan_light_icon
             hidden: !lambda return x;
             
-
   # ===========================================================================
   # TEMPLATE SENSOR: Curtain at 100% (Fully Open)
   # ===========================================================================
@@ -248,7 +215,7 @@ binary_sensor:
   #   If position is between 97-100%, we consider it "fully open".
   #
   # HOW THE CODE WORKS:
-  #   1. Check if curtain_robot_front_door_position has received a value yet
+  #   1. Check if curtain_robot_bedroom_position has received a value yet
   #   2. Calculate: |current_position - 100| <= 3
   #   3. Return true if within range, false otherwise
   #
@@ -256,34 +223,19 @@ binary_sensor:
   #   The "Open" button's visual state (highlighted when blind is ~100%)
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → curtain_robot_front_door_open_button
+  #   lvgl.yaml → curtain_robot_bedroom_open_button
   # ===========================================================================
   - platform: template
-    id: curtain_robot_front_door_100
+    id: curtain_robot_bedroom_100
     lambda: |-
-      if (id(curtain_robot_front_door_position).has_state()) {
-        return abs(id(curtain_robot_front_door_position).state - 100) <= 3;
+      if (id(curtain_robot_bedroom_position).has_state()) {
+        return abs(id(curtain_robot_bedroom_position).state - 100) <= 3;
       }
       return false;
     on_state:
       then:
         lvgl.widget.update:
-          id: curtain_robot_front_door_open_button
-          state:
-            checked: !lambda return x;
-
-  # Sensor for Curtain robot - Kitchen
-  - platform: template
-    id: curtain_robot_kitchen_0
-    lambda: |-
-      if (id(curtain_robot_kitchen_position).has_state()) {
-        return abs(id(curtain_robot_kitchen_position).state - 0) <= 3;
-      }
-      return false;
-    on_state:
-      then:
-        lvgl.widget.update:
-          id: curtain_robot_kitchen_open_button
+          id: curtain_robot_bedroom_open_button
           state:
             checked: !lambda return x;
 
@@ -301,39 +253,24 @@ binary_sensor:
   #   The "Close" button's visual state (highlighted when blind is ~0%)
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → curtain_robot_front_door_close_button
+  #   lvgl.yaml → curtain_robot_bedroom_close_button
   # ===========================================================================
   - platform: template
-    id: curtain_robot_front_door_0
+    id: curtain_robot_bedroom_0
     lambda: |-
-      if (id(curtain_robot_front_door_position).has_state()) {
-        return abs(id(curtain_robot_front_door_position).state - 0) <= 3;
+      if (id(curtain_robot_bedroom_position).has_state()) {
+        return abs(id(curtain_robot_bedroom_position).state - 0) <= 3;
       }
       return false;
     on_state:
       then:
         lvgl.widget.update:
-          id: curtain_robot_front_door_close_button
+          id: curtain_robot_bedroom_close_button
           state:
             checked: !lambda return x;
   
-  # Curtain Robot - Kitchen
-  - platform: template
-    id: curtain_robot_kitchen_100
-    lambda: |-
-      if (id(curtain_robot_kitchen_position).has_state()) {
-        return abs(id(curtain_robot_kitchen_position).state - 100) <= 3;
-      }
-      return false;
-    on_state:
-      then:
-        lvgl.widget.update:
-          id: curtain_robot_kitchen_close_button
-          state:
-            checked: !lambda return x;
-
   # ===========================================================================
-  # SENSOR: Desk Lights State
+  # SENSOR: Bedroom Lights State
   # ===========================================================================
   # WHAT IT MONITORS:
   #   Whether the office storage area lights are on or off
@@ -350,13 +287,13 @@ binary_sensor:
   #   lvgl.yaml → storage_lights_button
   # ===========================================================================
   - platform: homeassistant
-    id: desk_lights
-    entity_id: light.desk_lights
+    id: bedroom_lights
+    entity_id: light.bedrom_lights
     trigger_on_initial_state: true
     on_state:
       then:
         lvgl.widget.update:
-          id: desk_lights_button
+          id: bedroom_lights_button
           state:
             checked: !lambda return x;
         #- lvgl.widget.update:
@@ -364,58 +301,30 @@ binary_sensor:
         #    hidden: !lambda return x;
 
   # ===========================================================================
-  # SENSOR: Lounge Lights State
+  # SENSOR: LED Dimmer - Bedroom Bed State
   # ===========================================================================
   # WHAT IT MONITORS:
   #   Whether the network rack lights are on or off
-  #   Watches: light.lounge_lights and light.led_dimmer_lounge_radiator in Home Assistant
+  #   Watches: llight.led_dimmer_bedroom_bed in Home Assistant
   #
   # WHAT IT UPDATES:
-  #   The "Lounge Light" button's visual state (highlighted when on)
+  #   The "Bed LED" button's visual state (highlighted when on)
   #
-  # NOTE: This sensor references a button (lounge_lights_button) that
+  # NOTE: This sensor references a button (led_dimmer_bedroom_bed_lights_button) that
   #       should be defined in lvgl.yaml. If the button doesn't exist,
   #       add it there or remove this sensor.
   #
   # RELATED UI ELEMENT:
-  #   lvgl.yaml → lounge_lights_button & led_dimmer_lounge_radiator_button
+  #   lvgl.yaml → led_dimmer_bedroom_bed_button
   # ===========================================================================
   - platform: homeassistant
-    id: led_dimmer_lounge_radiator_lights
-    entity_id: light.led_dimmer_lounge_radiator
+    id: led_dimmer_bedroom_bed_lights
+    entity_id: light.led_dimmer_bedroom_bed
     trigger_on_initial_state: true
     on_state:
       then:
         lvgl.widget.update:
-          id: led_dimmer_lounge_radiator_lights_button
-          state:
-            checked: !lambda return x;
-
-  - platform: homeassistant
-    id: lounge_lights
-    entity_id: light.lounge_lights
-    trigger_on_initial_state: true
-    on_state:
-      then:
-        lvgl.widget.update:
-          id: lounge_lights_button
-          state:
-            checked: !lambda return x;
-
-  # ===========================================================================
-  # Automation: Fingerbot
-  # ===========================================================================
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → automation_fingerbot_lounge_toggle
-  # ===========================================================================
-  - platform: homeassistant
-    id: fingerbot_lounge_toggle
-    entity_id: binary_sensor.fingerbot_lounge_toggle
-    trigger_on_initial_state: false
-    on_state:
-      then:
-        lvgl.widget.update:
-          id: fingerbot_lounge_toggle_button
+          id: led_dimmer_bedroom_bed_lights_button
           state:
             checked: !lambda return x;
 
