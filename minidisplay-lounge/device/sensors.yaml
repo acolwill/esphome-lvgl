@@ -134,14 +134,14 @@ sensor:
     attribute: current_position
 
 ###############Backlight Dimmer##################
-  - platform: homeassistant
-    id: backlight_brightness
-    entity_id: light.touch_panel_backlight
-    attribute: brightness
-    on_value:
-      - lvgl.slider.update:
-          id: backlight_dimmer
-          value: !lambda return x;
+#  - platform: homeassistant
+#    id: backlight_brightness
+#    entity_id: light.touch_panel_backlight
+#    attribute: brightness
+#    on_value:
+#      - lvgl.slider.update:
+#          id: backlight_dimmer
+#          value: !lambda return x;
 
 
   # ===========================================================================
