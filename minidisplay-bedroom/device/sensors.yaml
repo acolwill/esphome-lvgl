@@ -318,13 +318,13 @@ binary_sensor:
   #   lvgl.yaml → led_dimmer_bedroom_bed_button
   # ===========================================================================
   - platform: homeassistant
-    id: led_dimmer_bedroom_bed_lights
-    entity_id: light.led_dimmer_bedroom_bed
+    id: led_dimmer_bed_lights
+    entity_id: light.led_dimmer_bed
     trigger_on_initial_state: true
     on_state:
       then:
         lvgl.widget.update:
-          id: led_dimmer_bedroom_bed_lights_button
+          id: led_dimmer_bed_button
           state:
             checked: !lambda return x;
 
