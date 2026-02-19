@@ -43,7 +43,7 @@ font:
     id: font_slider_pct_small
     size: 22
     bpp: 4
-    glyphs: "0123456789%"
+    #glyphs: "0123456789%"
 
 lvgl:
   style_definitions:
