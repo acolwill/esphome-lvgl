@@ -532,7 +532,7 @@ lvgl:
                                     id: lbl_display_bl_pct
                                     width: 100%
                                     text: "0%"
-                                    text_font: font_slider_pct_small
+                                    text_font: $icon_font
                                     text_color: 0xffffff
                                     text_align: CENTER
 
