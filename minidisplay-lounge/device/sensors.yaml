@@ -133,28 +133,16 @@ sensor:
     id: curtain_robot_kitchen_position
     attribute: current_position
 
-  # ===========================================================================
-  # SENSOR: Centauri Carbon Print Progress
-  # ===========================================================================
-  # WHAT IT MONITORS:
-  #   Current print progress percent from Home Assistant
-  #   Watches: sensor.centauri_carbon_percent_complete_helper
-  #
-  # WHAT IT UPDATES:
-  #   The print progress label inside the "Printer" button
-  #
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → print_progress_label
-  # ===========================================================================
-  #- platform: homeassistant
-  #  entity_id: sensor.centauri_carbon_percent_complete_helper
-  #  id: centauri_carbon_percent
-  #  on_value:
-  #    - lvgl.label.update:
-  #        id: print_progress_label
-  #        text:
-  #          format: "%.0f"
-  #          args: [ 'x' ]
+###############Backlight Dimmer##################
+  - platform: homeassistant
+    id: backlight_brightness
+    entity_id: light.touch_panel_backlight
+    attribute: brightness
+    on_value:
+      - lvgl.slider.update:
+          id: backlight_dimmer
+          value: !lambda return x;
+
 
   # ===========================================================================
   # SENSOR: Filament Heater Humidity
@@ -499,14 +487,3 @@ binary_sensor:
           id: rm4_mini_lounge_button
           state:
             checked: !lambda return x;
-
-###############Backlight Dimmer##################
-sensor:
-  - platform: homeassistant
-    id: backlight_brightness
-    entity_id: light.touch_panel_backlight
-    attribute: brightness
-    on_value:
-      - lvgl.slider.update:
-          id: backlight_dimmer
-          value: !lambda return x;
