@@ -264,7 +264,7 @@ binary_sensor:
   # ===========================================================================
   - platform: homeassistant
     id: bedroom_lights
-    entity_id: light.bedrom_lights
+    entity_id: light.bulb_led_bedroom
     trigger_on_initial_state: true
     on_state:
       then:
