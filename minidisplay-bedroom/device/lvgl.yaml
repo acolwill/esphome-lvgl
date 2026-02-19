@@ -159,7 +159,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: automation_led_dimmer_bed_button
+            id: led_dimmer_bed_button
             styles: control
             widgets:
               - label:
