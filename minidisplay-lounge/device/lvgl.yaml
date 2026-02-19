@@ -430,8 +430,8 @@ lvgl:
               # COLONNA SLIDER (2 slider impilati)
               # ==================================================
               - obj:
-                  width: 110
-                  height: 100%
+                  height: $button_height_single
+                  width: $button_width
                   bg_opa: TRANSP
                   border_width: 0
                   pad_all: 0
@@ -525,7 +525,7 @@ lvgl:
                                     id: lbl_display_bl_title
                                     width: 100%
                                     text: "Display"
-                                    text_font: font_btn
+                                    text_font: $icon_font
                                     text_color: 0xffffff
                                     text_align: CENTER
                                 - label:
