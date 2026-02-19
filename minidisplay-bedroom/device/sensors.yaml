@@ -138,30 +138,6 @@ sensor:
 binary_sensor:
 
   # ===========================================================================
-  # Automation: Desk LED's
-  # ===========================================================================
-  # WHAT IT MONITORS:
-  #   Whether the "Features" (LED accent) lighting scene is currently active
-  #   Watches: automation.office_scene_features in Home Assistant
-  #
-  # WHAT IT UPDATES:
-  #   The "Features" button's visual state (highlighted when active)
-  #
-  # RELATED UI ELEMENT:
-  #   lvgl.yaml → automation_led_s_desk_button
-  # ===========================================================================
-  - platform: homeassistant
-    id: automation_led_s_desk
-    entity_id: binary_sensor.led_s_desk_features
-    trigger_on_initial_state: true
-    on_state:
-      then:
-        lvgl.widget.update:
-          id: automation_led_s_desk_button
-          state:
-            checked: !lambda return x;
-
-  # ===========================================================================
   # Script: Light Fan
   # ===========================================================================
   - platform: homeassistant
