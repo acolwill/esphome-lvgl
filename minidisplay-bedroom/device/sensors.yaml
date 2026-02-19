@@ -296,9 +296,6 @@ binary_sensor:
           id: bedroom_lights_button
           state:
             checked: !lambda return x;
-        #- lvgl.widget.update:
-        #    id: desk_lights_icon
-        #    hidden: !lambda return x;
 
   # ===========================================================================
   # SENSOR: LED Dimmer - Bedroom Bed State
