@@ -18,7 +18,7 @@ binary_sensor:
       - delay: 10ms
       - light.turn_on:
           id: backlight
-          brightness: 50%
+          brightness: 100%
       - logger.log: "Screensaver is turned off"
 
     on_release:
