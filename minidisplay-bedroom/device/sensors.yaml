@@ -60,8 +60,8 @@ sensor:
   #   lvgl.yaml → temperatures label (id: temperatures)
   # ===========================================================================
   - platform: homeassistant
-    entity_id: sensor.air_quality_monitor_temperature
-    id: lounge_temperature
+    entity_id: sensor.temp_bedroom_temperature
+    id: bedroom_temperature
     on_value:
       - lvgl.label.update:
           id: temperatures
@@ -99,7 +99,7 @@ sensor:
           id: temperatures
           text:
             format: "%d° / %d°"
-            args: [ '(int)round(x)', '(int)round(id(lounge_temperature).state)' ]
+            args: [ '(int)round(x)', '(int)round(id(bedroom_temperature).state)' ]
 
   # ===========================================================================
   # SENSOR: Curtain Robot - Bedroom
@@ -123,7 +123,7 @@ sensor:
   #   lvgl.yaml → curtain_robot_bedroom_open_button, curtain_robot_bedroom_close_button
   # ===========================================================================
   - platform: homeassistant
-    entity_id: cover.curtain_bedroom_door
+    entity_id: cover.curtain_bedroom_window
     id: curtain_robot_bedroom_position
     attribute: current_position
 
@@ -265,7 +265,7 @@ binary_sensor:
   - platform: homeassistant
     id: bedroom_lights
     entity_id: light.switch_bedroom_light
-    trigger_on_initial_state: true
+    trigger_on_initial_state: false
     on_state:
       then:
         lvgl.widget.update:
