@@ -286,21 +286,21 @@ lvgl:
         # =========================================================================
         # Bedroom Lights page
         # =========================================================================
-    - id: bedroom_lights_page
-      layout: 
-        type: flex
-        flex_flow: row
-      scrollbar_mode: "off"
-      scroll_dir: "hor"
-      width: 100%
-      bg_color: Black
-      bg_opa: cover
-      pad_top: 34
-      pad_bottom: 5
-      pad_left: 5
-      pad_right: 5
-
-      widgets:
+        - id: bedroom_lights_page
+        layout: 
+          type: flex
+          flex_flow: row
+        scrollbar_mode: "off"
+        scroll_dir: "hor"
+        width: 100%
+        bg_color: Black
+        bg_opa: cover
+        pad_top: 34
+        pad_bottom: 5
+        pad_left: 5
+        pad_right: 5
+  
+        widgets:
 
         # =========================================================================
         # BUTTON: Back (Return to Main Page)
@@ -339,7 +339,7 @@ lvgl:
             height: $button_height_single
             width: $button_width
             checkable: true
-            id: bedroom_lights_button
+            id: bedroom_lights_button_2
             styles: control
             widgets:
               - label:
@@ -359,21 +359,21 @@ lvgl:
         # Bedroom Fan Page.
         # =========================================================================
 
-    - id: bedroom_fan_page
-      layout: 
-        type: flex
-        flex_flow: row_wrap
-      scrollbar_mode: "off"
-      scroll_dir: "hor"
-      width: 100%
-      bg_color: Black
-      bg_opa: cover
-      pad_top: 34
-      pad_bottom: 5
-      pad_left: 5
-      pad_right: 5
+        - id: bedroom_fan_page
+          layout: 
+            type: flex
+            flex_flow: row_wrap
+          scrollbar_mode: "off"
+          scroll_dir: "hor"
+          width: 100%
+          bg_color: Black
+          bg_opa: cover
+          pad_top: 34
+          pad_bottom: 5
+          pad_left: 5
+          pad_right: 5
 
-      widgets:
+          widgets:
 
         # =========================================================================
         # BUTTON: Back (Return to Main Page)
