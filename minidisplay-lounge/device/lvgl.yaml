@@ -430,7 +430,7 @@ lvgl:
               # SLIDER COLUMN (2 stacked sliders)
               # ==================================================
               - obj:
-                  height: $button_height
+                  height: $button_height_single
                   width: $button_width
                   bg_opa: TRANSP
                   border_width: 0
@@ -476,7 +476,7 @@ lvgl:
                               id: display_bl_slider
                               align: CENTER
                               width: $button_width
-                              height: $button_height
+                              height: $button_height_single
                               min_value: 0
                               max_value: 100
                               value: 0
@@ -509,7 +509,7 @@ lvgl:
                           - obj:
                               align: CENTER
                               width: $button_width
-                              height: $button_height
+                              height: $button_height_single
                               bg_opa: TRANSP
                               border_width: 0
                               pad_all: 0
