@@ -194,7 +194,7 @@ lvgl:
         - button: 
             height: $button_height_single
             width: $button_width
-            checkable: false
+            checkable: true
             id: automation_led_s_desk_button
             styles: control
             widgets:
