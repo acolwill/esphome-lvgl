@@ -359,568 +359,568 @@ lvgl:
         # Bedroom Fan Page.
         # =========================================================================
 
-        - id: bedroom_fan_page
-          layout: 
-            type: flex
-            flex_flow: row_wrap
-          scrollbar_mode: "off"
-          scroll_dir: "hor"
-          width: 100%
-          bg_color: Black
-          bg_opa: cover
-          pad_top: 34
-          pad_bottom: 5
-          pad_left: 5
-          pad_right: 5
+    - id: bedroom_fan_page
+      layout: 
+        type: flex
+        flex_flow: row_wrap
+      scrollbar_mode: "off"
+      scroll_dir: "hor"
+      width: 100%
+      bg_color: Black
+      bg_opa: cover
+      pad_top: 34
+      pad_bottom: 5
+      pad_left: 5
+      pad_right: 5
 
-          widgets:
+      widgets:
 
-        # =========================================================================
-        # BUTTON: Back (Return to Main Page)
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: bedroom_fan_back_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $chevron_left
-              - label:
-                  align: bottom_left
-                  text: "Back"
-            on_click:
-              - lvgl.page.show: main_page
+          # =========================================================================
+          # BUTTON: Back (Return to Main Page)
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: bedroom_fan_back_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $chevron_left
+                - label:
+                    align: bottom_left
+                    text: "Back"
+              on_click:
+                - lvgl.page.show: main_page
 
-        # =========================================================================
-        # BUTTON: Fan On Speed 1 Power
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Turns the Ceiling Fan on at speed 1
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: switch.toggle
-        #   Target: script.bedroom_fan_speed_1
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   It can't monitor scripts.
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: bedroom_fan_power1_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $fan_speed_1
-              - label:
-                  align: bottom_left
-                  text: "On 1"
-            on_click:
-              - homeassistant.service:
-                  service: script.bedroom_fan_speed_1
+          # =========================================================================
+          # BUTTON: Fan On Speed 1 Power
+          # =========================================================================
+          # WHAT THIS BUTTON DOES:
+          #   Turns the Ceiling Fan on at speed 1
+          #
+          # WHEN PRESSED:
+          #   Calls Home Assistant service: switch.toggle
+          #   Target: script.bedroom_fan_speed_1
+          #
+          # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+          #   It can't monitor scripts.
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: bedroom_fan_power1_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $fan_speed_1
+                - label:
+                    align: bottom_left
+                    text: "On 1"
+              on_click:
+                - homeassistant.service:
+                    service: script.bedroom_fan_speed_1
 
-        # =========================================================================
-        # BUTTON: Fan On Speed 2 Power
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Turns the Ceiling Fan on at speed 2
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: switch.toggle
-        #   Target: script.bedroom_fan_speed_2
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   It can't monitor scripts.
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: bedroom_fan_power2_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $fan_speed_2
-              - label:
-                  align: bottom_left
-                  text: "On 2"
-            on_click:
-              - homeassistant.service:
-                  service: script.bedroom_fan_speed_2
+          # =========================================================================
+          # BUTTON: Fan On Speed 2 Power
+          # =========================================================================
+          # WHAT THIS BUTTON DOES:
+          #   Turns the Ceiling Fan on at speed 2
+          #
+          # WHEN PRESSED:
+          #   Calls Home Assistant service: switch.toggle
+          #   Target: script.bedroom_fan_speed_2
+          #
+          # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+          #   It can't monitor scripts.
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: bedroom_fan_power2_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $fan_speed_2
+                - label:
+                    align: bottom_left
+                    text: "On 2"
+              on_click:
+                - homeassistant.service:
+                    service: script.bedroom_fan_speed_2
 
-        # =========================================================================
-        # BUTTON: Fan On Speed 3 Power
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Turns the Ceiling Fan on at speed 3
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: switch.toggle
-        #   Target: script.bedroom_fan_speed_3
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   It can't monitor scripts.
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: bedroom_fan_power3_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $fan_speed_3
-              - label:
-                  align: bottom_left
-                  text: "On 3"
-            on_click:
-              - homeassistant.service:
-                  service: script.bedroom_fan_speed_3
+          # =========================================================================
+          # BUTTON: Fan On Speed 3 Power
+          # =========================================================================
+          # WHAT THIS BUTTON DOES:
+          #   Turns the Ceiling Fan on at speed 3
+          #
+          # WHEN PRESSED:
+          #   Calls Home Assistant service: switch.toggle
+          #   Target: script.bedroom_fan_speed_3
+          #
+          # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+          #   It can't monitor scripts.
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: bedroom_fan_power3_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $fan_speed_3
+                - label:
+                    align: bottom_left
+                    text: "On 3"
+              on_click:
+                - homeassistant.service:
+                    service: script.bedroom_fan_speed_3
 
-        # =========================================================================
-        # BUTTON: Fan On Speed 4 Power
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Turns the Ceiling Fan on at speed 4
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: switch.toggle
-        #   Target: script.bedroom_fan_speed_4
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   It can't monitor scripts.
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: bedroom_fan_power4_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $fan_chevron_up
-              - label:
-                  align: bottom_left
-                  text: "On 4"
-            on_click:
-              - homeassistant.service:
-                  service: script.bedroom_fan_speed_4
+          # =========================================================================
+          # BUTTON: Fan On Speed 4 Power
+          # =========================================================================
+          # WHAT THIS BUTTON DOES:
+          #   Turns the Ceiling Fan on at speed 4
+          #
+          # WHEN PRESSED:
+          #   Calls Home Assistant service: switch.toggle
+          #   Target: script.bedroom_fan_speed_4
+          #
+          # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+          #   It can't monitor scripts.
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: bedroom_fan_power4_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $fan_chevron_up
+                - label:
+                    align: bottom_left
+                    text: "On 4"
+              on_click:
+                - homeassistant.service:
+                    service: script.bedroom_fan_speed_4
 
-        # =========================================================================
-        # BUTTON: Fan On Speed 5 Power
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Turns the Ceiling Fan on at speed 5
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: switch.toggle
-        #   Target: script.bedroom_fan_speed_5
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   It can't monitor scripts.
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: bedroom_fan_power5_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $fan_plus
-              - label:
-                  align: bottom_left
-                  text: "On 5"
-            on_click:
-              - homeassistant.service:
-                  service: script.bedroom_fan_speed_5
+          # =========================================================================
+          # BUTTON: Fan On Speed 5 Power
+          # =========================================================================
+          # WHAT THIS BUTTON DOES:
+          #   Turns the Ceiling Fan on at speed 5
+          #
+          # WHEN PRESSED:
+          #   Calls Home Assistant service: switch.toggle
+          #   Target: script.bedroom_fan_speed_5
+          #
+          # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+          #   It can't monitor scripts.
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: bedroom_fan_power5_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $fan_plus
+                - label:
+                    align: bottom_left
+                    text: "On 5"
+              on_click:
+                - homeassistant.service:
+                    service: script.bedroom_fan_speed_5
 
-        # =========================================================================
-        # BUTTON: Fan On Speed 6 Power
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Turns the Ceiling Fan on at speed 6
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: switch.toggle
-        #   Target: script.bedroom_fan_speed_6
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   It can't monitor scripts.
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: bedroom_fan_power6_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $fan_plus
-              - label:
-                  align: bottom_left
-                  text: "On 6"
-            on_click:
-              - homeassistant.service:
-                  service: script.bedroom_fan_speed_6
+          # =========================================================================
+          # BUTTON: Fan On Speed 6 Power
+          # =========================================================================
+          # WHAT THIS BUTTON DOES:
+          #   Turns the Ceiling Fan on at speed 6
+          #
+          # WHEN PRESSED:
+          #   Calls Home Assistant service: switch.toggle
+          #   Target: script.bedroom_fan_speed_6
+          #
+          # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+          #   It can't monitor scripts.
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: bedroom_fan_power6_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $fan_plus
+                - label:
+                    align: bottom_left
+                    text: "On 6"
+              on_click:
+                - homeassistant.service:
+                    service: script.bedroom_fan_speed_6
 
-        # =========================================================================
-        # BUTTON: Fan Reverse
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Reverses the Ceiling Fan
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: switch.toggle
-        #   Target: script.lounge_reverse
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   It can't monitor scripts.
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: bedroom_fan_powerreverse_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $fan
-              - label:
-                  align: bottom_left
-                  text: "Reverse"
-            on_click:
-              - homeassistant.service:
-                  service: script.bedroom_fan_reverse
+          # =========================================================================
+          # BUTTON: Fan Reverse
+          # =========================================================================
+          # WHAT THIS BUTTON DOES:
+          #   Reverses the Ceiling Fan
+          #
+          # WHEN PRESSED:
+          #   Calls Home Assistant service: switch.toggle
+          #   Target: script.lounge_reverse
+          #
+          # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+          #   It can't monitor scripts.
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: bedroom_fan_powerreverse_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $fan
+                - label:
+                    align: bottom_left
+                    text: "Reverse"
+              on_click:
+                - homeassistant.service:
+                    service: script.bedroom_fan_reverse
 
-        # =========================================================================
-        # BUTTON: Fan Off
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Turns the Ceiling Fan off
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: switch.toggle
-        #   Target: script.bedroom_fan_off
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   It can't monitor scripts.
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: bedroom_fan_poweroff_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $fan_off
-              - label:
-                  align: bottom_left
-                  text: "Off"
-            on_click:
-              - homeassistant.service:
-                  service: script.bedroom_fan_off
+          # =========================================================================
+          # BUTTON: Fan Off
+          # =========================================================================
+          # WHAT THIS BUTTON DOES:
+          #   Turns the Ceiling Fan off
+          #
+          # WHEN PRESSED:
+          #   Calls Home Assistant service: switch.toggle
+          #   Target: script.bedroom_fan_off
+          #
+          # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+          #   It can't monitor scripts.
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: bedroom_fan_poweroff_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $fan_off
+                - label:
+                    align: bottom_left
+                    text: "Off"
+              on_click:
+                - homeassistant.service:
+                    service: script.bedroom_fan_off
 
-        # =========================================================================
-        # Curtain Robot - Bedroom page.
-        # =========================================================================
+          # =========================================================================
+          # Curtain Robot - Bedroom page.
+          # =========================================================================
 
-        - id: curtain_bedroom_page
-          layout: 
-            type: flex
-            flex_flow: row
-          scrollbar_mode: "off"
-          scroll_dir: "hor"
-          width: 100%
-          bg_color: Black
-          bg_opa: cover
-          pad_top: 34
-          pad_bottom: 5
-          pad_left: 5
-          pad_right: 5
+    - id: curtain_bedroom_page
+      layout: 
+        type: flex
+        flex_flow: row
+      scrollbar_mode: "off"
+      scroll_dir: "hor"
+      width: 100%
+      bg_color: Black
+      bg_opa: cover
+      pad_top: 34
+      pad_bottom: 5
+      pad_left: 5
+      pad_right: 5
 
-          widgets:
+      widgets:
 
-        # =========================================================================
-        # BUTTON: Back (Return to Main Page)
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: curtain_robot_bedroom_back_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $chevron_left
-              - label:
-                  align: bottom_left
-                  text: "Back"
-            on_click:
-              - lvgl.page.show: main_page
+          # =========================================================================
+          # BUTTON: Back (Return to Main Page)
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: curtain_robot_bedroom_back_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $chevron_left
+                - label:
+                    align: bottom_left
+                    text: "Back"
+              on_click:
+                - lvgl.page.show: main_page
 
-        # =========================================================================
-        # BUTTON: Curtain Open (100%)
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Opens the kitchen curtain completely (100% open position).
-        #   Maximum natural light enters the room.
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: cover.set_cover_position
-        #   Target: cover.curtain_robot_bedroom
-        #   Position: 100 (fully open)
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml reads the blind's current position from Home Assistant.
-        #   A template sensor (curtain_robot_bedroom_100) checks if position is within
-        #   3% of 100%. If true, this button appears "checked" (highlighted).
-        #   The 3% tolerance accounts for minor motor positioning differences.
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: true
-            id: curtain_robot_bedroom_open_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $curtain_open
-              - label:
-                  align: bottom_left
-                  text: "Open"
-            on_click:
-              - homeassistant.service:
-                  service: cover.set_cover_position
-                  data:
-                    entity_id: cover.curtain_robot_bedroom
-                    position: "0"
+          # =========================================================================
+          # BUTTON: Curtain Open (100%)
+          # =========================================================================
+          # WHAT THIS BUTTON DOES:
+          #   Opens the kitchen curtain completely (100% open position).
+          #   Maximum natural light enters the room.
+          #
+          # WHEN PRESSED:
+          #   Calls Home Assistant service: cover.set_cover_position
+          #   Target: cover.curtain_robot_bedroom
+          #   Position: 100 (fully open)
+          #
+          # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+          #   sensors.yaml reads the blind's current position from Home Assistant.
+          #   A template sensor (curtain_robot_bedroom_100) checks if position is within
+          #   3% of 100%. If true, this button appears "checked" (highlighted).
+          #   The 3% tolerance accounts for minor motor positioning differences.
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: true
+              id: curtain_robot_bedroom_open_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $curtain_open
+                - label:
+                    align: bottom_left
+                    text: "Open"
+              on_click:
+                - homeassistant.service:
+                    service: cover.set_cover_position
+                    data:
+                      entity_id: cover.curtain_robot_bedroom
+                      position: "0"
 
-        # =========================================================================
-        # BUTTON: Curtain Close (0%)
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Closes the front door curtain completely (0% open position).
-        #   Blocks all natural light and provides privacy.
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: cover.set_cover_position
-        #   Target: cover.curtain_robot_bedroom
-        #   Position: 0 (fully closed)
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml reads the curtain robot's current position from Home Assistant.
-        #   A template sensor (curtain_robot_bedroom_0) checks if position is within
-        #   3% of 0%. If true, this button appears "checked" (highlighted).
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: true
-            id: curtain_robot_bedroom_close_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $curtain_closed
-              - label:
-                  align: bottom_left
-                  text: "Close"
-            on_click:
-              - homeassistant.service:
-                  service: cover.set_cover_position
-                  data:
-                    entity_id: cover.curtain_robot_bedroom
-                    position: "100"
+          # =========================================================================
+          # BUTTON: Curtain Close (0%)
+          # =========================================================================
+          # WHAT THIS BUTTON DOES:
+          #   Closes the front door curtain completely (0% open position).
+          #   Blocks all natural light and provides privacy.
+          #
+          # WHEN PRESSED:
+          #   Calls Home Assistant service: cover.set_cover_position
+          #   Target: cover.curtain_robot_bedroom
+          #   Position: 0 (fully closed)
+          #
+          # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+          #   sensors.yaml reads the curtain robot's current position from Home Assistant.
+          #   A template sensor (curtain_robot_bedroom_0) checks if position is within
+          #   3% of 0%. If true, this button appears "checked" (highlighted).
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: true
+              id: curtain_robot_bedroom_close_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $curtain_closed
+                - label:
+                    align: bottom_left
+                    text: "Close"
+              on_click:
+                - homeassistant.service:
+                    service: cover.set_cover_position
+                    data:
+                      entity_id: cover.curtain_robot_bedroom
+                      position: "100"
 
-        # =========================================================================
-        # RM4 Mini - Lounge page.
-        # =========================================================================
-        - id: rm4_mini_lounge_page
-          layout:
-            type: flex
-            flex_flow: row_wrap
-          scrollbar_mode: "off"
-          scroll_dir: "hor"
-          width: 100%
-          bg_color: Black
-          bg_opa: cover
-          pad_top: 34
-          pad_bottom: 5
-          pad_left: 5
-          pad_right: 5
+          # =========================================================================
+          # RM4 Mini - Lounge page.
+          # =========================================================================
+    - id: rm4_mini_lounge_page
+      layout:
+        type: flex
+        flex_flow: row_wrap
+      scrollbar_mode: "off"
+      scroll_dir: "hor"
+      width: 100%
+      bg_color: Black
+      bg_opa: cover
+      pad_top: 34
+      pad_bottom: 5
+      pad_left: 5
+      pad_right: 5
 
-          widgets:
+      widgets:
 
-        # =========================================================================
-        # BUTTON: Back (Return to Main Page)
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: rm4_mini_lounge_back_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $chevron_left
-              - label:
-                  align: bottom_left
-                  text: "Back"
-            on_click:
-              - lvgl.page.show: main_page
+          # =========================================================================
+          # BUTTON: Back (Return to Main Page)
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: rm4_mini_lounge_back_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $chevron_left
+                - label:
+                    align: bottom_left
+                    text: "Back"
+              on_click:
+                - lvgl.page.show: main_page
 
-        # =========================================================================
-        # BUTTON: Power Toggle
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: rm4_mini_lounge_power_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $power_toggle
-              - label:
-                  align: bottom_left
-                  text: "Power"
-            on_click:
-              - homeassistant.service:
-                  service: script.lounge_amp_power_on
+          # =========================================================================
+          # BUTTON: Power Toggle
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: rm4_mini_lounge_power_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $power_toggle
+                - label:
+                    align: bottom_left
+                    text: "Power"
+              on_click:
+                - homeassistant.service:
+                    service: script.lounge_amp_power_on
 
-        # =========================================================================
-        # BUTTON: Source TV
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: rm4_mini_lounge_source_tv_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $tv
-              - label:
-                  align: bottom_left
-                  text: "TV"
-            on_click:
-              - homeassistant.service:
-                  service: script.lounge_amp_source_tv
+          # =========================================================================
+          # BUTTON: Source TV
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: rm4_mini_lounge_source_tv_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $tv
+                - label:
+                    align: bottom_left
+                    text: "TV"
+              on_click:
+                - homeassistant.service:
+                    service: script.lounge_amp_source_tv
 
-        # =========================================================================
-        # BUTTON: Source Satellite
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: rm4_mini_lounge_source_satellite_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $satellite
-              - label:
-                  align: bottom_left
-                  text: "SAT/CATV"
-            on_click:
-              - homeassistant.service:
-                  service: script.lounge_amp_source_satellite
+          # =========================================================================
+          # BUTTON: Source Satellite
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: rm4_mini_lounge_source_satellite_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $satellite
+                - label:
+                    align: bottom_left
+                    text: "SAT/CATV"
+              on_click:
+                - homeassistant.service:
+                    service: script.lounge_amp_source_satellite
 
-        # =========================================================================
-        # BUTTON: Volume Up
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: rm4_mini_lounge_vol_up_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $volume_up
-              - label:
-                  align: bottom_left
-                  text: "Vol+"
-            on_click:
-              - homeassistant.service:
-                  service: script.lounge_amp_vol_up
+          # =========================================================================
+          # BUTTON: Volume Up
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: rm4_mini_lounge_vol_up_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $volume_up
+                - label:
+                    align: bottom_left
+                    text: "Vol+"
+              on_click:
+                - homeassistant.service:
+                    service: script.lounge_amp_vol_up
 
-        # =========================================================================
-        # BUTTON: Volume Down
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: rm4_mini_lounge_vol_down_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $volume_down
-              - label:
-                  align: bottom_left
-                  text: "Vol-"
-            on_click:
-              - homeassistant.service:
-                  service: script.lounge_amp_vol_down
+          # =========================================================================
+          # BUTTON: Volume Down
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: rm4_mini_lounge_vol_down_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $volume_down
+                - label:
+                    align: bottom_left
+                    text: "Vol-"
+              on_click:
+                - homeassistant.service:
+                    service: script.lounge_amp_vol_down
 
-        # =========================================================================
-        # BUTTON: Volume Mute
-        # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: rm4_mini_lounge_vol_mute_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $volume_up
-              - label:
-                  align: bottom_left
-                  text: "Mute"
-            on_click:
-              - homeassistant.service:
-                  service: script.lounge_amp_vol_mute
+          # =========================================================================
+          # BUTTON: Volume Mute
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: rm4_mini_lounge_vol_mute_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $volume_up
+                - label:
+                    align: bottom_left
+                    text: "Mute"
+              on_click:
+                - homeassistant.service:
+                    service: script.lounge_amp_vol_mute
