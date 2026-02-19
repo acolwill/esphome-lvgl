@@ -206,7 +206,7 @@ binary_sensor:
   # ===========================================================================
   - platform: homeassistant
     id: automation_led_s_desk
-    entity_id: binary_sensor.led_s_desk_features
+    entity_id: light.switch_3xusb_desk_light
     trigger_on_initial_state: true
     on_state:
       then:
