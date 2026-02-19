@@ -96,7 +96,7 @@ lvgl:
         - button: 
             height: $button_height_single
             width: $button_width
-            checkable: false
+            checkable: true
             id: bedroom_lights_button
             styles: control
             widgets:
@@ -158,7 +158,7 @@ lvgl:
         - button: 
             height: $button_height_single
             width: $button_width
-            checkable: false
+            checkable: true
             id: led_dimmer_bed_button
             styles: control
             widgets:
