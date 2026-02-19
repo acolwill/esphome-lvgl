@@ -447,12 +447,12 @@ lvgl:
                     # ================================================
                     - obj:
                         id: display_bl_container
-                        width: 100%
+                        #width: 100%
                         flex_grow: 1
                         bg_color: 0x2d2d2d
                         bg_opa: COVER
                         border_color: 0x4a4a4a
-                        border_width: 2
+                        #border_width: 2
                         radius: 12
                         pad_all: 0
                         clickable: false
@@ -462,7 +462,7 @@ lvgl:
                           - obj:
                               id: display_bl_fill
                               align: BOTTOM_MID
-                              width: 100%
+                              #width: 100%
                               height: 0%
                               bg_color: 0x4da8da
                               bg_opa: COVER
@@ -475,7 +475,7 @@ lvgl:
                           - slider:
                               id: display_bl_slider
                               align: CENTER
-                              width: 100%
+                              #width: 100%
                               height: 100%
                               min_value: 0
                               max_value: 100
@@ -508,8 +508,8 @@ lvgl:
                           # Testo sovrapposto
                           - obj:
                               align: CENTER
-                              width: 100%
-                              height: 100%
+                              #width: 100%
+                              #height: 100%
                               bg_opa: TRANSP
                               border_width: 0
                               pad_all: 0
@@ -519,18 +519,18 @@ lvgl:
                                 flex_flow: COLUMN
                                 flex_align_main: CENTER
                                 flex_align_cross: CENTER
-                                pad_row: 2
+                                #pad_row: 2
                               widgets:
                                 - label:
                                     id: lbl_display_bl_title
-                                    width: 100%
+                                    #width: 100%
                                     text: "Display"
                                     text_font: $icon_font
                                     text_color: 0xffffff
                                     text_align: CENTER
                                 - label:
                                     id: lbl_display_bl_pct
-                                    width: 100%
+                                    #width: 100%
                                     text: "0%"
                                     text_font: font_slider_pct_small
                                     text_color: 0xffffff
