@@ -395,7 +395,7 @@ lvgl:
         #   Opens the RM4 Mini IR control page.
         # =========================================================================
         - button: 
-            height: $button_height_single
+            height: $button_width
             width: $button_width
             checkable: false
             id: rm4_mini_lounge_button
@@ -410,6 +410,21 @@ lvgl:
                   text: "Sony IR"
             on_click:
               - lvgl.page.show: rm4_mini_lounge_page
+
+######################Backlight Dimmer####################
+          - slider:
+              id: backlight_dimmer
+              width: $button_width
+              height: $button_width
+              pad_all: 8
+              min_value: 0
+              max_value: 255
+              on_release:
+                - homeassistant.service:
+                    service: light.turn_on
+                    data:
+                      entity_id: light.touch_panel_backlight
+                      brightness: !lambda return int(x);
 
         # =========================================================================
         # BUTTON: Dimmed Scene
