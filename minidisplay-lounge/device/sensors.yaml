@@ -415,7 +415,7 @@ binary_sensor:
   # ===========================================================================
   - platform: homeassistant
     id: desk_lights
-    entity_id: light.desk_lights
+    entity_id: light.kajplats_e27_ws_globe_470lm
     trigger_on_initial_state: true
     on_state:
       then:
