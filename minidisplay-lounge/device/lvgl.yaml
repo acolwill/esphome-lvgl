@@ -412,7 +412,7 @@ lvgl:
               - lvgl.page.show: rm4_mini_lounge_page
 
         # ======================================================
-        # SEZIONE INFERIORE - 2 Slider + Bottoni
+        # LOWER SECTION - 2 Sliders + Buttons
         # ======================================================
         - obj:
             width: 100%
@@ -427,10 +427,10 @@ lvgl:
 
             widgets:
               # ==================================================
-              # COLONNA SLIDER (2 slider impilati)
+              # SLIDER COLUMN (2 stacked sliders)
               # ==================================================
               - obj:
-                  height: $button_height_single
+                  height: $button_height
                   width: $button_width
                   bg_opa: TRANSP
                   border_width: 0
@@ -443,11 +443,11 @@ lvgl:
 
                   widgets:
                     # ================================================
-                    # SLIDER 1: DISPLAY BACKLIGHT (sopra)
+                    # SLIDER 1: DISPLAY BACKLIGHT (above)
                     # ================================================
                     - obj:
                         id: display_bl_container
-                        #width: 100%
+                        width: $button_width
                         flex_grow: 1
                         bg_color: 0x2d2d2d
                         bg_opa: COVER
@@ -458,11 +458,11 @@ lvgl:
                         clickable: false
 
                         widgets:
-                          # Barra di riempimento (dal basso) - BLU
+                          # Fill Bar (from bottom) - BLUE
                           - obj:
                               id: display_bl_fill
                               align: BOTTOM_MID
-                              #width: 100%
+                              width: $button_width
                               height: 0%
                               bg_color: 0x4da8da
                               bg_opa: COVER
@@ -471,12 +471,12 @@ lvgl:
                               pad_all: 0
                               clickable: false
 
-                          # LVGL Slider sovrapposto per interazione touch
+                          # LVGL Slider overlay for touch interaction
                           - slider:
                               id: display_bl_slider
                               align: CENTER
-                              #width: 100%
-                              height: 100%
+                              width: $button_width
+                              height: $button_height
                               min_value: 0
                               max_value: 100
                               value: 0
@@ -505,11 +505,11 @@ lvgl:
                                       brightness: !lambda 'return lv_slider_get_value(id(display_bl_slider)) / 100.0;'
                                       transition_length: 100ms
 
-                          # Testo sovrapposto
+                          # Overlapping text
                           - obj:
                               align: CENTER
-                              #width: 100%
-                              #height: 100%
+                              width: $button_width
+                              height: $button_height
                               bg_opa: TRANSP
                               border_width: 0
                               pad_all: 0
@@ -523,14 +523,14 @@ lvgl:
                               widgets:
                                 - label:
                                     id: lbl_display_bl_title
-                                    #width: 100%
+                                    width: $button_width
                                     text: "Display"
                                     text_font: $icon_font
                                     text_color: 0xffffff
                                     text_align: CENTER
                                 - label:
                                     id: lbl_display_bl_pct
-                                    #width: 100%
+                                    width: $button_width
                                     text: "0%"
                                     text_font: font_slider_pct_small
                                     text_color: 0xffffff
