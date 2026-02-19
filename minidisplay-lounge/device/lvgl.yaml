@@ -525,7 +525,7 @@ lvgl:
                                     id: lbl_display_bl_title
                                     width: 100%
                                     text: "Display"
-                                    text_font: $font_slider_pct_small
+                                    text_font: font_slider_pct_small
                                     text_color: 0xffffff
                                     text_align: CENTER
                                 - label:
