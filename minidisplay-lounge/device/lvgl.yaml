@@ -411,20 +411,131 @@ lvgl:
             on_click:
               - lvgl.page.show: rm4_mini_lounge_page
 
-######################Backlight Dimmer####################
-          - slider:
-              id: backlight_dimmer
-              width: $button_width
-              height: $button_width
-              pad_all: 8
-              min_value: 0
-              max_value: 255
-              on_release:
-                - homeassistant.service:
-                    service: light.turn_on
-                    data:
-                      entity_id: light.touch_panel_backlight
-                      brightness: !lambda return int(x);
+        # ======================================================
+        # SEZIONE INFERIORE - 2 Slider + Bottoni
+        # ======================================================
+        - obj:
+            width: 100%
+            flex_grow: 1
+            bg_opa: TRANSP
+            border_width: 0
+            pad_all: 0
+            layout:
+              type: flex
+              flex_flow: ROW
+              pad_column: 6
+
+            widgets:
+              # ==================================================
+              # COLONNA SLIDER (2 slider impilati)
+              # ==================================================
+              - obj:
+                  width: 110
+                  height: 100%
+                  bg_opa: TRANSP
+                  border_width: 0
+                  pad_all: 0
+                  layout:
+                    type: flex
+                    flex_flow: COLUMN
+                    pad_row: 6
+
+
+                  widgets:
+                    # ================================================
+                    # SLIDER 1: DISPLAY BACKLIGHT (sopra)
+                    # ================================================
+                    - obj:
+                        id: display_bl_container
+                        width: 100%
+                        flex_grow: 1
+                        bg_color: 0x2d2d2d
+                        bg_opa: COVER
+                        border_color: 0x4a4a4a
+                        border_width: 2
+                        radius: 12
+                        pad_all: 0
+                        clickable: false
+
+                        widgets:
+                          # Barra di riempimento (dal basso) - BLU
+                          - obj:
+                              id: display_bl_fill
+                              align: BOTTOM_MID
+                              width: 100%
+                              height: 0%
+                              bg_color: 0x4da8da
+                              bg_opa: COVER
+                              border_width: 0
+                              radius: 0
+                              pad_all: 0
+                              clickable: false
+
+                          # LVGL Slider sovrapposto per interazione touch
+                          - slider:
+                              id: display_bl_slider
+                              align: CENTER
+                              width: 100%
+                              height: 100%
+                              min_value: 0
+                              max_value: 100
+                              value: 0
+                              bg_opa: TRANSP
+                              border_width: 0
+                              pad_all: 0
+                              indicator:
+                                bg_opa: TRANSP
+                              knob:
+                                bg_opa: TRANSP
+                                width: 0
+                                height: 0
+                                pad_all: 0
+                              on_value:
+                                then:
+                                  - lvgl.label.update:
+                                      id: lbl_display_bl_pct
+                                      text:
+                                        format: "%d%%"
+                                        args: ['(int)lv_slider_get_value(id(display_bl_slider))']
+                                  - lambda: |-
+                                      int val = (int)lv_slider_get_value(id(display_bl_slider));
+                                      lv_obj_set_height(id(display_bl_fill), lv_pct(val));
+                                  - light.turn_on:
+                                      id: display_backlight
+                                      brightness: !lambda 'return lv_slider_get_value(id(display_bl_slider)) / 100.0;'
+                                      transition_length: 100ms
+
+                          # Testo sovrapposto
+                          - obj:
+                              align: CENTER
+                              width: 100%
+                              height: 100%
+                              bg_opa: TRANSP
+                              border_width: 0
+                              pad_all: 0
+                              clickable: false
+                              layout:
+                                type: flex
+                                flex_flow: COLUMN
+                                flex_align_main: CENTER
+                                flex_align_cross: CENTER
+                                pad_row: 2
+                              widgets:
+                                - label:
+                                    id: lbl_display_bl_title
+                                    width: 100%
+                                    text: "Display"
+                                    text_font: font_btn
+                                    text_color: 0xffffff
+                                    text_align: CENTER
+                                - label:
+                                    id: lbl_display_bl_pct
+                                    width: 100%
+                                    text: "0%"
+                                    text_font: font_slider_pct_small
+                                    text_color: 0xffffff
+                                    text_align: CENTER
+
 
         # =========================================================================
         # BUTTON: Dimmed Scene
