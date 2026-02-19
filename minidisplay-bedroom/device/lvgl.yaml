@@ -335,25 +335,25 @@ lvgl:
         # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
         #   sensors.yaml monitors: light.bedroom_lights
         # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: true
-            id: bedroom_lights_button_2
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $lightbulb
-              - label:
-                  align: bottom_left
-                  text: "Bulbs"
-            on_click:
-              - homeassistant.service:
-                  service: automation.trigger
-                  data:
-                    entity_id: automation.lamp_lounge
+        #- button: 
+        #    height: $button_height_single
+        #    width: $button_width
+        #    checkable: true
+        #    id: bedroom_lights_button
+        #    styles: control
+        #    widgets:
+        #      - label:
+        #          text_font: $icon_font
+        #          align: top_left
+        #          text: $lightbulb
+        #      - label:
+        #          align: bottom_left
+        #          text: "Bulbs"
+        #    on_click:
+        #      - homeassistant.service:
+        #          service: automation.trigger
+        #          data:
+        #            entity_id: automation.lamp_lounge
 
         # =========================================================================
         # Bedroom Fan Page.
