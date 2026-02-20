@@ -416,18 +416,14 @@ lvgl:
         # ======================================================
         - obj:
             width: $button_width
-            #flex_grow: 1
+            flex_grow: 1
             bg_opa: TRANSP
             border_width: 0
             pad_all: 0
             layout:
               type: flex
               flex_flow: row_wrap
-              #pad_column: 6
-              pad_top: 34
-              pad_bottom: 5
-              pad_left: 5
-              pad_right: 5
+              pad_column: 5
 
             widgets:
               # ==================================================
@@ -442,7 +438,7 @@ lvgl:
                   layout:
                     type: flex
                     flex_flow: COLUMN
-                    #pad_row: 6
+                    pad_row: 5
 
 
                   widgets:
@@ -452,12 +448,12 @@ lvgl:
                     - obj:
                         id: display_bl_container
                         width: $button_width
-                        #flex_grow: 1
+                        flex_grow: 1
                         bg_color: 0x2d2d2d
                         bg_opa: COVER
                         border_color: 0x4a4a4a
-                        #border_width: 2
-                        #radius: 12
+                        border_width: 2
+                        radius: 12
                         pad_all: 0
                         clickable: false
 
@@ -523,7 +519,7 @@ lvgl:
                                 flex_flow: row_wrap
                                 flex_align_main: CENTER
                                 flex_align_cross: CENTER
-                                #pad_row: 2
+                                pad_row: 2
                               widgets:
                                 - label:
                                     id: lbl_display_bl_title
