@@ -44,6 +44,11 @@ font:
     size: 22
     bpp: 4
     #glyphs: "0123456789%"
+    
+  - file: "gfonts://Roboto"
+    id: font_btn
+    size: 13
+    bpp: 4
 
 lvgl:
   style_definitions:
