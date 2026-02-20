@@ -412,34 +412,34 @@ lvgl:
               - lvgl.page.show: rm4_mini_lounge_page
 
         # ======================================================
-        # LOWER SECTION - 2 Sliders + Buttons
+        # Backlight Control - Slider
         # ======================================================
         - obj:
             width: $button_width
+            height: $button_height_single
             flex_grow: 1
             bg_opa: TRANSP
             border_width: 0
             pad_all: 0
             layout:
               type: flex
-              flex_flow: row_wrap
-              pad_column: 5
+              flex_flow: ROW
+              pad_column: 6
 
             widgets:
               # ==================================================
               # SLIDER COLUMN (2 stacked sliders)
               # ==================================================
               - obj:
-                  height: $button_height_single
-                  width: $button_width
+                  width: 100%
+                  height: 100%
                   bg_opa: TRANSP
                   border_width: 0
                   pad_all: 0
                   layout:
                     type: flex
                     flex_flow: COLUMN
-                    pad_row: 5
-
+                    pad_row: 6
 
                   widgets:
                     # ================================================
@@ -447,7 +447,7 @@ lvgl:
                     # ================================================
                     - obj:
                         id: display_bl_container
-                        width: $button_width
+                        width: 100%
                         flex_grow: 1
                         bg_color: 0x2d2d2d
                         bg_opa: COVER
@@ -458,11 +458,11 @@ lvgl:
                         clickable: false
 
                         widgets:
-                           Fill Bar (from bottom) - BLUE
+                          # Fill Bar (from bottom) - BLUE
                           - obj:
                               id: display_bl_fill
                               align: BOTTOM_MID
-                              width: $button_width
+                              width: 100%
                               height: 0%
                               bg_color: 0x4da8da
                               bg_opa: COVER
@@ -475,8 +475,8 @@ lvgl:
                           - slider:
                               id: display_bl_slider
                               align: CENTER
-                              width: $button_width
-                              height: $button_height_single
+                              width: 100%
+                              height: 100%
                               min_value: 0
                               max_value: 100
                               value: 0
@@ -508,72 +508,34 @@ lvgl:
                           # Overlapping text
                           - obj:
                               align: CENTER
-                              width: $button_width
-                              height: $button_height_single
+                              width: 100%
+                              height: 100%
                               bg_opa: TRANSP
                               border_width: 0
                               pad_all: 0
                               clickable: false
                               layout:
                                 type: flex
-                                flex_flow: row_wrap
+                                flex_flow: COLUMN
                                 flex_align_main: CENTER
                                 flex_align_cross: CENTER
                                 pad_row: 2
                               widgets:
                                 - label:
                                     id: lbl_display_bl_title
-                                    width: $button_width
+                                    width: 100%
                                     text: "Display"
                                     text_font: font_btn
                                     text_color: 0xffffff
                                     text_align: CENTER
                                 - label:
                                     id: lbl_display_bl_pct
-                                    width: $button_width
+                                    width: 100%
                                     text: "0%"
-                                    text_font: roboto18_font
+                                    text_font: font_slider_pct_small
                                     text_color: 0xffffff
                                     text_align: CENTER
 
-
-        # =========================================================================
-        # BUTTON: Dimmed Scene
-        # =========================================================================
-        # WHAT THIS BUTTON DOES:
-        #   Activates the "Dimmed" lighting scene - very low light levels,
-        #   useful for watching movies or reducing eye strain at night.
-        #
-        # WHEN PRESSED:
-        #   Calls Home Assistant service: scene.turn_on
-        #   Target: scene.office_dimmed
-        #
-        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
-        #   sensors.yaml monitors: binary_sensor.office_scene_dimmed
-        #   When that sensor is ON, this button appears "checked" (highlighted)
-        # =========================================================================
-        #  button: 
-        #    height: $button_height_single
-        #    width: $button_width
-        #    checkable: false
-        #    id: office_scene_dimmed_button
-        #    styles: control
-        #    widgets:
-        #      - label:
-        #          text_font: $icon_font
-        #          align: top_left
-        #          id: office_scene_dimmed_icon                
-        #          text: $nightlight
-        #      - label:
-        #          align: bottom_left
-        #          id: office_scene_dimmed_label
-        #          text: "Dimmed"
-        #    on_press:
-        #      - homeassistant.service:
-        #          service: scene.turn_on
-        #          data:
-        #            entity_id: scene.office_dimmed
-        # =========================================================================
 
         # =========================================================================
         # Lounge Lights page
