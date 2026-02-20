@@ -420,10 +420,15 @@ lvgl:
             bg_opa: TRANSP
             #border_width: 1
             #pad_all: 1
-           # layout:
-              #type: flex
-              #flex_flow: COLUMN
-              #pad_row: 6
+            layout:
+              type: flex
+              flex_flow: row_wrap
+              scrollbar_mode: "off"
+              scroll_dir: "ver"
+              pad_top: 34
+              pad_bottom: 5
+              pad_left: 5
+              pad_right: 5
 
 
             widgets:
@@ -486,11 +491,11 @@ lvgl:
                         border_width: 1
                         pad_all: 0
                         clickable: false
-                        #layout:
-                          #type: flex
-                          #flex_flow: COLUMN
-                          #flex_align_main: CENTER
-                          #flex_align_cross: CENTER
+                        layout:
+                          type: flex
+                          flex_flow: row_wrap
+                          flex_align_main: CENTER
+                          flex_align_cross: CENTER
                           #pad_row: 2
                         widgets:
                           - label:
