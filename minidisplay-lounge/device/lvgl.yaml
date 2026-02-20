@@ -431,7 +431,7 @@ lvgl:
               # SLIDER COLUMN (2 stacked sliders)
               # ==================================================
               - obj:
-                  width: 100%
+                  width: $button_width
                   height: 100%
                   bg_opa: TRANSP
                   border_width: 0
