@@ -525,7 +525,7 @@ lvgl:
                                     id: lbl_display_bl_title
                                     width: $button_width
                                     text: "Display"
-                                    text_font: $icon_font
+                                    text_font: font_btn
                                     text_color: 0xffffff
                                     text_align: CENTER
                                 - label:
