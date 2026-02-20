@@ -414,48 +414,48 @@ lvgl:
         # ======================================================
         # LOWER SECTION - 2 Sliders + Buttons
         # ======================================================
+        #- obj:
+        #    width: $button_width
+        #    flex_grow: 1
+        #    bg_opa: TRANSP
+        #    border_width: 0
+        #    pad_all: 0
+        #    layout:
+        #      type: flex
+        #      flex_flow: ROW
+              #pad_column: 6
+
+        #    widgets:
+        # ==================================================
+        # SLIDER COLUMN (2 stacked sliders)
+        # ==================================================
         - obj:
+            height: $button_height_single
             width: $button_width
-            flex_grow: 1
             bg_opa: TRANSP
             border_width: 0
             pad_all: 0
             layout:
               type: flex
-              flex_flow: ROW
-              #pad_column: 6
+              flex_flow: COLUMN
+              #pad_row: 6
+
 
             widgets:
-              # ==================================================
-              # SLIDER COLUMN (2 stacked sliders)
-              # ==================================================
+              # ================================================
+              # SLIDER 1: DISPLAY BACKLIGHT (above)
+              # ================================================
               - obj:
-                  height: $button_height_single
+                  id: display_bl_container
                   width: $button_width
-                  bg_opa: TRANSP
-                  border_width: 0
+                  #flex_grow: 1
+                  bg_color: 0x2d2d2d
+                  bg_opa: COVER
+                  border_color: 0x4a4a4a
+                  #border_width: 2
+                  #radius: 12
                   pad_all: 0
-                  layout:
-                    type: flex
-                    flex_flow: COLUMN
-                    #pad_row: 6
-
-
-                  widgets:
-                    # ================================================
-                    # SLIDER 1: DISPLAY BACKLIGHT (above)
-                    # ================================================
-                    - obj:
-                        id: display_bl_container
-                        width: $button_width
-                        #flex_grow: 1
-                        bg_color: 0x2d2d2d
-                        bg_opa: COVER
-                        border_color: 0x4a4a4a
-                        #border_width: 2
-                        #radius: 12
-                        pad_all: 0
-                        clickable: false
+                  clickable: false
 
                         #widgets:
                           # Fill Bar (from bottom) - BLUE
@@ -472,69 +472,69 @@ lvgl:
                           #    clickable: false
 
                           # LVGL Slider overlay for touch interaction
-                          - slider:
-                              id: display_bl_slider
-                              align: CENTER
-                              width: $button_width
-                              height: $button_height_single
-                              min_value: 0
-                              max_value: 100
-                              value: 0
-                              bg_opa: TRANSP
-                              border_width: 0
-                              pad_all: 0
-                              indicator:
-                                bg_opa: TRANSP
-                              knob:
-                                bg_opa: TRANSP
-                                width: 0
-                                height: 0
-                                pad_all: 0
-                              on_value:
-                                then:
-                                  - lvgl.label.update:
-                                      id: lbl_display_bl_pct
-                                      text:
-                                        format: "%d%%"
-                                        args: ['(int)lv_slider_get_value(id(display_bl_slider))']
-                                  - lambda: |-
-                                      int val = (int)lv_slider_get_value(id(display_bl_slider));
-                                      lv_obj_set_height(id(display_bl_fill), lv_pct(val));
-                                  - light.turn_on:
-                                      id: display_backlight
-                                      brightness: !lambda 'return lv_slider_get_value(id(display_bl_slider)) / 100.0;'
-                                      transition_length: 100ms
+                    - slider:
+                        id: display_bl_slider
+                        align: CENTER
+                        width: $button_width
+                        height: $button_height_single
+                        min_value: 0
+                        max_value: 100
+                        value: 0
+                        bg_opa: TRANSP
+                        border_width: 0
+                        pad_all: 0
+                        indicator:
+                          bg_opa: TRANSP
+                        knob:
+                          bg_opa: TRANSP
+                          width: 0
+                          height: 0
+                          pad_all: 0
+                        on_value:
+                          then:
+                            - lvgl.label.update:
+                                id: lbl_display_bl_pct
+                                text:
+                                  format: "%d%%"
+                                  args: ['(int)lv_slider_get_value(id(display_bl_slider))']
+                            - lambda: |-
+                                int val = (int)lv_slider_get_value(id(display_bl_slider));
+                                lv_obj_set_height(id(display_bl_fill), lv_pct(val));
+                            - light.turn_on:
+                                id: display_backlight
+                                brightness: !lambda 'return lv_slider_get_value(id(display_bl_slider)) / 100.0;'
+                                transition_length: 100ms
 
-                          # Overlapping text
-                          - obj:
-                              align: CENTER
+                    # Overlapping text
+                    - obj:
+                        align: CENTER
+                        width: $button_width
+                        height: $button_height_single
+                        bg_opa: TRANSP
+                        border_width: 0
+                        pad_all: 0
+                        clickable: false
+                        layout:
+                          type: flex
+                          flex_flow: COLUMN
+                          flex_align_main: CENTER
+                          flex_align_cross: CENTER
+                          #pad_row: 2
+                        widgets:
+                          - label:
+                              id: lbl_display_bl_title
                               width: $button_width
-                              height: $button_height_single
-                              bg_opa: TRANSP
-                              border_width: 0
-                              pad_all: 0
-                              clickable: false
-                              layout:
-                                type: flex
-                                flex_flow: COLUMN
-                                flex_align_main: CENTER
-                                flex_align_cross: CENTER
-                                #pad_row: 2
-                              widgets:
-                                - label:
-                                    id: lbl_display_bl_title
-                                    width: $button_width
-                                    text: "Display"
-                                    text_font: font_btn
-                                    text_color: 0xffffff
-                                    text_align: CENTER
-                                - label:
-                                    id: lbl_display_bl_pct
-                                    width: $button_width
-                                    text: "0%"
-                                    text_font: roboto18_font
-                                    text_color: 0xffffff
-                                    text_align: CENTER
+                              text: "Display"
+                              text_font: font_btn
+                              text_color: 0xffffff
+                              text_align: CENTER
+                          - label:
+                              id: lbl_display_bl_pct
+                              width: $button_width
+                              text: "0%"
+                              text_font: roboto18_font
+                              text_color: 0xffffff
+                              text_align: CENTER
 
 
         # =========================================================================
