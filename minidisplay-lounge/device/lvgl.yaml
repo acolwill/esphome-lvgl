@@ -411,21 +411,6 @@ lvgl:
             on_click:
               - lvgl.page.show: rm4_mini_lounge_page
 
-        # ======================================================
-        # LOWER SECTION - 2 Sliders + Buttons
-        # ======================================================
-        #- obj:
-        #    width: $button_width
-        #    flex_grow: 1
-        #    bg_opa: TRANSP
-        #    border_width: 0
-        #    pad_all: 0
-        #    layout:
-        #      type: flex
-        #      flex_flow: ROW
-              #pad_column: 6
-
-        #    widgets:
         # ==================================================
         # SLIDER COLUMN (2 stacked sliders)
         # ==================================================
@@ -433,8 +418,8 @@ lvgl:
             height: $button_height_single
             width: $button_width
             bg_opa: TRANSP
-            border_width: 0
-            pad_all: 0
+            border_width: 1
+            pad_all: 1
             layout:
               type: flex
               flex_flow: COLUMN
@@ -481,15 +466,15 @@ lvgl:
                         max_value: 100
                         value: 0
                         bg_opa: TRANSP
-                        border_width: 0
-                        pad_all: 0
+                        border_width: 1
+                        pad_all: 1
                         indicator:
                           bg_opa: TRANSP
                         knob:
                           bg_opa: TRANSP
                           width: 0
                           height: 0
-                          pad_all: 0
+                          pad_all: 1
                         on_value:
                           then:
                             - lvgl.label.update:
@@ -511,7 +496,7 @@ lvgl:
                         width: $button_width
                         height: $button_height_single
                         bg_opa: TRANSP
-                        border_width: 0
+                        border_width: 1
                         pad_all: 0
                         clickable: false
                         layout:
