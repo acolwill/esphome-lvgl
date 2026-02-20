@@ -395,7 +395,7 @@ lvgl:
         #   Opens the RM4 Mini IR control page.
         # =========================================================================
         - button: 
-            height: $button_width
+            height: $button_height_single
             width: $button_width
             checkable: false
             id: rm4_mini_lounge_button
@@ -418,11 +418,11 @@ lvgl:
             height: $button_height_single
             width: $button_width
             bg_opa: TRANSP
-            border_width: 1
-            pad_all: 1
-            layout:
-              type: flex
-              flex_flow: COLUMN
+            #border_width: 1
+            #pad_all: 1
+           # layout:
+              #type: flex
+              #flex_flow: COLUMN
               #pad_row: 6
 
 
@@ -439,7 +439,7 @@ lvgl:
                   #border_color: 0x4a4a4a
                   #border_width: 2
                   #radius: 12
-                  pad_all: 0
+                  #pad_all: 0
                   clickable: false
 
 
@@ -486,11 +486,11 @@ lvgl:
                         border_width: 1
                         pad_all: 0
                         clickable: false
-                        layout:
-                          type: flex
-                          flex_flow: COLUMN
-                          flex_align_main: CENTER
-                          flex_align_cross: CENTER
+                        #layout:
+                          #type: flex
+                          #flex_flow: COLUMN
+                          #flex_align_main: CENTER
+                          #flex_align_cross: CENTER
                           #pad_row: 2
                         widgets:
                           - label:
