@@ -415,7 +415,7 @@ lvgl:
         # LOWER SECTION - 2 Sliders + Buttons
         # ======================================================
         - obj:
-            width: 100%
+            width: $button_width
             flex_grow: 1
             bg_opa: TRANSP
             border_width: 0
@@ -448,28 +448,28 @@ lvgl:
                     - obj:
                         id: display_bl_container
                         width: $button_width
-                        flex_grow: 1
+                        #flex_grow: 1
                         bg_color: 0x2d2d2d
                         bg_opa: COVER
                         border_color: 0x4a4a4a
                         #border_width: 2
-                        radius: 12
+                        #radius: 12
                         pad_all: 0
                         clickable: false
 
-                        widgets:
+                        #widgets:
                           # Fill Bar (from bottom) - BLUE
-                          - obj:
-                              id: display_bl_fill
-                              align: BOTTOM_MID
-                              width: $button_width
-                              height: 0%
-                              bg_color: 0x4da8da
-                              bg_opa: COVER
-                              border_width: 0
-                              radius: 0
-                              pad_all: 0
-                              clickable: false
+                          #- obj:
+                          #    id: display_bl_fill
+                          #    align: BOTTOM_MID
+                          #    width: $button_width
+                          #    height: 0%
+                          #    bg_color: 0x4da8da
+                          #    bg_opa: COVER
+                          #    border_width: 0
+                          #    radius: 0
+                          #    pad_all: 0
+                          #    clickable: false
 
                           # LVGL Slider overlay for touch interaction
                           - slider:
