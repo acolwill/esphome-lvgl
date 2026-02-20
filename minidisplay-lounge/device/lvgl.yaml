@@ -424,6 +424,10 @@ lvgl:
               type: flex
               flex_flow: row_wrap
               #pad_column: 6
+              pad_top: 34
+              pad_bottom: 5
+              pad_left: 5
+              pad_right: 5
 
             widgets:
               # ==================================================
@@ -457,19 +461,19 @@ lvgl:
                         pad_all: 0
                         clickable: false
 
-                        #widgets:
-                          # Fill Bar (from bottom) - BLUE
-                          #- obj:
-                          #    id: display_bl_fill
-                          #    align: BOTTOM_MID
-                          #    width: $button_width
-                          #    height: 0%
-                          #    bg_color: 0x4da8da
-                          #    bg_opa: COVER
-                          #    border_width: 0
-                          #    radius: 0
-                          #    pad_all: 0
-                          #    clickable: false
+                        widgets:
+                           Fill Bar (from bottom) - BLUE
+                          - obj:
+                              id: display_bl_fill
+                              align: BOTTOM_MID
+                              width: $button_width
+                              height: 0%
+                              bg_color: 0x4da8da
+                              bg_opa: COVER
+                              border_width: 0
+                              radius: 0
+                              pad_all: 0
+                              clickable: false
 
                           # LVGL Slider overlay for touch interaction
                           - slider:
