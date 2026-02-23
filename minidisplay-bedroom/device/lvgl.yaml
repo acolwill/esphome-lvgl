@@ -943,7 +943,7 @@ lvgl:
               height: $button_height_single
               width: $button_width
               checkable: false
-              id: ir_blaster_bedroom_vol_mute_button
+              id: ir_blaster_bedroom_surround_button
               styles: control
               widgets:
                 - label:
