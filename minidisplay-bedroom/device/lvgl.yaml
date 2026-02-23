@@ -261,16 +261,16 @@ lvgl:
                     entity_id: automation.bedroom_all_off
 
         # =========================================================================
-        # BUTTON: RM4 Mini
+        # BUTTON: IR Blaster
         # =========================================================================
         # WHAT THIS BUTTON DOES:
-        #   Opens the RM4 Mini IR control page.
+        #   Opens the IR control page.
         # =========================================================================
         - button: 
             height: $button_height_single
             width: $button_width
             checkable: false
-            id: rm4_mini_lounge_button
+            id: ir_blaster_bedroom_button
             styles: control
             widgets:
               - label:
@@ -279,9 +279,9 @@ lvgl:
                   text: $remote
               - label:
                   align: bottom_left
-                  text: "Sony IR"
+                  text: "Speaker"
             on_click:
-              - lvgl.page.show: rm4_mini_lounge_page
+              - lvgl.page.show: ir_blaster_bedroom_page
 
         # ======================================================
         # Backlight Control - Slider
@@ -814,9 +814,9 @@ lvgl:
                       position: "100"
 
           # =========================================================================
-          # RM4 Mini - Lounge page.
+          # IR Blaster page.
           # =========================================================================
-    - id: rm4_mini_lounge_page
+    - id: ir_blaster_bedroom_page
       layout:
         type: flex
         flex_flow: row_wrap
@@ -839,7 +839,7 @@ lvgl:
               height: $button_height_single
               width: $button_width
               checkable: false
-              id: rm4_mini_lounge_back_button
+              id: ir_blaster_bedroom_back_button
               styles: control
               widgets:
                 - label:
@@ -859,7 +859,7 @@ lvgl:
               height: $button_height_single
               width: $button_width
               checkable: false
-              id: rm4_mini_lounge_power_button
+              id: ir_blaster_bedroom_power_button
               styles: control
               widgets:
                 - label:
@@ -871,49 +871,7 @@ lvgl:
                     text: "Power"
               on_click:
                 - homeassistant.service:
-                    service: script.lounge_amp_power_on
-
-          # =========================================================================
-          # BUTTON: Source TV
-          # =========================================================================
-          - button: 
-              height: $button_height_single
-              width: $button_width
-              checkable: false
-              id: rm4_mini_lounge_source_tv_button
-              styles: control
-              widgets:
-                - label:
-                    text_font: $icon_font
-                    align: top_left
-                    text: $tv
-                - label:
-                    align: bottom_left
-                    text: "TV"
-              on_click:
-                - homeassistant.service:
-                    service: script.lounge_amp_source_tv
-
-          # =========================================================================
-          # BUTTON: Source Satellite
-          # =========================================================================
-          - button: 
-              height: $button_height_single
-              width: $button_width
-              checkable: false
-              id: rm4_mini_lounge_source_satellite_button
-              styles: control
-              widgets:
-                - label:
-                    text_font: $icon_font
-                    align: top_left
-                    text: $satellite
-                - label:
-                    align: bottom_left
-                    text: "SAT/CATV"
-              on_click:
-                - homeassistant.service:
-                    service: script.lounge_amp_source_satellite
+                    service: script.creative_speaker_power_cycle
 
           # =========================================================================
           # BUTTON: Volume Up
@@ -922,7 +880,7 @@ lvgl:
               height: $button_height_single
               width: $button_width
               checkable: false
-              id: rm4_mini_lounge_vol_up_button
+              id: ir_blaster_bedroom_vol_up_button
               styles: control
               widgets:
                 - label:
@@ -934,7 +892,7 @@ lvgl:
                     text: "Vol+"
               on_click:
                 - homeassistant.service:
-                    service: script.lounge_amp_vol_up
+                    service: script.creative_speaker_volume_up
 
           # =========================================================================
           # BUTTON: Volume Down
@@ -943,7 +901,7 @@ lvgl:
               height: $button_height_single
               width: $button_width
               checkable: false
-              id: rm4_mini_lounge_vol_down_button
+              id: ir_blaster_bedroom_vol_down_button
               styles: control
               widgets:
                 - label:
@@ -955,7 +913,7 @@ lvgl:
                     text: "Vol-"
               on_click:
                 - homeassistant.service:
-                    service: script.lounge_amp_vol_down
+                    service: script.creative_speaker_volume_down
 
           # =========================================================================
           # BUTTON: Volume Mute
@@ -964,7 +922,7 @@ lvgl:
               height: $button_height_single
               width: $button_width
               checkable: false
-              id: rm4_mini_lounge_vol_mute_button
+              id: ir_blaster_bedroom_vol_mute_button
               styles: control
               widgets:
                 - label:
@@ -976,4 +934,25 @@ lvgl:
                     text: "Mute"
               on_click:
                 - homeassistant.service:
-                    service: script.lounge_amp_vol_mute
+                    service: script.creative_speaker_volume_mute
+
+          # =========================================================================
+          # BUTTON: Surround
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_bedroom_vol_mute_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $surround_sound
+                - label:
+                    align: bottom_left
+                    text: "Surround"
+              on_click:
+                - homeassistant.service:
+                    service: script.creative_speaker_surround
