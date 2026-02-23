@@ -47,6 +47,7 @@ font:
       "\U000F075F",  # volume-mute
       "\U000F0502",  # tv
       "\U000F0470",  # satellite
+      "\U000F05C5",  # surround-sound
       ]
 
 # Map icons to names
@@ -92,3 +93,4 @@ substitutions:
   volume_mute:    "\U000F075F"
   tv:             "\U000F0502"
   satellite:      "\U000F0470"
+  surround_sound: "\U000F05C5"
