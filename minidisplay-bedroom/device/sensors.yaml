@@ -307,13 +307,13 @@ binary_sensor:
   # RELATED UI ELEMENT:
   #   lvgl.yaml → RM4 Mini
   # ===========================================================================
-  - platform: homeassistant
-    id: rm4_mini_lounge_sensor
-    entity_id: binary_sensor.rm4_mini_lounge_toggle
-    trigger_on_initial_state: false
-    on_state:
-      then:
-        lvgl.widget.update:
-          id: rm4_mini_lounge_button
-          state:
-            checked: !lambda return x;
+  #- platform: homeassistant
+  #  id: rm4_mini_lounge_sensor
+  #  entity_id: binary_sensor.rm4_mini_lounge_toggle
+  #  trigger_on_initial_state: false
+  #  on_state:
+  #    then:
+  #      lvgl.widget.update:
+  #        id: rm4_mini_lounge_button
+  #        state:
+  #          checked: !lambda return x;
