@@ -487,3 +487,20 @@ binary_sensor:
           id: rm4_mini_lounge_button
           state:
             checked: !lambda return x;
+
+  # ===========================================================================
+  # Automation: Fan - Rack
+  # ===========================================================================
+  # RELATED UI ELEMENT:
+  #   lvgl.yaml → Ran - Rack
+  # ===========================================================================
+  - platform: homeassistant
+    id: switch_usb_fan_rack
+    entity_id: binary_sensor.switch_usb_fan_rack
+    trigger_on_initial_state: true
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: switch_usb_fan_rack_button
+          state:
+            checked: !lambda return x;
