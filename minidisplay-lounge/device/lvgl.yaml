@@ -1057,6 +1057,39 @@ lvgl:
                   service: script.lounge_fan_off
 
         # =========================================================================
+        # BUTTON: Rack Fan Toggle
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #  Toggles the USB port for the ceiling fan above the rack
+        #
+        # WHEN PRESSED:
+        #   Calls Home Assistant service: light.toggle
+        #   Target: light.switch_usb_fan
+        #
+        # HOW THE BUTTON KNOWS IF IT'S ACTIVE:
+        #   Monitored via sensors.yaml
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: switch_usb_fan_rack_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $fan
+              - label:
+                  align: bottom_left
+                  text: "Rack Toggle"
+            on_click:
+              - homeassistant.service:
+                  service: light.toggle
+                  data:
+                    entity_id: light.switch_usb_fan
+
+        # =========================================================================
         # Curtain Robot - Kitchen page.
         # =========================================================================
 
