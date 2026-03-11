@@ -1072,7 +1072,7 @@ lvgl:
         - button: 
             height: $button_height_single
             width: $button_width
-            checkable: false
+            checkable: true
             id: switch_usb_fan_rack_button
             styles: control
             widgets:
@@ -1082,7 +1082,7 @@ lvgl:
                   text: $fan
               - label:
                   align: bottom_left
-                  text: "Rack Toggle"
+                  text: "Rack"
             on_click:
               - homeassistant.service:
                   service: light.toggle
