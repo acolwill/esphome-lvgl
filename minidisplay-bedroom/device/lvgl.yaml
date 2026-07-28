@@ -213,22 +213,22 @@ lvgl:
         # WHAT THIS BUTTON DOES:
         #   Navigates to the dedicated curtain control page.
         # =========================================================================
-        - button: 
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: curtain_nav_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $curtain_closed
-              - label:
-                  align: bottom_left
-                  text: "Window"
-            on_click:
-              - lvgl.page.show: curtain_bedroom_page
+#        - button: 
+#            height: $button_height_single
+#            width: $button_width
+#            checkable: false
+#            id: curtain_nav_button
+#            styles: control
+#            widgets:
+#              - label:
+#                  text_font: $icon_font
+#                  align: top_left
+#                  text: $curtain_closed
+#              - label:
+#                  align: bottom_left
+#                  text: "Window"
+#            on_click:
+#              - lvgl.page.show: curtain_bedroom_page
 
         # =========================================================================
         # BUTTON: ALL OFF
