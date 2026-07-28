@@ -35,6 +35,7 @@ font:
       "\U000F1473",  # mdi-fan-speed-2
       "\U000F1474",  # mdi-fan-speed-3
       "\U000F146E",  # mdi-fan-chevron-up
+      "\U000F146D",  # mdu-fan-chevron-down
       "\U000F146F",  # mdi-fan-plus
       "\U000F1797",  # mdi-ceiling-fan
       "\U000F0792",  # arrow-collapse-down
@@ -48,6 +49,9 @@ font:
       "\U000F0502",  # tv
       "\U000F0470",  # satellite
       "\U000F05C5",  # surround-sound
+      "\U000F001B",  # ac
+      "\U000F0717",  # snowflake
+      "\U000F04B2",  # sleep
       ]
 
 # Map icons to names
@@ -81,6 +85,7 @@ substitutions:
   fan_speed_2:    "\U000F1473"
   fan_speed_3:    "\U000F1474"
   fan_chevron_up: "\U000F146E"
+  fan_chevron_down: "\U000F146D"
   fan_plus:       "\U000F146F"
   ceiling_fan:    "\U000F1797"
   arrow_collapse_down: "\U000F0792"
@@ -94,3 +99,6 @@ substitutions:
   tv:             "\U000F0502"
   satellite:      "\U000F0470"
   surround_sound: "\U000F05C5"
+  ac:             "\U000F001B"
+  snowflake:      "\U000F0717"
+  sleep:          "\U000F04B2"
