@@ -261,7 +261,7 @@ lvgl:
                     entity_id: automation.bedroom_all_off
 
         # =========================================================================
-        # BUTTON: IR Blaster
+        # BUTTON: IR Blaster (Speaker)
         # =========================================================================
         # WHAT THIS BUTTON DOES:
         #   Opens the IR control page.
@@ -282,6 +282,29 @@ lvgl:
                   text: "Speaker"
             on_click:
               - lvgl.page.show: ir_blaster_bedroom_page
+
+        # =========================================================================
+        # BUTTON: IR Blaster (AC)
+        # =========================================================================
+        # WHAT THIS BUTTON DOES:
+        #   Opens the IR control page.
+        # =========================================================================
+        - button: 
+            height: $button_height_single
+            width: $button_width
+            checkable: false
+            id: ir_blaster_ac_button
+            styles: control
+            widgets:
+              - label:
+                  text_font: $icon_font
+                  align: top_left
+                  text: $ac
+              - label:
+                  align: bottom_left
+                  text: "AC"
+            on_click:
+              - lvgl.page.show: ir_blaster_ac_page
 
         # ======================================================
         # Backlight Control - Slider
@@ -956,3 +979,211 @@ lvgl:
               on_click:
                 - homeassistant.service:
                     service: script.creative_speaker_surround
+
+
+          # =========================================================================
+          # IR Blaster AC Page.
+          # =========================================================================
+    - id: ir_blaster_ac_page
+      layout:
+        type: flex
+        flex_flow: row_wrap
+      scrollbar_mode: "off"
+      scroll_dir: "hor"
+      width: 100%
+      bg_color: Black
+      bg_opa: cover
+      pad_top: 34
+      pad_bottom: 5
+      pad_left: 5
+      pad_right: 5
+
+      widgets:
+
+          # =========================================================================
+          # BUTTON: Back (Return to Main Page)
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_ac_back_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $chevron_left
+                - label:
+                    align: bottom_left
+                    text: "Back"
+              on_click:
+                - lvgl.page.show: main_page
+
+          # =========================================================================
+          # BUTTON: Power Toggle
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_ac_power_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $power_toggle
+                - label:
+                    align: bottom_left
+                    text: "Power"
+              on_click:
+                - homeassistant.service:
+                    service: script.ac_power_toggle
+
+          # =========================================================================
+          # BUTTON: Cool Mode
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_ac_cool_mode_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $snowflake
+                - label:
+                    align: bottom_left
+                    text: "Cool"
+              on_click:
+                - homeassistant.service:
+                    service: script.ac_cool_mode
+
+          # =========================================================================
+          # BUTTON: Fan Mode
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_ac_fan_mode_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $fan
+                - label:
+                    align: bottom_left
+                    text: "Fan"
+              on_click:
+                - homeassistant.service:
+                    service: script.ac_fan_mode
+
+          # =========================================================================
+          # BUTTON: Sleep Mode
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_ac_sleep_mode_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $sleep
+                - label:
+                    align: bottom_left
+                    text: "Sleep"
+              on_click:
+                - homeassistant.service:
+                    service: script.ac_sleep_mode
+
+          # =========================================================================
+          # BUTTON: Temp Up
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_ac_temp_up_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $chevron_up
+                - label:
+                    align: bottom_left
+                    text: "Temp+"
+              on_click:
+                - homeassistant.service:
+                    service: script.ac_temp_up
+
+          # =========================================================================
+          # BUTTON: Temp Down
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_ac_temp_down_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $chevron_down
+                - label:
+                    align: bottom_left
+                    text: "Temp-"
+              on_click:
+                - homeassistant.service:
+                    service: script.ac_temp_down
+
+          # =========================================================================
+          # BUTTON: Fan High
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_ac_fan_high_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $fan_chevron_up
+                - label:
+                    align: bottom_left
+                    text: "High"
+              on_click:
+                - homeassistant.service:
+                    service: script.ac_fan_high
+
+          # =========================================================================
+          # BUTTON: Fan Low
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_ac_fan_low_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $fan_chevron_down
+                - label:
+                    align: bottom_left
+                    text: "Low"
+              on_click:
+                - homeassistant.service:
+                    service: script.ac_fan_low
