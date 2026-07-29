@@ -1038,7 +1038,7 @@ lvgl:
                     align: bottom_left
                     text: "Power"
               on_click:
-                - homeassistant.action:
+                - homeassistant.service:
                     service: script.ac_power_toggle
 
           # =========================================================================
@@ -1059,7 +1059,7 @@ lvgl:
                     align: bottom_left
                     text: "Cool"
               on_click:
-                - homeassistant.action:
+                - homeassistant.service:
                     service: script.ac_cool_mode
 
           # =========================================================================
@@ -1080,7 +1080,7 @@ lvgl:
                     align: bottom_left
                     text: "Fan"
               on_click:
-                - homeassistant.action:
+                - homeassistant.service:
                     service: script.ac_fan_mode
 
           # =========================================================================
@@ -1101,7 +1101,7 @@ lvgl:
                     align: bottom_left
                     text: "Sleep"
               on_click:
-                - homeassistant.action:
+                - homeassistant.service:
                     service: script.ac_sleep_mode
 
           # =========================================================================
@@ -1122,7 +1122,7 @@ lvgl:
                     align: bottom_left
                     text: "Temp+"
               on_click:
-                - homeassistant.action:
+                - homeassistant.service:
                     service: script.ac_temp_up
 
           # =========================================================================
@@ -1143,7 +1143,7 @@ lvgl:
                     align: bottom_left
                     text: "Temp-"
               on_click:
-                - homeassistant.action:
+                - homeassistant.service:
                     service: script.ac_temp_down
 
           # =========================================================================
@@ -1164,7 +1164,7 @@ lvgl:
                     align: bottom_left
                     text: "High"
               on_click:
-                - homeassistant.action:
+                - homeassistant.service:
                     service: script.ac_fan_high
 
           # =========================================================================
@@ -1185,5 +1185,5 @@ lvgl:
                     align: bottom_left
                     text: "Low"
               on_click:
-                - homeassistant.action:
+                - homeassistant.service:
                     service: script.ac_fan_low
