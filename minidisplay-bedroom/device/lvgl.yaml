@@ -837,151 +837,6 @@ lvgl:
                       position: "100"
 
           # =========================================================================
-          # IR Blaster page.
-          # =========================================================================
-    - id: ir_blaster_bedroom_page
-      layout:
-        type: flex
-        flex_flow: row_wrap
-      scrollbar_mode: "off"
-      scroll_dir: "hor"
-      width: 100%
-      bg_color: Black
-      bg_opa: cover
-      pad_top: 34
-      pad_bottom: 5
-      pad_left: 5
-      pad_right: 5
-
-      widgets:
-
-          # =========================================================================
-          # BUTTON: Back (Return to Main Page)
-          # =========================================================================
-          - button: 
-              height: $button_height_single
-              width: $button_width
-              checkable: false
-              id: ir_blaster_bedroom_back_button
-              styles: control
-              widgets:
-                - label:
-                    text_font: $icon_font
-                    align: top_left
-                    text: $chevron_left
-                - label:
-                    align: bottom_left
-                    text: "Back"
-              on_click:
-                - lvgl.page.show: main_page
-
-          # =========================================================================
-          # BUTTON: Power Toggle
-          # =========================================================================
-          - button: 
-              height: $button_height_single
-              width: $button_width
-              checkable: false
-              id: ir_blaster_bedroom_power_button
-              styles: control
-              widgets:
-                - label:
-                    text_font: $icon_font
-                    align: top_left
-                    text: $power_toggle
-                - label:
-                    align: bottom_left
-                    text: "Power"
-              on_click:
-                - homeassistant.service:
-                    service: script.creative_speaker_power_cycle
-
-          # =========================================================================
-          # BUTTON: Volume Up
-          # =========================================================================
-          - button: 
-              height: $button_height_single
-              width: $button_width
-              checkable: false
-              id: ir_blaster_bedroom_vol_up_button
-              styles: control
-              widgets:
-                - label:
-                    text_font: $icon_font
-                    align: top_left
-                    text: $volume_up
-                - label:
-                    align: bottom_left
-                    text: "Vol+"
-              on_click:
-                - homeassistant.service:
-                    service: script.creative_speaker_volume_up
-
-          # =========================================================================
-          # BUTTON: Volume Down
-          # =========================================================================
-          - button: 
-              height: $button_height_single
-              width: $button_width
-              checkable: false
-              id: ir_blaster_bedroom_vol_down_button
-              styles: control
-              widgets:
-                - label:
-                    text_font: $icon_font
-                    align: top_left
-                    text: $volume_down
-                - label:
-                    align: bottom_left
-                    text: "Vol-"
-              on_click:
-                - homeassistant.service:
-                    service: script.creative_speaker_volume_down
-
-          # =========================================================================
-          # BUTTON: Volume Mute
-          # =========================================================================
-          - button: 
-              height: $button_height_single
-              width: $button_width
-              checkable: false
-              id: ir_blaster_bedroom_vol_mute_button
-              styles: control
-              widgets:
-                - label:
-                    text_font: $icon_font
-                    align: top_left
-                    text: $volume_up
-                - label:
-                    align: bottom_left
-                    text: "Mute"
-              on_click:
-                - homeassistant.service:
-                    service: script.creative_speaker_volume_mute
-
-          # =========================================================================
-          # BUTTON: Surround
-          # =========================================================================
-          - button: 
-              height: $button_height_single
-              width: $button_width
-              checkable: false
-              id: ir_blaster_bedroom_surround_button
-              styles: control
-              widgets:
-                - label:
-                    text_font: $icon_font
-                    align: top_left
-                    text: $surround_sound
-                - label:
-                    align: bottom_left
-                    text: "Surround"
-              on_click:
-                - homeassistant.service:
-                    service: script.creative_speaker_surround
-
-
-          # =========================================================================
           # IR Blaster AC Page.
           # =========================================================================
     - id: ir_blaster_ac_page
@@ -1187,3 +1042,147 @@ lvgl:
               on_click:
                 - homeassistant.service:
                     service: script.ac_fan_low
+
+          # =========================================================================
+          # IR Blaster speaker page.
+          # =========================================================================
+    - id: ir_blaster_bedroom_page
+      layout:
+        type: flex
+        flex_flow: row_wrap
+      scrollbar_mode: "off"
+      scroll_dir: "hor"
+      width: 100%
+      bg_color: Black
+      bg_opa: cover
+      pad_top: 34
+      pad_bottom: 5
+      pad_left: 5
+      pad_right: 5
+
+      widgets:
+
+          # =========================================================================
+          # BUTTON: Back (Return to Main Page)
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_bedroom_back_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $chevron_left
+                - label:
+                    align: bottom_left
+                    text: "Back"
+              on_click:
+                - lvgl.page.show: main_page
+
+          # =========================================================================
+          # BUTTON: Power Toggle
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_bedroom_power_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $power_toggle
+                - label:
+                    align: bottom_left
+                    text: "Power"
+              on_click:
+                - homeassistant.service:
+                    service: script.creative_speaker_power_cycle
+
+          # =========================================================================
+          # BUTTON: Volume Up
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_bedroom_vol_up_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $volume_up
+                - label:
+                    align: bottom_left
+                    text: "Vol+"
+              on_click:
+                - homeassistant.service:
+                    service: script.creative_speaker_volume_up
+
+          # =========================================================================
+          # BUTTON: Volume Down
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_bedroom_vol_down_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $volume_down
+                - label:
+                    align: bottom_left
+                    text: "Vol-"
+              on_click:
+                - homeassistant.service:
+                    service: script.creative_speaker_volume_down
+
+          # =========================================================================
+          # BUTTON: Volume Mute
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_bedroom_vol_mute_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $volume_up
+                - label:
+                    align: bottom_left
+                    text: "Mute"
+              on_click:
+                - homeassistant.service:
+                    service: script.creative_speaker_volume_mute
+
+          # =========================================================================
+          # BUTTON: Surround
+          # =========================================================================
+          - button: 
+              height: $button_height_single
+              width: $button_width
+              checkable: false
+              id: ir_blaster_bedroom_surround_button
+              styles: control
+              widgets:
+                - label:
+                    text_font: $icon_font
+                    align: top_left
+                    text: $surround_sound
+                - label:
+                    align: bottom_left
+                    text: "Surround"
+              on_click:
+                - homeassistant.service:
+                    service: script.creative_speaker_surround
