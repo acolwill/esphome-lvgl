@@ -915,7 +915,7 @@ lvgl:
                     text: "Cool"
               on_click:
                 - homeassistant.service:
-                    service: script.ac_cool_mode
+                    service: script.ac_mode_cool
 
           # =========================================================================
           # BUTTON: Fan Mode
@@ -936,7 +936,7 @@ lvgl:
                     text: "Fan"
               on_click:
                 - homeassistant.service:
-                    service: script.ac_fan_mode
+                    service: script.ac_mode_fan
 
           # =========================================================================
           # BUTTON: Sleep Mode
@@ -957,7 +957,7 @@ lvgl:
                     text: "Sleep"
               on_click:
                 - homeassistant.service:
-                    service: script.ac_sleep_mode
+                    service: script.ac_mode_sleep
 
           # =========================================================================
           # BUTTON: Temp Up
